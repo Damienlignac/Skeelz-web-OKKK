@@ -12,11 +12,11 @@ identifiant:string;
   rh:boolean;
   superUser:boolean;
 
-  entreprise:Array<Entreprise> = new Array<Entreprise>();
-  personne:Array<Personne> = new Array<Personne>();
+  entreprises:Array<Entreprise> = new Array<Entreprise>();
+  personnes:Array<Personne> = new Array<Personne>();
 
 
-  constructor(id: number, version: number, mail: string, password: string, identifiant: string, administrateur: boolean, rh: boolean, superUser: boolean, entreprise: Array<Entreprise>, personne: Array<Personne>) {
+  constructor(id?: number, version?: number, mail?: string, password?: string, identifiant?: string, administrateur?: boolean, rh?: boolean, superUser?: boolean, entreprises?: Array<Entreprise>, personnes?: Array<Personne>) {
     this.id = id;
     this.version = version;
     this.mail = mail;
@@ -25,8 +25,8 @@ identifiant:string;
     this.administrateur = administrateur;
     this.rh = rh;
     this.superUser = superUser;
-    this.entreprise = entreprise;
-    this.personne = personne;
+    this.entreprises = entreprises;
+    this.personnes = personnes;
   }
 }
 

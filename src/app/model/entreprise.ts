@@ -10,20 +10,20 @@ export class Entreprise {
   numeroSiret: string;
   typeContrat: string;
   skeelz: Array<Skeelz>;
-  competence: Array<Competence>;
-  cours: Array<Cours>;
-  utilisateur: Array<Utilisateur>;
+  competences: Array<Competence>;
+  courss: Array<Cours>;
+  utilisateurs: Array<Utilisateur>;
 
 
-  constructor(id?: number, version?: number, nom?: string, numeroSiret?: string, typeContrat?: string, skeelz?: Array<Skeelz>, competence?: Array<Competence>, cours?: Array<Cours>, utilisateur?: Array<Utilisateur>) {
+  constructor(id?: number, version?: number, nom?: string, numeroSiret?: string, typeContrat?: string, skeelzs?: Array<Skeelz>, competences?: Array<Competence>, courss?: Array<Cours>, utilisateurs?: Array<Utilisateur>) {
     this.id = id;
     this.version = version;
     this.nom = nom;
     this.numeroSiret = numeroSiret;
     this.typeContrat = typeContrat;
     this.skeelz = skeelz;
-    this.competence = competence;
-    this.cours = cours;
-    this.utilisateur = utilisateur;
+    this.competences = competences;
+    this.courss = courss;
+    this.utilisateurs = utilisateurs;
   }
 }
