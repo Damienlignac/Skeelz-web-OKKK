@@ -1,4 +1,7 @@
 import {Question} from './question';
+import {Cours} from './cours';
+import {QCMPersonne} from './qcmPersonne';
+import {Chapitre} from './chapitre';
 
 export class Module {
   id: number;

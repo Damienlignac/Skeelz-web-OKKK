@@ -1,4 +1,6 @@
 import {RelationCours} from './relationCours';
+import {Competence} from './competence';
+import {Cours} from './cours';
 
 export class CoursCompetence {
   id: number;

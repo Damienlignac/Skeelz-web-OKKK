@@ -1,4 +1,5 @@
 import {CompetenceSkeelz} from './competenceSkeelz';
+import {Personne} from './personne';
 
 export class BilanCompetence {
   id: number;

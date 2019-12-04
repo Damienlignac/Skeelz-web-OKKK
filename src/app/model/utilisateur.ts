@@ -1,3 +1,6 @@
+import {Entreprise} from './entreprise';
+import {Personne} from './personne';
+
 export class Utilisateur {
 
   id: number;
