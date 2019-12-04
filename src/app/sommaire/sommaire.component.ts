@@ -14,7 +14,7 @@ export class SommaireComponent implements OnInit {
   moduleAndChap: Array<Module>;
 
   constructor(private route: ActivatedRoute, private sommaireHttpService: SommaireHttpService) {
-    this.route.params.subscribe(params => {this.idCours = params['id']})
+    this.route.params.subscribe(params => {this.idCours = params['id']; })
   }
 
   ngOnInit() {

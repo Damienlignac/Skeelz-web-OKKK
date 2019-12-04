@@ -13,7 +13,7 @@ import { ListcoursComponent } from './listcours/listcours.component';
   declarations: [
     AppComponent,
     SommaireComponent,
-    ChapitreComponent
+    ChapitreComponent,
     ListcoursComponent
   ],
   imports: [

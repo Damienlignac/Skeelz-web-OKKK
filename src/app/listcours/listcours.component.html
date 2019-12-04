@@ -1,6 +1,6 @@
 <div>
 <div>Liste de Cours :</div>
-  <div *ngFor="let cour  of list()">
+  <div *ngFor="let cour  of list()" [routerLink]="['/sommaire/'+cour.id]">
     <div>{{cour.cheminImageCours}} </div>
   <div>{{cour.intitule}}    </div>
   <div>{{cour.description}}   </div>

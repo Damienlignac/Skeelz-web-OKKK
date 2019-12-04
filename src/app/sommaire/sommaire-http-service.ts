@@ -14,7 +14,7 @@ export class SommaireHttpService {
   }
 
   findById(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd + id + '/modules/chapitres');
+    return this.http.get(this.appConfigService.backEnd+'cours/' + id + '/modules/chapitres');
   }
 
 }

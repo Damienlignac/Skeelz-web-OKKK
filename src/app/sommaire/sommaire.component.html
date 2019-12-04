@@ -1,4 +1,6 @@
 <div *ngFor="let module of moduleAndChap ">
-
-  {{module.agencement}}
+  Modules: {{module.intitule}}
+  <div *ngFor="let chapitre of module.chapitres">
+    Chapitres: {{chapitre.titre}}
+  </div>
 </div>
