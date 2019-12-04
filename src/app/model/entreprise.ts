@@ -9,7 +9,7 @@ export class Entreprise {
   nom: string;
   numeroSiret: string;
   typeContrat: string;
-  skeelz: Array<Skeelz>;
+  skeelzs: Array<Skeelz>;
   competences: Array<Competence>;
   courss: Array<Cours>;
   utilisateurs: Array<Utilisateur>;
@@ -21,7 +21,7 @@ export class Entreprise {
     this.nom = nom;
     this.numeroSiret = numeroSiret;
     this.typeContrat = typeContrat;
-    this.skeelz = skeelz;
+    this.skeelzs = skeelzs;
     this.competences = competences;
     this.courss = courss;
     this.utilisateurs = utilisateurs;
