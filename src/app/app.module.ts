@@ -6,11 +6,13 @@ import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppConfigService} from './app-config.service';
 import { SommaireComponent } from './sommaire/sommaire.component';
+import { ListcoursComponent } from './listcours/listcours.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    SommaireComponent
+    SommaireComponent,
+    ListcoursComponent
   ],
   imports: [
     BrowserModule,

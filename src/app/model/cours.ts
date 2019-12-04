@@ -20,7 +20,7 @@ export class Cours {
   coursPersonnes: Array<CoursPersonne> = new Array<CoursPersonne>();
 
 
-  constructor(id: number, version: number, intitule: string, description: string, cheminImageCours: string, duree: number, difficulte: Difficulte, etat: Etat, coursCompetences: Array<CoursCompetence>, modules: Array<Module>, coursPersonnes: Array<CoursPersonne>) {
+  constructor(id?: number, version?: number, intitule?: string, description?: string, cheminImageCours?: string, duree?: number, difficulte?: Difficulte, etat?: Etat, coursCompetences?: Array<CoursCompetence>, modules?: Array<Module>, coursPersonnes?: Array<CoursPersonne>) {
     this.id = id;
     this.version = version;
     this.intitule = intitule;
