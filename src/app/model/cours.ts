@@ -15,12 +15,12 @@ export class Cours {
 
   difficulte: Difficulte;
   etat: Etat;
-  coursCompetence: Array<CoursCompetence> = new Array<CoursCompetence>();
-  module: Array<Module> = new Array<Module>();
-  coursPersonne: Array<CoursPersonne> = new Array<CoursPersonne>();
+  coursCompetences: Array<CoursCompetence> = new Array<CoursCompetence>();
+  modules: Array<Module> = new Array<Module>();
+  coursPersonnes: Array<CoursPersonne> = new Array<CoursPersonne>();
 
 
-  constructor(id: number, version: number, intitule: string, description: string, cheminImageCours: string, duree: number, difficulte: Difficulte, etat: Etat, coursCompetence: Array<CoursCompetence>, module: Array<Module>, CoursPersonne: Array<CoursPersonne>) {
+  constructor(id: number, version: number, intitule: string, description: string, cheminImageCours: string, duree: number, difficulte: Difficulte, etat: Etat, coursCompetences: Array<CoursCompetence>, modules: Array<Module>, coursPersonnes: Array<CoursPersonne>) {
     this.id = id;
     this.version = version;
     this.intitule = intitule;
@@ -29,8 +29,8 @@ export class Cours {
     this.duree = duree;
     this.difficulte = difficulte;
     this.etat = etat;
-    this.coursCompetence = coursCompetence;
-    this.module = module;
-    this.CoursPersonne = CoursPersonne;
+    this.coursCompetences = coursCompetences;
+    this.modules = modules;
+    this.coursPersonnes = coursPersonnes;
   }
 }

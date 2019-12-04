@@ -9,17 +9,17 @@ export class Competence {
   intitule: string;
   ponderation: Ponderation;
   description: string;
-  competenceSkeelz: Array<CompetenceSkeelz> = new Array<CompetenceSkeelz>();
-  bilanCompetence: Array<BilanCompetence> = new Array<BilanCompetence>();
+  competenceSkeelzs: Array<CompetenceSkeelz> = new Array<CompetenceSkeelz>();
+  bilanCompetences: Array<BilanCompetence> = new Array<BilanCompetence>();
 
 
-  constructor(id: number, version: number, intitule: string, ponderation: Ponderation, description: string, competenceSkeelz: Array<CompetenceSkeelz>, bilanCompetence: Array<BilanCompetence>) {
+  constructor(id: number, version: number, intitule: string, ponderation: Ponderation, description: string, competenceSkeelzs: Array<CompetenceSkeelz>, bilanCompetences: Array<BilanCompetence>) {
     this.id = id;
     this.version = version;
     this.intitule = intitule;
     this.ponderation = ponderation;
     this.description = description;
-    this.competenceSkeelz = competenceSkeelz;
-    this.bilanCompetence = bilanCompetence;
+    this.competenceSkeelzs = competenceSkeelzs;
+    this.bilanCompetences = bilanCompetences;
   }
 }
