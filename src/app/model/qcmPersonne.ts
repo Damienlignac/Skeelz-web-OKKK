@@ -1,6 +1,7 @@
 import {Module} from './module';
+import {Personne} from './personne';
 
-export abstract class ElementDeCours {
+export class QCMPersonne {
   id: number;
   version: number;
   nbTentative: number;

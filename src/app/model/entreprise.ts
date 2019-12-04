@@ -1,4 +1,7 @@
 import {Skeelz} from './skeelz';
+import {Competence} from './competence';
+import {Utilisateur} from './utilisateur';
+import {Cours} from './cours';
 
 export class Entreprise {
   id: number;

@@ -1,5 +1,6 @@
 import {Skeelz} from './skeelz';
 import {BilanCompetence} from './bilanCompetence';
+import {Competence} from './competence';
 
 export class CompetenceSkeelz {
   id: number;

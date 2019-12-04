@@ -1,4 +1,6 @@
 import {Cours} from './cours';
+import {Personne} from './personne';
+import {EtatCours} from './etatCours';
 
 export class CoursPersonne {
   id: number;

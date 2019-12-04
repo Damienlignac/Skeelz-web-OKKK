@@ -1,4 +1,9 @@
 import {BilanCompetence} from './bilanCompetence';
+import {CoursPersonne} from './coursPersonne';
+import {QCMPersonne} from './qcmPersonne';
+
+class utilisateur {
+}
 
 export class Personne{
   id: number;

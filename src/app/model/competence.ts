@@ -1,12 +1,16 @@
+import {CompetenceSkeelz} from './competenceSkeelz';
+import {BilanCompetence} from './bilanCompetence';
+import {Ponderation} from './ponderation';
+
 export class Competence {
 
-  id:number;
-  version:number;
-  intitule:string;
-  ponderation:Ponderation;
-  description:string;
-  competenceSkeelz: Array<CompetenceSkeelz>= new Array<CompetenceSkeelz>();
-  bilanCompetence: Array<BilanCompetence>=new Array<BilanCompetence>();
+  id: number;
+  version: number;
+  intitule: string;
+  ponderation: Ponderation;
+  description: string;
+  competenceSkeelz: Array<CompetenceSkeelz> = new Array<CompetenceSkeelz>();
+  bilanCompetence: Array<BilanCompetence> = new Array<BilanCompetence>();
 
 
   constructor(id: number, version: number, intitule: string, ponderation: Ponderation, description: string, competenceSkeelz: Array<CompetenceSkeelz>, bilanCompetence: Array<BilanCompetence>) {
@@ -18,3 +22,4 @@ export class Competence {
     this.competenceSkeelz = competenceSkeelz;
     this.bilanCompetence = bilanCompetence;
   }
+}
