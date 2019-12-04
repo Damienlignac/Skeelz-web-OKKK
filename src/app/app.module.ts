@@ -10,6 +10,7 @@ import {AgePipe} from './age.pipe';
 import { EvaluationComponent } from './evaluation/evaluation.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AppConfigService} from './app-config.service';
+import { SommaireComponent } from './sommaire/sommaire.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import {AppConfigService} from './app-config.service';
     StagiaireFormComponent,
     HomeComponent,
     AgePipe,
-    EvaluationComponent
+    EvaluationComponent,
+    SommaireComponent
   ],
   imports: [
     BrowserModule,
