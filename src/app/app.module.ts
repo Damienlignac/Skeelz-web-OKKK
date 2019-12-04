@@ -5,10 +5,16 @@ import { AppComponent } from './app.component';
 import {FormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppConfigService} from './app-config.service';
+import { SommaireComponent } from './sommaire/sommaire.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    StagiaireComponent,
+    StagiaireFormComponent,
+    HomeComponent,
+    AgePipe,
+    EvaluationComponent
   ],
   imports: [
     BrowserModule,
