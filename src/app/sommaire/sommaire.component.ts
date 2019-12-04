@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-sommaire',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SommaireComponent implements OnInit {
 
-  constructor() { }
+
+  constructor() {
+  }
 
   ngOnInit() {
   }
