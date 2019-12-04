@@ -1,0 +1,74 @@
+<div class="card mt-3">
+  <div class="card-header bg-info text-white">
+    <h3>Edition du stagiaire</h3>
+  </div>
+
+  <div class="card-body">
+    <div class="form-group">
+      <label for="nom">Nom:</label>
+      <input type="text" class="form-control" id="nom" [(ngModel)]="stagiaire.nom">
+    </div>
+    <div class="form-group">
+      <label for="prenom">Prénom:</label>
+      <input type="text" class="form-control" id="prenom" [(ngModel)]="stagiaire.prenom">
+    </div>
+    <div class="form-group">
+      <label for="email">Courriel:</label>
+      <input type="text" class="form-control" id="email" [(ngModel)]="stagiaire.email">
+    </div>
+    <div class="form-group">
+      <label for="telephone">Téléphone:</label>
+      <input type="text" class="form-control" id="telephone" [(ngModel)]="stagiaire.telephone">
+    </div>
+    <div class="form-group">
+      <label for="dtNaissance">Date de naissance:</label>
+      <input type="date" class="form-control" id="dtNaissance" [ngModel]="stagiaire.dtNaissance | date:'yyyy-MM-dd'" (ngModelChange)="stagiaire.dtNaissance = $event">
+    </div>
+    <div class="form-group">
+      <label for="niveauEtude">Niveau d'étude:</label>
+      <select class="form-control" id="niveauEtude" [(ngModel)]="stagiaire.niveauEtude">
+        <option value="">Choisir un niveau d'étude</option>
+        <option value="BAC">Bac</option>
+        <option value="BAC_2">Bac + 2</option>
+        <option value="BAC_3">Bac + 3</option>
+        <option value="BAC_5">Bac + 5</option>
+        <option value="BAC_8">Bac + 8</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <label for="rue">Rue:</label>
+      <input type="text" class="form-control" id="rue" [(ngModel)]="stagiaire.adresse.rue">
+    </div>
+    <div class="form-group">
+      <label for="complement">Complément:</label>
+      <input type="text" class="form-control" id="complement" [(ngModel)]="stagiaire.adresse.complement">
+    </div>
+    <div class="form-group">
+      <label for="codePostal">Code postal:</label>
+      <input type="text" class="form-control" id="codePostal" [(ngModel)]="stagiaire.adresse.codePostal">
+    </div>
+    <div class="form-group">
+      <label for="ville">Ville:</label>
+      <input type="text" class="form-control" id="ville" [(ngModel)]="stagiaire.adresse.ville">
+    </div>
+<!--    <div class="form-group">-->
+<!--      <label for="evaluation">Evaluation:</label>-->
+<!--      <select class="form-control" id="evaluation">-->
+<!--        <option value="">Choisir une evaluation</option>-->
+<!--        <option></option>-->
+<!--      </select>-->
+<!--    </div>-->
+  </div>
+
+  <div class="card-footer">
+    <div class="btn-group btn-group-lg float-right">
+      <a class="btn btn-success" (click)="save()">
+        <i class="fa fa-check"></i>
+      </a>
+      <a class="btn btn-warning" (click)="cancel()">
+        <i class="fa fa-undo"></i>
+      </a>
+    </div>
+  </div>
+
+</div>
