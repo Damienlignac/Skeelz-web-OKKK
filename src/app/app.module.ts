@@ -10,11 +10,7 @@ import { SommaireComponent } from './sommaire/sommaire.component';
 @NgModule({
   declarations: [
     AppComponent,
-    StagiaireComponent,
-    StagiaireFormComponent,
-    HomeComponent,
-    AgePipe,
-    EvaluationComponent
+    SommaireComponent
   ],
   imports: [
     BrowserModule,
