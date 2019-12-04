@@ -7,12 +7,14 @@ import {HttpClientModule} from '@angular/common/http';
 import {AppConfigService} from './app-config.service';
 import { SommaireComponent } from './sommaire/sommaire.component';
 import { ChapitreComponent } from './chapitre/chapitre.component';
+import { ListcoursComponent } from './listcours/listcours.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SommaireComponent,
     ChapitreComponent
+    ListcoursComponent
   ],
   imports: [
     BrowserModule,
