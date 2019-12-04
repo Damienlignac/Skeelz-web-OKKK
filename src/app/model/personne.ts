@@ -1,21 +1,28 @@
-import {Adresse} from './adresse';
+import {BilanCompetence} from './bilanCompetence';
 
-export abstract class Personne {
+export class Personne{
   id: number;
   version: number;
   nom: string;
   prenom: string;
-  email: string;
-  telephone: string;
-  adresse: Adresse;
+  telephone:string;
+  noteGlobale: number;
+  bilanCompetence : Array<BilanCompetence>;
+  coursPersonne: Array<CoursPersonne>;
+  qcmPersonne: Array<QCMPersonne>;
+  Utilisateur: utilisateur;
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, email?: string, telephone?: string, adresse?: Adresse) {
+
+  constructor(id?: number, version?: number, nom?: string, prenom?: string, telephone?: string, noteGlobale?: number, bilanCompetence?: Array<BilanCompetence>, coursPersonne?: Array<CoursPersonne>, qcmPersonne?: Array<QCMPersonne>, Utilisateur?: utilisateur) {
     this.id = id;
     this.version = version;
     this.nom = nom;
     this.prenom = prenom;
-    this.email = email;
     this.telephone = telephone;
-    this.adresse = adresse;
+    this.noteGlobale = noteGlobale;
+    this.bilanCompetence = bilanCompetence;
+    this.coursPersonne = coursPersonne;
+    this.qcmPersonne = qcmPersonne;
+    this.Utilisateur = Utilisateur;
   }
 }
