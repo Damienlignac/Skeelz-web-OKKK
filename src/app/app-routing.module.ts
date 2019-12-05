@@ -10,7 +10,7 @@ import {ChapitreComponent} from './chapitre/chapitre.component';
 const routes: Routes = [
   {path: 'cours', component: ListcoursComponent},
   {path: 'sommaire/:id', component: SommaireComponent},
-  {path: 'chapitre/:id/:agencement', component: ChapitreComponent}
+  {path: 'chapitre/:id/:agencement', component: ChapitreComponent},
   {path: 'editionCours', component: EditionCoursComponent}
 ];
 
