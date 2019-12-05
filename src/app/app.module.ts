@@ -8,13 +8,15 @@ import {AppConfigService} from './app-config.service';
 import { SommaireComponent } from './sommaire/sommaire.component';
 import { ChapitreComponent } from './chapitre/chapitre.component';
 import { ListcoursComponent } from './listcours/listcours.component';
+import { EditionCoursComponent } from './edition-cours/edition-cours.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SommaireComponent,
     ChapitreComponent,
-    ListcoursComponent
+    ListcoursComponent,
+    EditionCoursComponent
   ],
   imports: [
     BrowserModule,

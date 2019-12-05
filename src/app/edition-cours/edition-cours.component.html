@@ -1,0 +1,75 @@
+<div >
+  <div class="row parent">
+    <h3 class="col-4 enfant"> Rédiger un cours -</h3>
+      <input class="col form-control" type="text" id="nom" placeholder="Intitulé du cours">
+      <input class="col form-control" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
+      <select class="col form-control" id="niveauEtude" >
+        <option value="" disabled>Difficulté</option>
+        <option value="FACILE">Facile</option>
+        <option value="MOYEN">Moyen</option>
+        <option value="DIFFICILE">Difficile</option>
+      </select>
+  </div>
+
+
+  <div class="card-body">
+
+    <div class="form-group">
+      <input type="text" class="form-control" id="prenom" placeholder="Description du cours">
+    </div>
+    <div class="form-group">
+      <select class="form-control" id="niveauEtude" >
+        <option value="">Module</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="prenom" placeholder="Intitulé du module courant">
+    </div>
+    <div class="form-group">
+      <select class="form-control" id="niveauEtude" >
+        <option value="">Chapitre</option>
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+        <option value="6">6</option>
+      </select>
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
+    </div>
+    <div class="form-group">
+      <input type="text" class="form-control" id="prenom" placeholder="Rédigez une brève introduction pour exposer le contexte et les objectifs de votre chapitre">
+    </div>
+    <br>
+    <div class="form-group">
+      <p>Sélectionner un type de contenu:</p>
+      <input type="radio" id="texte" name="contenu" checked>
+      <label for="texte">Texte</label>
+      <input type="radio" id="Image" name="contenu">
+      <label for="Image">Image</label>
+      <input type="radio" id="ExtraitCode" name="contenu" >
+      <label for="ExtraitCode">Extrait de code</label>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="btn-group btn-group-lg float-right">
+      <a class="btn btn-success" >
+        <i class="fa fa-check"> Enregistrer</i>
+      </a>
+      <a class="btn btn-warning" >
+        <i class="fa fa-undo">Soumettre pour vérification</i>
+      </a>
+    </div>
+  </div>
+
+</div>

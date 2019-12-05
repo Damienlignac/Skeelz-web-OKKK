@@ -1,6 +1,6 @@
 <div *ngFor="let module of moduleAndChap ">
-  Modules: {{module.intitule}}
+  {{module.intitule}}
   <div *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/'+module.id+'/'+chapitre.agencement]">
-    Chapitres: {{chapitre.titre}}
+    {{chapitre.titre}}
   </div>
 </div>
