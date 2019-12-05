@@ -2,14 +2,40 @@
 
 #listcours{
   background-color: gray;
+  position: relative;
+  margin-top: 20px;
+}
+.form1{
+  position: relative;
+  margin-top:20px;
+}
+.select1{
+  position: absolute;
+  width: 12%;
+  left: 0;
+}
+.select2{
+  position: absolute;
+  width: 15%;
+  left: 15%;
+}
+.input1{
+  position: absolute;
+  width: 30%;
+  left: 35%;
+}
+.buttonsub{
+  position: absolute;
+  left: 70%;
 
 }
 .back1 {
   background-color: orange;
-  margin: 10px;
+  margin-top: 10px;
   height: 180px;
 position: relative;
-  width: 1200px;
+  top: 80px;
+  width: 100%;
 }
 .back2 {
   background-color: purple;
@@ -28,7 +54,7 @@ top : 8%;
 
 }
 .back4 {
-  top: 26%;
+  top: 28%;
   left: 17%;
   height: 66%;
   width: 80%;
@@ -37,7 +63,7 @@ top : 8%;
 .back6 {
   position: absolute;
   top: 8%;
-  background-color: blue;
+  background-color: lightblue;
   width: 15%;
   left : 48%
 }

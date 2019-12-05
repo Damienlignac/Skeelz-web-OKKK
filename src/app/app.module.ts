@@ -10,6 +10,7 @@ import { ChapitreComponent } from './chapitre/chapitre.component';
 import { ListcoursComponent } from './listcours/listcours.component';
 import { EditionCoursComponent } from './edition-cours/edition-cours.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
+import { EnumArrayPipe } from './enum-array.pipe';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { UtilisateurComponent } from './utilisateur/utilisateur.component';
     ChapitreComponent,
     ListcoursComponent,
     EditionCoursComponent,
-    UtilisateurComponent
+    UtilisateurComponent,
+    EnumArrayPipe
   ],
   imports: [
     BrowserModule,
