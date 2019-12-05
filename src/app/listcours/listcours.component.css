@@ -1,0 +1,56 @@
+.back3,.back2,.back4,.back6,.back7{position: absolute}
+
+#listcours{
+  background-color: gray;
+
+}
+.back1 {
+  background-color: orange;
+  margin: 10px;
+  height: 180px;
+position: relative;
+  width: 1200px;
+}
+.back2 {
+  background-color: purple;
+
+  top:8%;
+  left: 1%;
+  bottom :8%;
+  width: 15%;
+height: 84%;
+}
+.back3 {
+top : 8%;
+ left: 17%;
+  width: 30%;
+  background-color: yellow;
+
+}
+.back4 {
+  top: 26%;
+  left: 17%;
+  height: 66%;
+  width: 80%;
+  background-color: red;
+}
+.back6 {
+  position: absolute;
+  top: 8%;
+  background-color: blue;
+  width: 15%;
+  left : 48%
+}
+
+.back7 {
+  left : 65%;
+  top: 8%;
+  background-color: skyblue;
+  width: 15%;
+}
+
+.back5{
+  top: 10%;
+  background-color: gray;
+  margin: 10px;
+}

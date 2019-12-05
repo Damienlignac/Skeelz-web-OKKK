@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ListcoursHttpService} from './listcours.http.service';
 import {Cours} from '../model/cours';
+import {Difficulte} from '../model/difficulte';
 
 @Component({
   selector: 'listcours',
@@ -10,7 +11,7 @@ import {Cours} from '../model/cours';
 export class ListcoursComponent implements OnInit {
 
   cours: Cours = null;
-
+  difficulte = Difficulte;
 
   constructor(private listcoursservice: ListcoursHttpService) {
   }
