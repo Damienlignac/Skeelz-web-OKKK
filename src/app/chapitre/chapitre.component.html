@@ -1,6 +1,15 @@
-<div *ngFor="let elem of chapitre.elementDeCourss">
-  <div *ngIf="typeof elem  === "Paragraphe">
-    <div>{{elem.titre}}</div>
+<div *ngFor="let elem of chapitre?.elementsDeCours">
+  <div *ngIf="elem.type  === 'Paragraphe'">
+    <h2>{{elem.titre}}</h2>
     <div>{{elem.texte}}</div>
+    <br>
   </div>
-
+<!--  <div *ngIf="elem.type  === 'ExtraitCode'">-->
+<!--    <div>{{elem.contenu}}</div>-->
+<!--    <div>{{elem.commentaire}}</div>-->
+<!--  </div>-->
+<!--  <div *ngIf="elem.type  === 'ImageCours'">-->
+<!--    <div>{{elem.chemin}}</div>-->
+<!--    <div>{{elem.commentaire}}</div>-->
+<!--  </div>-->
+</div>

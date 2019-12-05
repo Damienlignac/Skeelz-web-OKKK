@@ -11,6 +11,6 @@ export class ChapitreHttpService {
   constructor(private http: HttpClient, private appConfigService: AppConfigService) { }
 
   findById(id: number, agencement: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd + 'FindByIdModuleAndAgencement/' + id +":" + agencement);
+    return this.http.get(this.appConfigService.backEnd + 'chapitre/FindByIdModuleAndAgencement/' + id +":" + agencement);
   }
 }
