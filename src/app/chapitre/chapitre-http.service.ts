@@ -10,7 +10,11 @@ export class ChapitreHttpService {
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) { }
 
-  findById(id: number, agencement: number): Observable<any> {
+  findById(id: number): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'module/'+id+'/chapitres');
+  }
+
+  findByIdAndAgencement(id: number, agencement: number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + 'chapitre/FindByIdModuleAndAgencement/' + id +":" + agencement);
   }
 }
