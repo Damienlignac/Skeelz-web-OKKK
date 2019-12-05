@@ -1,52 +1,47 @@
 <div >
-  <div class="row parent">
-    <h3 class="col-4 enfant"> Rédiger un cours -</h3>
-      <input class="col form-control" type="text" id="nom" placeholder="Intitulé du cours">
-      <input class="col form-control" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
-      <select class="col form-control" id="niveauEtude" >
+  <div class="form-inline" style="width: 120%">
+    <h3 style="margin-top: 10px" style="width: 30%"> Rédiger un cours -</h3>
+    <div class="form-group" style="margin: 10px">
+      <input [(ngModel)]="cours.intitule" class="form-control" type="text" id="nom" placeholder="Intitulé du cours">
+    </div>
+    <div class="form-group" style="margin: 10px">
+      <input [(ngModel)]="cours.duree" class="form-control" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
+    </div>
+    <div class="form-group" style="margin: 10px">
+      <select class="form-control" id="niveauEtude"  [(ngModel)]="cours.difficulte" >
         <option value="" disabled>Difficulté</option>
         <option value="FACILE">Facile</option>
         <option value="MOYEN">Moyen</option>
         <option value="DIFFICILE">Difficile</option>
       </select>
+    </div>
   </div>
 
 
   <div class="card-body">
 
     <div class="form-group">
-      <input type="text" class="form-control" id="prenom" placeholder="Description du cours">
+      <input [(ngModel)]="cours.description" type="text" class="form-control" id="prenom" placeholder="Description du cours">
     </div>
     <div class="form-group">
       <select class="form-control" id="niveauEtude" >
-        <option value="">Module</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
+        <option value=""disabled>Module</option>
+        <option *ngFor="let module of cours.modules" [(ngModel)]="currentModule">{{module.agencement}}</option>
+        <option>Nouveau module</option>
       </select>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="prenom" placeholder="Intitulé du module courant">
+      <input  [(ngModel)]="currentModule.intitule" type="text" class="form-control" id="prenom" placeholder="Intitulé du module courant">
     </div>
     <div class="form-group">
       <select class="form-control" id="niveauEtude" >
-        <option value="">Chapitre</option>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
+        <option value="" disabled>Chapitre</option>
+        <option *ngFor="let chapitre of currentModule.chapitres" >{{chapitre.agencement}}</option>
+        <option >Nouveau chapitre</option>
       </select>
     </div>
     <div class="form-group">
-      <input type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
-    </div>
-    <div class="form-group">
-      <input type="text" class="form-control" id="prenom" placeholder="Rédigez une brève introduction pour exposer le contexte et les objectifs de votre chapitre">
+      <input [(ngModel)]="currentChapitre.titre" type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
     </div>
     <br>
     <div class="form-group">
