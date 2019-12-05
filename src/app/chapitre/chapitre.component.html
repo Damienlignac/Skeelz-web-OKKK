@@ -14,5 +14,6 @@
 <!--  </div>-->
 </div>
 
-<button *ngIf="!premierChapitre" [routerLink]="['/chapitre/'+idModule+'/'+(chapitre.agencement - 1)]" >Chapitre précédent</button>
-<button *ngIf="!dernierChapitre" [routerLink]="['/chapitre/'+idModule+'/'+(chapitre.agencement + 1)]" >Prochain chapitre</button>
+<button *ngIf="!premierModule" >Module précédent</button>
+<button *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" >Chapitre précédent</button>
+<button *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" >Prochain chapitre</button>
