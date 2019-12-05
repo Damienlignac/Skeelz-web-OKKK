@@ -1,1 +1,6 @@
-<p>chapitre works!</p>
+<div *ngFor="let elem of chapitre.elementDeCourss">
+  <div *ngIf="typeof elem  === "Paragraphe">
+    <div>{{elem.titre}}</div>
+    <div>{{elem.texte}}</div>
+  </div>
+
