@@ -9,6 +9,7 @@ import { SommaireComponent } from './sommaire/sommaire.component';
 import { ChapitreComponent } from './chapitre/chapitre.component';
 import { ListcoursComponent } from './listcours/listcours.component';
 import { EditionCoursComponent } from './edition-cours/edition-cours.component';
+import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { EditionCoursComponent } from './edition-cours/edition-cours.component';
     SommaireComponent,
     ChapitreComponent,
     ListcoursComponent,
-    EditionCoursComponent
+    EditionCoursComponent,
+    UtilisateurComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <div style="font-size: large; font-weight:bolder ">Liste des Utilisateurs :</div>
+  <br>
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Identifiant</th>
+      <th>Email</th>
+      <th>RH</th>
+      <th>Admin</th>
+      <!--      <th>SuperAdmin</th>-->
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let utilisateur  of list()" [routerLink]="['/utilisateur']">
+      <td>{{utilisateur.identifiant}}</td>
+      <td>{{utilisateur.mail}}</td>
+      <td>{{utilisateur.rh}}</td>
+      <td>{{utilisateur.administrateur}}</td>
+      <!--      <td>{{utilisateur.superUser}}</td>-->
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
