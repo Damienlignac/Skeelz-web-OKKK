@@ -33,6 +33,7 @@ export class EditionCoursComponent implements OnInit {
     this.currentModule= this.moduleAndChap.filter(module => module.id == moduleId)[0];
     console.log(this.currentModule.intitule)
     this.currentChapitre = new Chapitre()
+    this.elementDeCours=null;
 
   }
 
@@ -44,8 +45,10 @@ export class EditionCoursComponent implements OnInit {
 
 
   }
-  saveModule(){
-    this.editionCoursHttpService.saveModule(this.currentModule)
+  save(cours, currentModule){
+    this.editionCoursHttpService.saveCours(cours, currentModule)
+
+
   }
 
   nouveauModule(){
@@ -61,6 +64,8 @@ export class EditionCoursComponent implements OnInit {
     this.currentModule.agencement=agencementMax+1;
     this.moduleAndChap.push(this.currentModule);
     console.log(this.currentModule.agencement)
+    this.currentChapitre= new Chapitre();
+    this.elementDeCours=null;
   }
 
   nouveauChapitre(){

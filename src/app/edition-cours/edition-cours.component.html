@@ -48,8 +48,13 @@
       <input [(ngModel)]="currentChapitre.titre" type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
     </div>
     <div class="form-group" *ngFor="let element of elementDeCours">
-      <input [(ngModel)]="element."type="text" class="form-control" placeholder="Entrer votre paragraphe">
+      <div *ngIf="element.type  === 'Paragraphe'">
+        <input [(ngModel)]="element.titre" type="text" class="form-control" placeholder="Entrer votre titre">
+        <input [(ngModel)]="element.texte" type="text" class="form-control" placeholder="Entrer votre texte">
+        <br>
+      </div>
     </div>
+
     <br>
     <div class="form-group">
       <p>Sélectionner un type de contenu:</p>
@@ -66,7 +71,7 @@
   <div>
     <div class="btn-group btn-group-lg float-right">
       <a class="btn btn-success" >
-        <i class="fa fa-check"> Enregistrer</i>
+        <i class="fa fa-check" (click)="save(cours, currentModule)"> Enregistrer</i>
       </a>
       <a class="btn btn-warning" >
         <i class="fa fa-undo">Soumettre pour vérification</i>
