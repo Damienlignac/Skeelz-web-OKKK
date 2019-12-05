@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Chapitre} from '../model/chapitre';
+import {Paragraphe} from '../model/paragraphe';
 import {ChapitreHttpService} from './chapitre-http.service';
 
 @Component({
@@ -11,16 +12,18 @@ import {ChapitreHttpService} from './chapitre-http.service';
 export class ChapitreComponent implements OnInit {
 
   id: number;
+  agencement: number;
   chapitre: Chapitre;
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService) {
     this.route.params.subscribe(params => {
-      this.id = params['id']
+      this.id = params['id'];
+      this.agencement = params['agencement']
     });
   }
 
   ngOnInit() {
-    this.chapitreHttpService.findById(this.id).subscribe(resp => this.chapitre = resp)
+    this.chapitreHttpService.findById(this.id, this.agencement).subscribe(resp => this.chapitre = resp)
   }
 
 }
