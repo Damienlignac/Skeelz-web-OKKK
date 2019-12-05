@@ -1,6 +1,6 @@
 <div *ngFor="let module of moduleAndChap ">
-  Modules: {{module.intitule}}
-  <div *ngFor="let chapitre of module.chapitres">
-    Chapitres: {{chapitre.titre}}
+  {{module.intitule}}
+  <div class = "indentation" *ngFor="let chapitre of module.chapitres">
+    {{chapitre.titre}}
   </div>
 </div>
