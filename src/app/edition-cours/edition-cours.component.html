@@ -1,13 +1,19 @@
-<div class="card mt-3">
-  <div class="card-header bg-info text-white">
-    <h3>Création d'un cours</h3>
+<div >
+  <div class="row parent">
+    <h3 class="col-4 enfant"> Rédiger un cours -</h3>
+      <input class="col form-control" type="text" id="nom" placeholder="Intitulé du cours">
+      <input class="col form-control" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
+      <select class="col form-control" id="niveauEtude" >
+        <option value="" disabled>Difficulté</option>
+        <option value="FACILE">Facile</option>
+        <option value="MOYEN">Moyen</option>
+        <option value="DIFFICILE">Difficile</option>
+      </select>
   </div>
 
+
   <div class="card-body">
-    <div class="form-group">
-      <label for="nom">Intitulé du cours</label>
-      <input type="text" class="form-control" id="nom" >
-    </div>
+
     <div class="form-group">
       <input type="text" class="form-control" id="prenom" placeholder="Description du cours">
     </div>
@@ -40,63 +46,30 @@
       <input type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
     </div>
     <div class="form-group">
-      <label for="email">Courriel:</label>
-      <input type="text" class="form-control" id="email" >
+      <input type="text" class="form-control" id="prenom" placeholder="Rédigez une brève introduction pour exposer le contexte et les objectifs de votre chapitre">
     </div>
+    <br>
     <div class="form-group">
-      <label for="telephone">Téléphone:</label>
-      <input type="text" class="form-control" id="telephone" >
+      <p>Sélectionner un type de contenu:</p>
+      <input type="radio" id="texte" name="contenu" checked>
+      <label for="texte">Texte</label>
+      <input type="radio" id="Image" name="contenu">
+      <label for="Image">Image</label>
+      <input type="radio" id="ExtraitCode" name="contenu" >
+      <label for="ExtraitCode">Extrait de code</label>
     </div>
-    <div class="form-group">
-      <label for="dtNaissance">Date de naissance:</label>
-      <input type="date" class="form-control" id="dtNaissance" >
-    </div>
-    <div class="form-group">
-      <label for="niveauEtude">Niveau d'étude:</label>
-      <select class="form-control" id="niveauEtude" >
-        <option value="">Choisir un niveau d'étude</option>
-        <option value="BAC">Bac</option>
-        <option value="BAC_2">Bac + 2</option>
-        <option value="BAC_3">Bac + 3</option>
-        <option value="BAC_5">Bac + 5</option>
-        <option value="BAC_8">Bac + 8</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="rue">Rue:</label>
-      <input type="text" class="form-control" id="rue" >
-    </div>
-    <div class="form-group">
-      <label for="complement">Complément:</label>
-      <input type="text" class="form-control" id="complement">
-    </div>
-    <div class="form-group">
-      <label for="codePostal">Code postal:</label>
-      <input type="text" class="form-control" id="codePostal">
-    </div>
-    <div class="form-group">
-      <label for="ville">Ville:</label>
-      <input type="text" class="form-control" id="ville" >
-    </div>
-    <!--    <div class="form-group">-->
-    <!--      <label for="evaluation">Evaluation:</label>-->
-    <!--      <select class="form-control" id="evaluation">-->
-    <!--        <option value="">Choisir une evaluation</option>-->
-    <!--        <option></option>-->
-    <!--      </select>-->
-    <!--    </div>-->
   </div>
 
-  <div class="card-footer">
+
+  <div>
     <div class="btn-group btn-group-lg float-right">
       <a class="btn btn-success" >
-        <i class="fa fa-check"></i>
+        <i class="fa fa-check"> Enregistrer</i>
       </a>
       <a class="btn btn-warning" >
-        <i class="fa fa-undo"></i>
+        <i class="fa fa-undo">Soumettre pour vérification</i>
       </a>
     </div>
   </div>
 
 </div>
-
