@@ -1,4 +1,4 @@
-<div >
+<div>
   <div class="form-inline" style="width: 120%">
     <h3 style="margin-top: 10px" style="width: 30%"> Rédiger un cours -</h3>
     <div class="form-group" style="margin: 10px">
@@ -24,24 +24,31 @@
       <input [(ngModel)]="cours.description" type="text" class="form-control" id="prenom" placeholder="Description du cours">
     </div>
     <div class="form-group">
-      <select class="form-control" id="niveauEtude" >
+      <select class="form-control"  #modu (change)="moduleCourant($event, modu.value)"   >
         <option value=""disabled>Module</option>
-        <option *ngFor="let module of cours.modules" [(ngModel)]="currentModule">{{module.agencement}}</option>
-        <option>Nouveau module</option>
+        <option *ngFor="let module of moduleAndChap" [value] = "module.id" [selected]="module.id == currentModule.id">{{module.agencement}} </option>
       </select>
+    </div>
+    <div class="form-group">
+      <button type="button" (click)="nouveauModule()">Nouveau Module</button>
     </div>
     <div class="form-group">
       <input  [(ngModel)]="currentModule.intitule" type="text" class="form-control" id="prenom" placeholder="Intitulé du module courant">
     </div>
     <div class="form-group">
-      <select class="form-control" id="niveauEtude" >
+      <select class="form-control"  #chap (change)="chapitreCourant($event, chap.value)" >
         <option value="" disabled>Chapitre</option>
-        <option *ngFor="let chapitre of currentModule.chapitres" >{{chapitre.agencement}}</option>
-        <option >Nouveau chapitre</option>
+        <option *ngFor="let chapitre of currentModule.chapitres" [value]="chapitre.id" [selected]="chapitre.id == currentChapitre.id">{{chapitre.agencement}}</option>
       </select>
     </div>
     <div class="form-group">
+      <button type="button" (click)="nouveauChapitre()">Nouveau Chapitre</button>
+    </div>
+    <div class="form-group">
       <input [(ngModel)]="currentChapitre.titre" type="text" class="form-control" id="prenom" placeholder="Intitulé du chapitre courant">
+    </div>
+    <div class="form-group" *ngFor="let element of elementDeCours">
+      <input [(ngModel)]="element."type="text" class="form-control" placeholder="Entrer votre paragraphe">
     </div>
     <br>
     <div class="form-group">
