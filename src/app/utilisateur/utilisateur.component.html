@@ -1,6 +1,7 @@
 <div class="container-fluid">
-  <div style="font-size: large; font-weight:bolder ">Liste des Utilisateurs :</div>
+  <div style="font-size: x-large; font-family: 'Candara'; font-weight:bolder; color: darkcyan">Liste des Utilisateurs :</div>
   <br>
+
   <table class="table table-bordered table-striped">
     <thead>
     <tr>
@@ -15,9 +16,9 @@
     <tr *ngFor="let utilisateur  of list()" [routerLink]="['/utilisateur']">
       <td>{{utilisateur.identifiant}}</td>
       <td>{{utilisateur.mail}}</td>
-      <td>{{utilisateur.rh}}</td>
-      <td>{{utilisateur.administrateur}}</td>
-      <!--      <td>{{utilisateur.superUser}}</td>-->
+      <td><i *ngIf="utilisateur.rh==true" class="fa fa-check"></i><i *ngIf="utilisateur.rh==false" class="fa fa-times"></i></td>
+      <td><i *ngIf="utilisateur.administrateur==true" class="fa fa-check"></i><i *ngIf="utilisateur.administrateur==false" class="fa fa-times"></i></td>
+      <!--      <td><i *ngIf="utilisateur.superUser==true" class="fa fa-check"></i><i *ngIf="utilisateur.superUser==false" class="fa fa-times"></i></td>-->
     </tr>
 
     </tbody>
