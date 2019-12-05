@@ -1,12 +1,26 @@
-<div>
-<div>Liste de Cours :</div>
-  <div *ngFor="let cour  of list()" [routerLink]="['/sommaire/'+cour.id]">
-    <div>{{cour.cheminImageCours}} </div>
-  <div>{{cour.intitule}}    </div>
-  <div>{{cour.description}}   </div>
-    <div>{{cour.duree}}    </div>
-    <div>{{cour.difficulte}}   </div>
+<select>
+  <option>Choisir une difficulté</option>
+  <option *ngFor="let dif of {{difficulte}}"></option>
+</select>
+<div id="listcours" >
+  <div>
+  <h4>Liste de Cours :</h4>
+  </div>
+  <div *ngFor="let cour  of list()" [routerLink]="['/sommaire/'+cour.id]" class=" back1">
+
+
+    <div class="back2 ">{{cour.cheminImageCours}} </div>
+
+
+    <div class="back3 "><h6>{{cour.intitule}} </h6>   </div>
+    <div class="back6">Durrée : {{cour.duree}} Heures</div>
+
+
+  <div class="back4 ">{{cour.description}}   </div>
+
+    <div class="back7 ">Niveau : {{cour.difficulte}} </div>
 
 
   </div>
+
 </div>
