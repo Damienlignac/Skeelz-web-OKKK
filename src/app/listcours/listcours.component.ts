@@ -11,7 +11,7 @@ import {Difficulte} from '../model/difficulte';
 export class ListcoursComponent implements OnInit {
 
   cours: Cours = null;
-  difficulte = Difficulte;
+  difficulte = Difficulte.;
 
   constructor(private listcoursservice: ListcoursHttpService) {
   }

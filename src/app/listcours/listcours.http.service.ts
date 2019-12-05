@@ -18,6 +18,7 @@ export class ListcoursHttpService {
   }
 
   load() {
+
     this.http.get(this.appConfigService.backEnd + "cours").subscribe(resp =>
       this.courss = resp);
   }
