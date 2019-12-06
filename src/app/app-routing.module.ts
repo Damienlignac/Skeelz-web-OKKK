@@ -5,6 +5,7 @@ import {SommaireComponent} from "./sommaire/sommaire.component";
 import {EditionCoursComponent} from './edition-cours/edition-cours.component';
 import {UtilisateurComponent} from './utilisateur/utilisateur.component';
 import {ChapitreComponent} from './chapitre/chapitre.component';
+import {QcmComponent} from './qcm/qcm.component';
 import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 
@@ -17,8 +18,7 @@ const routes: Routes = [
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
-  {path: 'chapitre/:id/:agencement', component: ChapitreComponent},
-  {path: 'editionCours', component: EditionCoursComponent},
+  {path: 'qcm/:idCours/:idModule', component: QcmComponent},
   {path: 'admin-user-list', component: AdminUserListComponent}
 ];
 

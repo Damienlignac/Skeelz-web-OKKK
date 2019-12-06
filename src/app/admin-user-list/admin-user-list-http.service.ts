@@ -9,18 +9,24 @@ import {Personne} from '../model/personne';
 })
 export class AdminUserListHttpService {
   private personnes: any;
+  private competences: any;
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
     this.load()
+    this.load3()
   }
 
   load() {
     this.http.get(this.appConfigService.backEnd + 'personne').subscribe(resp => {
       this.personnes = resp;
 
-
     });
+  }
+
+  load3() {
+    this.http.get(this.appConfigService.backEnd + "competence").subscribe(resp =>
+      this.competences = resp);
   }
 
   findAll(): any {
@@ -31,6 +37,9 @@ export class AdminUserListHttpService {
     return this.http.get(this.appConfigService.backEnd + 'personne/' + id);
   }
 
+  findAllCompetences(): any{
+    return this.competences;
+  }
 
 
   save(personne: Personne) {
