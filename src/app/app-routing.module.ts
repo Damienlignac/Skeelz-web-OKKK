@@ -16,7 +16,7 @@ const routes: Routes = [
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
-  {path: 'qcm/:idCours/:idModule', component: QcmComponent}
+  {path: 'qcm/:idCours/:idModule', component: QcmComponent},
   {path: 'admin-user-list', component: AdminUserListComponent}
 ];
 

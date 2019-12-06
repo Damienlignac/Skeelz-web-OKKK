@@ -26,7 +26,7 @@ import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/adm
     EditionCoursComponent,
     UtilisateurComponent,
     EnumArrayPipe,
-    QcmComponent
+    QcmComponent,
     AdminUserListComponent,
     AdminCoursAValiderListComponent
   ],
