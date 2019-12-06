@@ -20,17 +20,14 @@ export class ListcoursComponent implements OnInit {
   diffe:Difficulte=null;
   loop:boolean = true;
   coursss:Array<Cours> = new Array<Cours>();
+
   constructor(private listcoursservice: ListcoursHttpService) {
 
   }
 
-
-
   ngOnInit() {
 
   }
-
-
 
   list() {
     if (this.loop == true) {

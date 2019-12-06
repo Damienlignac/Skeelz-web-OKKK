@@ -12,7 +12,10 @@ export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
   personnes: Array<Personne>;
-  constructor(private personneService: AdminUserListHttpService) {
+  competences: any;
+  valeur: any;
+
+  constructor(private adminUserListService: AdminUserListHttpService) {
 
   }
 
@@ -22,9 +25,15 @@ export class AdminUserListComponent implements OnInit {
   }
 
   list(): any {
-    this.personnes = this.personneService.findAll()
-    return this.personnes
-    }
+    this.personnes = this.adminUserListService.findAll();
+    return this.personnes;
+  }
+
+
+  chargeCompetences(): any {
+    this.competences = this.adminUserListService.findAllCompetences();
+    return this.competences;
+  }
 
 
   add() {
@@ -32,12 +41,12 @@ export class AdminUserListComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.personneService.findById(id).subscribe(resp => this.personne = resp);
+    this.adminUserListService.findById(id).subscribe(resp => this.personne = resp);
 
   }
 
   delete(id: number) {
-    this.personneService.deleteBydId(id);
+    this.adminUserListService.deleteBydId(id);
   }
 
   cancel() {
