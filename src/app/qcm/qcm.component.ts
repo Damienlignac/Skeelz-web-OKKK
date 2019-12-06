@@ -16,6 +16,7 @@ export class QcmComponent implements OnInit {
   idModule: number;
   mesModules: Array<Module>;
   currentModule: Module;
+  nextModule: Module;
   questionsWithReponses: Array<Question>;
   currentQuestions: Array<Question>;
   totalReponsesJustes: number;
@@ -34,6 +35,8 @@ export class QcmComponent implements OnInit {
         this.mesModules = resp;
         let filtreCurrentModule = this.mesModules.filter(item => item.id == this.idModule);
         this.currentModule = filtreCurrentModule[0];
+        let filtreNextModule = this.mesModules.filter(item => item.agencement == (this.currentModule.agencement + 1));
+        this.nextModule = filtreNextModule[0];
         this.qcmHttpService.findQuestionsWithReponsesById(this.idModule).subscribe(resp => {
           this.questionsWithReponses = resp;
           this.currentQuestions = this.questionsWithReponses;
