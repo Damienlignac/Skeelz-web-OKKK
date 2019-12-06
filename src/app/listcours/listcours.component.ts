@@ -41,6 +41,7 @@ export class ListcoursComponent implements OnInit {
     this.loop = false;
 
 
+    // @ts-ignore
     if (this.difficultee == 'null' && this.skeelzid == 'null') {
       console.log('diffi null skeelznull');
       this.loop = true;

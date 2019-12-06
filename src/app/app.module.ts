@@ -30,7 +30,7 @@ import {CreationCoursComponent} from './creation-cours/creation-cours.component'
     QcmComponent,
     AdminUserListComponent,
     AdminCoursAValiderListComponent,
-    LoginComponent
+    LoginComponent,
     CreationCoursComponent
   ],
   imports: [
