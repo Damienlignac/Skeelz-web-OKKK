@@ -17,6 +17,7 @@ import {AdminUserListHttpService} from './admin-user-list/admin-user-list-http.s
 import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 import { LoginComponent } from './login/login.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
+import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 
 @NgModule({
   declarations: [

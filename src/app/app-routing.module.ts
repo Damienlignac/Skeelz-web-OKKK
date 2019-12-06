@@ -8,10 +8,13 @@ import {ChapitreComponent} from './chapitre/chapitre.component';
 import {QcmComponent} from './qcm/qcm.component';
 import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
+import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 
 
 
 const routes: Routes = [
+
+  {path: '', component: PageAccueilComponent},
   {path: 'cours', component: ListcoursComponent},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
