@@ -2,7 +2,6 @@ import {Component, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {Chapitre} from '../model/chapitre';
 import {ChapitreHttpService} from './chapitre-http.service';
-import {ElementDeCours} from '../model/elementDeCours';
 import {Module} from '../model/module';
 import {SommaireHttpService} from '../sommaire/sommaire-http-service';
 
@@ -21,9 +20,11 @@ export class ChapitreComponent implements OnInit {
   dernierChapitre: boolean;
   premierChapitre: boolean;
   mesModules: Array<Module>;
-  currentModule: Module[];
+  currentModule: Module;
+  previousModule: Module;
   dernierModule: boolean;
   premierModule: boolean;
+  secondModule: Module;
 
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService) {
@@ -33,15 +34,20 @@ export class ChapitreComponent implements OnInit {
       this.agencement = params['agencementCh'];
       this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
         this.mesModules = resp;
-        this.currentModule = this.mesModules.filter(item => item.id == this.idModule);
+        let filtreCurrentModule = this.mesModules.filter(item => item.id == this.idModule);
+        this.currentModule = filtreCurrentModule[0];
         console.log(this.currentModule);
-        if (this.currentModule[0].agencement == 0) {
+        if (this.currentModule.agencement == 0) {
           this.premierModule = true;
+          let filtreSecondModule = this.mesModules.filter(item => item.agencement == 1);
+          this.secondModule = filtreSecondModule[0];
           console.log("C est le premier module : " + this.premierModule)
         } else {
           this.premierModule = false;
+          let filtrePreviousModule = this.mesModules.filter(item => item.agencement == (this.currentModule.agencement - 1));
+          this.previousModule = filtrePreviousModule[0];
         }
-        if ((this.currentModule[0].agencement + 1) == this.mesModules.length) {
+        if ((this.currentModule.agencement + 1) == this.mesModules.length) {
           this.dernierModule = true;
         } else {
           this.dernierModule = false;
