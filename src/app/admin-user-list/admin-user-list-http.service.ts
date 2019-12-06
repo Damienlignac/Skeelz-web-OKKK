@@ -7,7 +7,7 @@ import {Personne} from '../model/personne';
 @Injectable({
   providedIn: 'root'
 })
-export class PersonneHttpService {
+export class AdminUserListHttpService {
   private personnes: any;
 
 
@@ -17,7 +17,6 @@ export class PersonneHttpService {
 
   load() {
     this.http.get(this.appConfigService.backEnd + 'personne').subscribe(resp => {
-      console.log(resp);
       this.personnes = resp;
 
 
@@ -25,7 +24,6 @@ export class PersonneHttpService {
   }
 
   findAll(): any {
-    console.log(this.personnes);
     return this.personnes;
   }
 

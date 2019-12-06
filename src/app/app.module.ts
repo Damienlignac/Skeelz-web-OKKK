@@ -10,9 +10,9 @@ import {ChapitreComponent} from './chapitre/chapitre.component';
 import {ListcoursComponent} from './listcours/listcours.component';
 import {EditionCoursComponent} from './edition-cours/edition-cours.component';
 import {UtilisateurComponent} from './utilisateur/utilisateur.component';
-import {PersonneComponent} from './personne/personne.component';
-import {PersonneHttpService} from './personne/personne-http.service';
-import { EnumArrayPipe } from './enum-array.pipe';
+import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
+import {AdminUserListHttpService} from './admin-user-list/admin-user-list-http.service';
+import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 
 
 @NgModule({
@@ -23,7 +23,8 @@ import { EnumArrayPipe } from './enum-array.pipe';
     ListcoursComponent,
     EditionCoursComponent,
     UtilisateurComponent,
-    PersonneComponent
+    AdminUserListComponent,
+    AdminCoursAValiderListComponent
   ],
   imports: [
     BrowserModule,
@@ -31,7 +32,7 @@ import { EnumArrayPipe } from './enum-array.pipe';
     FormsModule,
     HttpClientModule
   ],
-  providers: [AppConfigService, PersonneHttpService],
+  providers: [AppConfigService, AdminUserListHttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

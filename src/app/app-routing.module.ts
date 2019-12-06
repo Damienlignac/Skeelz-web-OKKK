@@ -5,7 +5,7 @@ import {SommaireComponent} from "./sommaire/sommaire.component";
 import {EditionCoursComponent} from './edition-cours/edition-cours.component';
 import {UtilisateurComponent} from './utilisateur/utilisateur.component';
 import {ChapitreComponent} from './chapitre/chapitre.component';
-import {PersonneComponent} from './personne/personne.component';
+import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
 
 
 
@@ -17,7 +17,7 @@ const routes: Routes = [
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'chapitre/:id/:agencement', component: ChapitreComponent},
   {path: 'editionCours', component: EditionCoursComponent},
-  {path: 'personne', component: PersonneComponent}
+  {path: 'admin-user-list', component: AdminUserListComponent}
 ];
 
 @NgModule({

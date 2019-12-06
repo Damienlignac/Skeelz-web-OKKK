@@ -1,19 +1,18 @@
 import {Component, OnInit} from '@angular/core';
 import {Personne} from '../model/personne';
-import {PersonneHttpService} from './personne-http.service';
+import {AdminUserListHttpService} from './admin-user-list-http.service';
+import {Competence} from '../model/competence';
 
 @Component({
   selector: 'app-personne',
-  templateUrl: './personne.component.html',
-  styleUrls: ['./personne.component.css']
+  templateUrl: './admin-user-list.component.html',
+  styleUrls: ['./admin-user-list.component.css']
 })
-export class PersonneComponent implements OnInit {
+export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
-
-  constructor(private personneService: PersonneHttpService) {
-
-
+  personnes: Array<Personne>;
+  constructor(private personneService: AdminUserListHttpService) {
 
   }
 
@@ -23,8 +22,9 @@ export class PersonneComponent implements OnInit {
   }
 
   list(): any {
-    return this.personneService.findAll();
-  }
+    this.personnes = this.personneService.findAll()
+    return this.personnes
+    }
 
 
   add() {
