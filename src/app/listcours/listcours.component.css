@@ -11,22 +11,28 @@
 }
 .select1{
   position: absolute;
-  width: 12%;
+  width: 14%;
   left: 0;
 }
 .select2{
   position: absolute;
+  width: 22%;
+  left: 17%;
+}
+
+.select3{
+  position: absolute;
   width: 15%;
-  left: 15%;
+  left: 42%;
 }
 .input1{
   position: absolute;
-  width: 30%;
-  left: 35%;
+  width: 20%;
+  left: 60%
 }
 .buttonsub{
   position: absolute;
-  left: 70%;
+  left: 85%;
 
 }
 .back1 {

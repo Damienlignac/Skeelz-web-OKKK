@@ -1,6 +1,6 @@
 <div *ngFor="let module of moduleAndChap ">
   {{module.intitule}}
-  <div class="indentation" *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/'+module.id+'/'+chapitre.agencement]">
+  <div class="indentation" *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/', idCours, module.id, chapitre.agencement]">
     {{chapitre.titre}}
   </div>
 </div>
