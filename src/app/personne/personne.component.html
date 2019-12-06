@@ -15,12 +15,12 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let pers  of listcomp()" [routerLink]="['/personne']">
+    <tr *ngFor="let pers  of list()" [routerLink]="['/personne']">
       <td>{{pers.nom | uppercase}}</td>
       <td>{{pers.prenom}}</td>
       <td>{{pers.telephone}}</td>
       <td>{{pers.noteGlobal}}</td>
-<!--      <td *ngFor="let bil of pers.bilanCompetence">{{bil.competenceSkeelz.competence.intitule}}</td>-->
+      <td>{{pers.competences.intitule}}</td>
       <td></td>
       <td></td>
     </tr>
