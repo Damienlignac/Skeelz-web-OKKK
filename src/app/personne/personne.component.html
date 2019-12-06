@@ -20,7 +20,7 @@
       <td>{{pers.prenom}}</td>
       <td>{{pers.telephone}}</td>
       <td>{{pers.noteGlobal}}</td>
-      <td>{{pers.competences.intitule}}</td>
+      <td *ngFor="let comp of pers.competences">{{comp.intitule}}</td>
       <td></td>
       <td></td>
     </tr>

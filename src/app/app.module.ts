@@ -22,7 +22,8 @@ import { EnumArrayPipe } from './enum-array.pipe';
     ChapitreComponent,
     ListcoursComponent,
     EditionCoursComponent,
-    UtilisateurComponent
+    UtilisateurComponent,
+    PersonneComponent
   ],
   imports: [
     BrowserModule,
