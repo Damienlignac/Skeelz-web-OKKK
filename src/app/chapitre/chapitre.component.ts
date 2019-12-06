@@ -25,6 +25,7 @@ export class ChapitreComponent implements OnInit {
   dernierModule: boolean;
   premierModule: boolean;
   secondModule: Module;
+  agencementMaxDernierChapitre: number;
 
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService) {
@@ -66,6 +67,15 @@ export class ChapitreComponent implements OnInit {
             ;
             if (this.chapitre.agencement == 0) {
               this.premierChapitre = true;
+              if(!this.premierModule) {
+                let max = 0;
+                this.previousModule.chapitres.forEach(chap => {
+                  if(chap.agencement > max) {
+                    max = chap.agencement;
+                  }
+                })
+                this.agencementMaxDernierChapitre = max;
+              }
             } else {
               this.premierChapitre = false;
             }
