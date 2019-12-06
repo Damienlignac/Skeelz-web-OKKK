@@ -12,6 +12,7 @@ import {EditionCoursComponent} from './edition-cours/edition-cours.component';
 import {UtilisateurComponent} from './utilisateur/utilisateur.component';
 import {PersonneComponent} from './personne/personne.component';
 import {PersonneHttpService} from './personne/personne-http.service';
+import { EnumArrayPipe } from './enum-array.pipe';
 
 
 @NgModule({
@@ -21,8 +22,7 @@ import {PersonneHttpService} from './personne/personne-http.service';
     ChapitreComponent,
     ListcoursComponent,
     EditionCoursComponent,
-    UtilisateurComponent,
-    PersonneComponent
+    UtilisateurComponent
   ],
   imports: [
     BrowserModule,
