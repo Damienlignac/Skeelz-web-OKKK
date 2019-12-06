@@ -18,7 +18,7 @@ export class SommaireComponent implements OnInit {
   constructor(private route: ActivatedRoute, private sommaireHttpService: SommaireHttpService) {
     this.route.params.subscribe(params => {this.idCours = params['id']; })
     this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
-      this.moduleAndChap = resp
+      this.moduleAndChap = resp.sort((a,b) => b.agencement ? 0 :(a.agencement > b.agencement) || -1)
     });
   }
 

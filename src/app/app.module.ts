@@ -13,6 +13,8 @@ import {UtilisateurComponent} from './utilisateur/utilisateur.component';
 import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
 import {AdminUserListHttpService} from './admin-user-list/admin-user-list-http.service';
 import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/admin-cours-avalider-list.component';
+import {EnumArrayPipe} from './enum-array.pipe';
+import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +26,8 @@ import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/adm
     UtilisateurComponent,
     EnumArrayPipe,
     AdminUserListComponent,
-    AdminCoursAValiderListComponent
+    AdminCoursAValiderListComponent,
+    CreationCoursComponent
   ],
   imports: [
     BrowserModule,
