@@ -15,6 +15,7 @@ import { QcmComponent } from './qcm/qcm.component';
 import {AdminUserListComponent} from './admin-user-list/admin-user-list.component';
 import {AdminUserListHttpService} from './admin-user-list/admin-user-list-http.service';
 import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/admin-cours-avalider-list.component';
+import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/adm
     EnumArrayPipe,
     QcmComponent,
     AdminUserListComponent,
-    AdminCoursAValiderListComponent
+    AdminCoursAValiderListComponent,
+    PageAccueilComponent
   ],
   imports: [
     BrowserModule,
