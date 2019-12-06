@@ -24,13 +24,9 @@ export class ListcoursComponent implements OnInit {
 
   }
 
-
-
   ngOnInit() {
 
   }
-
-
 
   list() {
 

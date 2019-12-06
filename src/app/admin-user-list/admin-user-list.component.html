@@ -3,10 +3,10 @@
     Utilisateurs :
   </div>
   <div class="dropdown">
-    <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown">Filtrer par compétence
+    <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" >Filtrer par Compétence
       <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <li *ngFor="let pers of list()"></li>
+      <option *ngFor="let comp of chargeCompetences()">{{comp.intitule}}</option>
     </ul>
   </div>
 
