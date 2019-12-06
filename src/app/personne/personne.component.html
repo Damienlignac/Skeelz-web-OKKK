@@ -1,0 +1,32 @@
+<div class="container-fluid">
+  <div style="font-size: x-large; font-family: 'Candara'; font-weight:bolder; color: darkcyan">Vue Admin - Liste des Utilisateurs :</div>
+  <br>
+<!--liste des personnes (utilisateurs en vue administrateur)-->
+  <table class="table table-bordered table-striped">
+    <thead>
+    <tr>
+      <th>Nom</th>
+      <th>Prénom</th>
+      <th>Téléphone</th>
+      <th>Note Globale</th>
+      <th>Compétences</th>
+      <th>Détail</th>
+      <th>Droits d'accès</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let pers  of listcomp()" [routerLink]="['/personne']">
+      <td>{{pers.nom | uppercase}}</td>
+      <td>{{pers.prenom}}</td>
+      <td>{{pers.telephone}}</td>
+      <td>{{pers.noteGlobal}}</td>
+<!--      <td *ngFor="let bil of pers.bilanCompetence">{{bil.competenceSkeelz.competence.intitule}}</td>-->
+      <td></td>
+      <td></td>
+    </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
