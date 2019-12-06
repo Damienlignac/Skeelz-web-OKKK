@@ -15,7 +15,7 @@
     <option>Ordre croissant</option>
     <option>Ordre décroissant</option>
   </select>
-  <select class="form-control select3" [(ngModel)]="skeelz">
+  <select class="form-control select3" [(ngModel)]="skeelzid">
     <option value="null" class="selected">Skeelz</option>
     <option *ngFor="let ske of chargeskeelz()" value="{{ske.id}}">{{ske.intitule}}</option>
   </select>

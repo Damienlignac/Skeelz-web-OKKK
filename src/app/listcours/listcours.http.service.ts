@@ -13,9 +13,9 @@ import {Skeelz} from '../model/skeelz';
   providedIn: 'root'
 })
 export class ListcoursHttpService {
- private courss: any;
- private difficultes: any;
- private skeelzs:any;
+  private courss: any;
+  private difficultes: any;
+  private skeelzs:any;
 
 
 
@@ -53,7 +53,7 @@ export class ListcoursHttpService {
   }
   findAllDifficulte(): any{
     return this.difficultes;
-}
+  }
   findAllSkeelz(): any{
     return this.skeelzs;
   }
@@ -62,13 +62,13 @@ export class ListcoursHttpService {
     return this.http.get(this.appConfigService.backEnd + 'cours/' + id);
   }
 
-  // save(stagiaire: Stagiaire) {
-  //   if (cours.id) {
-  //     this.http.put(this.appConfigService.backEnd + 'cours/' + cours.id, cours).subscribe(resp => this.load());
-  //   } else {
+// save(stagiaire: Stagiaire) {
+//   if (cours.id) {
+//     this.http.put(this.appConfigService.backEnd + 'cours/' + cours.id, cours).subscribe(resp => this.load());
+//   } else {
   //     this.http.post(this.appConfigService.backEnd + 'cours/', cours).subscribe(resp => this.load());
   //   }
-  // }
+// }
 
   deleteBydId(id: number) {
     this.http.delete(this.appConfigService.backEnd + 'cours/' + id).subscribe(resp => this.load());
@@ -78,10 +78,10 @@ export class ListcoursHttpService {
 
 
 
-   return this.http.get(this.appConfigService.backEnd + 'cours/by-difficulte/' + difficulte);
-}
+    return this.http.get(this.appConfigService.backEnd + 'cours/by-difficulte/' + difficulte);
+  }
 
-  findBySkeelz (id :number): Observable<any>{
+  findBySkeelz(id: number): Observable<any>{
     return this.http.get(this.appConfigService.backEnd +"skeelz/"+ id + "/courss");
   }
 
