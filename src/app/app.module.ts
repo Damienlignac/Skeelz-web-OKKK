@@ -12,7 +12,6 @@ import { EditionCoursComponent } from './edition-cours/edition-cours.component';
 import { UtilisateurComponent } from './utilisateur/utilisateur.component';
 import { EnumArrayPipe } from './enum-array.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -21,13 +20,13 @@ import { EnumArrayPipe } from './enum-array.pipe';
     ListcoursComponent,
     EditionCoursComponent,
     UtilisateurComponent,
-    EnumArrayPipe
+    EnumArrayPipe,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [AppConfigService],
   bootstrap: [AppComponent]
