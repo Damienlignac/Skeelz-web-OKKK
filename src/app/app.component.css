@@ -1,24 +1,15 @@
 .nav-link{
-  font-family: "Candara";
   font-size: 30px;
-  font-weight: bold;
-  text-shadow: 1px 1px 0 orange;
+  text-shadow: #3c3c3c;
 }
-.positionRelative{
-  position: relative;
-}
-.head{
-  background-color: rgba(202,243,254,0.89)
-}
-.navbar{
-  position:absolute;
-  bottom:0;
-  right: 5%;
-}
-.logo{
-  float:left;
-  width:140px;
-}
+
 .pointer {
   cursor: pointer;
+}
+body {
+  background: url(../assets/img/fondecran.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
 }
