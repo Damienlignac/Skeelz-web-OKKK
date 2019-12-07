@@ -10,10 +10,10 @@
     <option value="MOYEN">Moyen</option>
     <option value="DIFFICILE">Difficile</option>
   </select>
-  <select class="form-control select2">
+  <select class="form-control select2" [(ngModel)]="ordreDuree">
     <option value="null" class="selected">Durée</option>
-    <option>Ordre croissant</option>
-    <option>Ordre décroissant</option>
+    <option value="croissant"> Ordre croissant</option>
+    <option value="decroissant">Ordre décroissant</option>
   </select>
   <select class="form-control select3" [(ngModel)]="skeelzid">
     <option value="null" class="selected">Skeelz</option>
