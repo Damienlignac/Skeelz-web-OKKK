@@ -6,6 +6,7 @@ import {Skeelz} from '../model/skeelz';
 import {Etat} from '../model/etat';
 import {Router} from '@angular/router';
 import {AuthService} from '../auth.service';
+import {Module} from '../model/module';
 
 @Component({
   selector: 'listcours',
@@ -24,6 +25,12 @@ export class ListcoursComponent implements OnInit {
   loop = true;
   coursss: Array<Cours> = new Array<Cours>();
   ordreDuree:string='null';
+  module0:any;
+  idModule0:number;
+  coursId:number;
+  cheminIntroCours:string;
+
+
 
   constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
 
@@ -174,16 +181,17 @@ export class ListcoursComponent implements OnInit {
     }
 
 
+    introCours(idCours:number){
 
+     this.listcoursservice.findIntroCours(idCours,0).subscribe(resp => {
+      this.module0 = resp;
+   });
+console.log(this.module0.id);
 
+this.router.navigate(['chapitre/'+idCours+'/'+this.module0.id+'/0']);
 
+    }
 
-  OrdreCroissant() {
-
-  }
-  OrdredeCroissant() {
-
-  }
 
 
 

@@ -83,5 +83,10 @@ export class ListcoursHttpService {
     return this.http.get(this.appConfigService.backEnd +"skeelz/"+ id + "/courss/"+etat);
   }
 
+  findIntroCours(id:number, agencement0:number=0){
+
+    return this.http.get(this.appConfigService.backEnd +"module//FindByIdCoursAndAgencement/"+ id +":"+agencement0);
+  }
+
 
 }

@@ -14,7 +14,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 
 @Component({
-  selector: 'app-chapitre',
+  selector: 'chapitre',
   templateUrl: './chapitre.component.html',
   styleUrls: ['./chapitre.component.css']
 })
