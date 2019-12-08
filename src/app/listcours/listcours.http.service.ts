@@ -74,8 +74,6 @@ export class ListcoursHttpService {
 
   findByDifficulte (difficulte :Difficulte, etat :Etat=Etat.OUVERT): Observable<any>{
 
-
-
     return this.http.get(this.appConfigService.backEnd + 'cours/by-difficulte/' + difficulte+'/' +etat);
   }
 

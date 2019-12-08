@@ -12,6 +12,7 @@ import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 import {AppComponent} from './app.component';
+import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
 
 
 
@@ -26,7 +27,8 @@ const routes: Routes = [
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
   {path: 'admin-user-list', component: AdminUserListComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'tableaudebord', component: TableauDeBordComponent}
 ];
 
 @NgModule({
