@@ -13,24 +13,24 @@ export class Personne{
   prenom: string;
   telephone:string;
   noteGlobale: number;
-  bilanCompetences : Array<BilanCompetence>;
-  coursPersonnes: Array<CoursPersonne>;
-  qcmPersonnes: Array<QCMPersonne>;
-  utilisateurs: Utilisateur;
+  bilanCompetence : Array<BilanCompetence>;
+  coursPersonne: Array<CoursPersonne>;
+  qcmPersonne: Array<QCMPersonne>;
+  utilisateur: Utilisateur;
   competences: Array <Competence>;
 
 
-  constructor(id?: number, version?: number, nom?: string, prenom?: string, telephone?: string, noteGlobale?: number, bilanCompetences?: Array<BilanCompetence>, coursPersonnes?: Array<CoursPersonne>, qcmPersonnes?: Array<QCMPersonne>, utilisateurs?: Utilisateur, competences?: Array<Competence>) {
+  constructor(id?: number, version?: number, nom?: string, prenom?: string, telephone?: string, noteGlobale?: number, bilanCompetence?: Array<BilanCompetence>, coursPersonne?: Array<CoursPersonne>, qcmPersonne?: Array<QCMPersonne>, utilisateur?: Utilisateur, competences?: Array<Competence>) {
     this.id = id;
     this.version = version;
     this.nom = nom;
     this.prenom = prenom;
     this.telephone = telephone;
     this.noteGlobale = noteGlobale;
-    this.bilanCompetences = bilanCompetences;
-    this.coursPersonnes = coursPersonnes;
-    this.qcmPersonnes = qcmPersonnes;
-    this.utilisateurs = utilisateurs;
+    this.bilanCompetence = bilanCompetence;
+    this.coursPersonne = coursPersonne;
+    this.qcmPersonne = qcmPersonne;
+    this.utilisateur = utilisateur;
     this.competences = competences;
   }
 }

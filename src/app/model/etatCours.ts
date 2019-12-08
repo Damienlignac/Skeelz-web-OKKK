@@ -1,5 +1,7 @@
 export enum EtatCours{
-  OUVERT=("Ouvert"),
-  FERME=("Fermé"),
+  VALIDE=("VALIDE"),
+  SUIVI=("SUIVI"),
+  ADMINISTRE=("ADMINISTRE")
+
 
 }

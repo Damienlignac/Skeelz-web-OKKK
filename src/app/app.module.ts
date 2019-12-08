@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 import {AuthGuard} from './auth.guard';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
+import { TableauDeBordComponent } from './tableau-de-bord/tableau-de-bord.component';
 import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
 
 @NgModule({
@@ -35,8 +36,7 @@ import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
     AdminCoursAValiderListComponent,
     LoginComponent,
     CreationCoursComponent,
-    PageAccueilComponent,
-    EcranAdminComponent
+    PageAccueilComponent
   ],
   imports: [
     BrowserModule,
