@@ -1,12 +1,71 @@
-<div>
-<div>Liste de Cours :</div>
-  <div *ngFor="let cour  of list()" [routerLink]="['/sommaire/'+cour.id]">
-    <div>{{cour.cheminImageCours}} </div>
-  <div>{{cour.intitule}}    </div>
-  <div>{{cour.description}}   </div>
-    <div>{{cour.duree}}    </div>
-    <div>{{cour.difficulte}}   </div>
+<div class="container">
+  <div class="col-md-6 col-md-offset-3 loginBox">
+    Welcome,  {{id}}
+    <a href="javascript:void(0);" (click)="logout()">Logout</a>
+  </div>
+</div>
 
+<div id="listcours"></div>
+  <div>
+
+    <h4> Cours :</h4>
+  </div>
+<div class="form1 form-group">
+
+  <select class="form-control select1" [(ngModel)]="difficultee">
+    <option [ngValue]=null class="selected">Difficulté</option>
+    <option value="FACILE">Facile</option>
+    <option value="MOYEN">Moyen</option>
+    <option value="DIFFICILE">Difficile</option>
+  </select>
+  <select class="form-control select2" [(ngModel)]="ordreDuree">
+    <option value="null" class="selected">Durée</option>
+    <option value="croissant"> Ordre croissant</option>
+    <option value="decroissant">Ordre décroissant</option>
+  </select>
+  <select class="form-control select3" [(ngModel)]="skeelzid">
+    <option [ngValue]="null" class="selected">Skeelz</option>
+    <option *ngFor="let ske of chargeskeelz()" value="{{ske.id}}">{{ske.intitule}}</option>
+  </select>
+
+
+
+  <input type="text" class="form-control input1" placeholder="Recherchez par nom" [(ngModel)]="valeur">
+  <button type="button" class="btn btn-light buttonsub" (click)="recherchez()">Recherchez</button>
+
+</div>
+
+<div *ngIf="loop==true">
+<div  *ngFor="let cour  of  list() " [routerLink]="['/sommaire/'+cour.id]" class=" back1 box">
+
+
+    <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
+      <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
+      </div>
+      <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">
+        <img class="Img center" src="../../assets/img/no_img.png">
+      </div>
+  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">
+    <img class="Img" src="../../assets/img/imgtrollArnaud.png">
+  </div>
+
+
+    <div class="back3 "><h6>{{cour.intitule}} </h6></div>
+    <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
+    <div class="back4 ">{{cour.description}}   </div>
+    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
 
   </div>
 </div>
+
+<div *ngIf="loop==false">
+  <div  *ngFor="let cour  of  this.coursss " [routerLink]="['/sommaire/'+cour.id]" class=" back1 box">
+    <div class="back2 ">{{cour.cheminImageCours}} </div>
+    <div class="back3 "><h5>{{cour.intitule}} </h5></div>
+    <div class="back6">><i class="fa fa-clock-o" aria-hidden="true"></i> Durrée : {{cour.duree}} Heures</div>
+    <div class="back4 ">{{cour.description}}   </div>
+    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
+  </div>
+</div>
+
+

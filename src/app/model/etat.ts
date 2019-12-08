@@ -1,5 +1,5 @@
 export enum Etat {
-  OUVERT=("Ouvert"),
+  OUVERT=("OUVERT"),
   FERME=("Fermé"),
   ATTENTE=("En attente de validation")
 }

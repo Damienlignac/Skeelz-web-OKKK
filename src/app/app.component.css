@@ -1,0 +1,15 @@
+.nav-link{
+  font-size: 20px;
+  text-shadow: #3c3c3c;
+}
+
+.pointer {
+  cursor: pointer;
+}
+body {
+
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  background-size: cover;
+  -o-background-size: cover;
+}

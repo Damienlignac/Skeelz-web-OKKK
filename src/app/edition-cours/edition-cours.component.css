@@ -1,0 +1,32 @@
+.lignehaut {
+  position: relative;
+}
+.enfant {
+  position: absolute;
+  top: 50%; /* poussé de la moitié de hauteur du référent */
+  transform: translateY(-50%); /* tiré de la moitié de sa propre hauteur */
+}
+.textarea {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: vertical;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+}
+
+.textareatitle {
+  border: none;
+  overflow: auto;
+  outline: none;
+  resize: vertical;
+
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
+  font-weight: bold;
+}
+
+

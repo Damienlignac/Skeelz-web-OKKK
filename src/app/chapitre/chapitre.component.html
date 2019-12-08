@@ -1,1 +1,25 @@
-<p>chapitre works!</p>
+<h1>{{currentModule.intitule}}</h1>
+<br>
+
+<div *ngFor="let elem of chapitre?.elementsDeCours">
+  <div *ngIf="elem.type  === 'Paragraphe'">
+    <h2>{{elem.titre}}</h2>
+    <div>{{elem.texte}}</div>
+    <br>
+  </div>
+<!--  <div *ngIf="elem.type  === 'ExtraitCode'">-->
+<!--    <div>{{elem.contenu}}</div>-->
+<!--    <div>{{elem.commentaire}}</div>-->
+<!--  </div>-->
+<!--  <div *ngIf="elem.type  === 'ImageCours'">-->
+<!--    <div>{{elem.chemin}}</div>-->
+<!--    <div>{{elem.commentaire}}</div>-->
+<!--  </div>-->
+</div>
+
+<button *ngIf="!premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, 0]">Module précédent</button>
+<button *ngIf="premierModule" [routerLink]="['/chapitre/', idCours, secondModule.id, 0]">Commencer le cours</button>
+<button *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" >Chapitre précédent</button>
+<button *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]">Chapitre précédent</button>
+<button *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" >Prochain chapitre</button>
+<button *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]">Accéder au QCM</button>
