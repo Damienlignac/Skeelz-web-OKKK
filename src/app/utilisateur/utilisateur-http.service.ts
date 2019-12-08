@@ -41,10 +41,6 @@ export class UtilisateurHttpService {
     }
   }
 
-  createCoursPersonne(coursPersonne : CoursPersonne): Observable<any> {
-    return this.http.post(this.appConfigService.backEnd + 'CoursPeronne', coursPersonne);
-  }
-
   deleteBydId(id: number) {
     this.http.delete(this.appConfigService.backEnd + 'utilisateur/' + id).subscribe(resp => this.load());
   }

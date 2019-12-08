@@ -10,6 +10,8 @@ import {CoursPersonne} from '../model/coursPersonne';
 import {EtatCours} from '../model/etatCours';
 import {Cours} from '../model/cours';
 import {ListcoursHttpService} from '../listcours/listcours.http.service';
+import {HttpClient} from '@angular/common/http';
+import {AppConfigService} from '../app-config.service';
 
 @Component({
   selector: 'app-chapitre',
@@ -38,7 +40,8 @@ export class ChapitreComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService,
-              private utilisateurHttpService: UtilisateurHttpService, private listcoursHttpService: ListcoursHttpService) {
+              private utilisateurHttpService: UtilisateurHttpService, private listcoursHttpService: ListcoursHttpService, private http: HttpClient,
+              private appConfigService: AppConfigService) {
     this.route.params.subscribe(params => {
       this.idCours = params['idCours'];
       this.idModule = params['idModule'];
@@ -115,7 +118,7 @@ export class ChapitreComponent implements OnInit {
       coursPersonne.cours = this.currentCours;
 
       console.log(coursPersonne);
-      this.utilisateurHttpService.createCoursPersonne(coursPersonne).subscribe(resp => console.log("Réponse de ma création de CoursPersonne en base"));
+      this.http.post(this.appConfigService.backEnd + 'CoursPersonne', coursPersonne).subscribe(resp => console.log(resp));
     }
   }
 
