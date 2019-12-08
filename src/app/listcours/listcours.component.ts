@@ -3,7 +3,6 @@ import {ListcoursHttpService} from './listcours.http.service';
 import {Cours} from '../model/cours';
 import {Difficulte} from '../model/difficulte';
 import {Skeelz} from '../model/skeelz';
-import {Etat} from '../model/etat';
 import {Router} from '@angular/router';
 import {AuthService} from '../auth.service';
 

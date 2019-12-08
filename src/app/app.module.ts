@@ -19,6 +19,7 @@ import { LoginComponent } from './login/login.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 import {AuthGuard} from './auth.guard';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
+import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
     AdminCoursAValiderListComponent,
     LoginComponent,
     CreationCoursComponent,
-    PageAccueilComponent
+    PageAccueilComponent,
+    EcranAdminComponent
   ],
   imports: [
     BrowserModule,

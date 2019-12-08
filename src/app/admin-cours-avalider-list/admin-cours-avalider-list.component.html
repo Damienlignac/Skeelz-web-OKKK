@@ -1,4 +1,12 @@
-<div class="container p-3 my-3 bg-warning text-white">
-  <h1>My First Bootstrap Page</h1>
-  <p>This container has a dark background color and a white text, and some extra padding and margins.</p>
+<div id="listcours" class="container p-3 my-3 bg-warning text-white">
+  <p> tableau de cours à valider </p>
+
+  <div  *ngFor="let cour  of  listattente()" class=" back1 box">
+
+    <div class="back3 "><h6>{{cour.intitule}} </h6></div>
+    <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
+    <div class="back4 ">{{cour.description}}   </div>
+    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
+  </div>
+
 </div>
