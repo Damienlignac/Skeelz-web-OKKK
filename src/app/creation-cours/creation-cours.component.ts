@@ -106,22 +106,22 @@ export class CreationCoursComponent implements OnInit {
     }
   }
 
-
-  save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
-    this.creationCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
-    this.currentModule = new Module();
-    this.currentChapitre = new Chapitre();
-    this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
-  }
-
-  saveValidate(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
-    this.creationCoursHttpService.saveValidate(cours, currentModule, currentChapitre, elementDeCours);
-    this.currentModule = new Module();
-    this.currentChapitre = new Chapitre();
-    this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
-  }
+  //
+  // save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
+  //   this.creationCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
+  //   this.currentModule = new Module();
+  //   this.currentChapitre = new Chapitre();
+  //   this.elementDeCours = new Array<ElementDeCours>();
+  //   console.log(this.currentModule);
+  // }
+  //
+  // saveValidate(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
+  //   this.creationCoursHttpService.saveValidate(cours, currentModule, currentChapitre, elementDeCours);
+  //   this.currentModule = new Module();
+  //   this.currentChapitre = new Chapitre();
+  //   this.elementDeCours = new Array<ElementDeCours>();
+  //   console.log(this.currentModule);
+  // }
 
 
 

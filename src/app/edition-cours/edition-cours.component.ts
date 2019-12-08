@@ -93,21 +93,21 @@ export class EditionCoursComponent implements OnInit {
   }
 
 
-  save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
-    this.editionCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
-    this.currentModule = new Module();
-    this.currentChapitre = new Chapitre();
-    this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
-  }
-
-  saveValidate(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
-    this.editionCoursHttpService.saveValidate(cours, currentModule, currentChapitre, elementDeCours);
-    this.currentModule = new Module();
-    this.currentChapitre = new Chapitre();
-    this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
-  }
+  // save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
+  //   this.editionCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
+  //   this.currentModule = new Module();
+  //   this.currentChapitre = new Chapitre();
+  //   this.elementDeCours = new Array<ElementDeCours>();
+  //   console.log(this.currentModule);
+  // }
+  //
+  // saveValidate(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
+  //   this.editionCoursHttpService.saveValidate(cours, currentModule, currentChapitre, elementDeCours);
+  //   this.currentModule = new Module();
+  //   this.currentChapitre = new Chapitre();
+  //   this.elementDeCours = new Array<ElementDeCours>();
+  //   console.log(this.currentModule);
+  // }
 
   nouveauModule() {
     this.currentModule = new Module();
