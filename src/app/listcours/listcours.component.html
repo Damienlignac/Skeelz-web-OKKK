@@ -37,7 +37,19 @@
 
 <div *ngIf="loop==true">
 <div  *ngFor="let cour  of  list() " [routerLink]="['/sommaire/'+cour.id]" class=" back1 box">
-    <div class="back2 ">{{cour.cheminImageCours}} </div>
+
+
+    <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
+      <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
+      </div>
+      <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">
+        <img class="Img center" src="../../assets/img/no_img.png">
+      </div>
+  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">
+    <img class="Img" src="../../assets/img/imgtrollArnaud.png">
+  </div>
+
+
     <div class="back3 "><h6>{{cour.intitule}} </h6></div>
     <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
     <div class="back4 ">{{cour.description}}   </div>

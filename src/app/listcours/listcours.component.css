@@ -1,4 +1,4 @@
-.back3,.back2,.back4,.back6,.back7{position: absolute}
+.back3,.back4,.back6,.back7,.back8,.back9{position: absolute}
 
 #listcours{
   background-color: gray;
@@ -45,13 +45,16 @@ position: relative;
   border-radius: 10px;
 }
 .back2 {
+position: relative;
 
-
+  vertical-align: middle;
   top:8%;
   left: 1%;
   bottom :8%;
   width: 15%;
 height: 84%;
+
+
 }
 .back3 {
 top : 8%;
@@ -92,7 +95,32 @@ top : 8%;
 .box:hover {
   box-shadow: 0 0 11px rgba(33,33,33,.2);
 }
-.div{
+div{
   display: block;
+}
+.back8 {
+  top:8%;
+  left: 1%;
+  bottom :8%;
+  width: 15%;
+  height: 84%;
 
 }
+
+.back9 {
+  top:8%;
+  left: 1%;
+  bottom :8%;
+  width: 15%;
+  height: 84%;
+}
+.Img{
+
+  width: 100%;
+  height: auto;
+position: absolute;              /* 2 */
+  top: 50%;                         /* 3 */
+  transform: translate(0, -50%);
+  border-radius: 10px;
+}
+
