@@ -4,6 +4,8 @@ import {Cours} from '../model/cours';
 import {Difficulte} from '../model/difficulte';
 import {filter} from 'rxjs/operators';
 import {Skeelz} from '../model/skeelz';
+import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'listcours',
@@ -11,6 +13,9 @@ import {Skeelz} from '../model/skeelz';
   styleUrls: ['./listcours.component.css']
 })
 export class ListcoursComponent implements OnInit {
+
+  id: string;
+
   cours: Cours = null;
   difficulte: Difficulte = null;
   valeur = '';
@@ -20,12 +25,19 @@ export class ListcoursComponent implements OnInit {
   diffe: Difficulte = null;
   loop = true;
   coursss: Array<Cours> = new Array<Cours>();
-  constructor(private listcoursservice: ListcoursHttpService) {
+
+  constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
 
   }
 
   ngOnInit() {
+    this.id = localStorage.getItem('token');
+  }
 
+  logout(): void {
+    console.log("Logout");
+    this.authService.logout();
+    this.router.navigate(['/login']);
   }
 
   list() {

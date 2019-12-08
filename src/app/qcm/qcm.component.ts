@@ -4,6 +4,7 @@ import {QcmHttpService} from './qcm-http.service';
 import {SommaireHttpService} from '../sommaire/sommaire-http-service';
 import {Module} from '../model/module';
 import {Question} from '../model/question';
+import {Chapitre} from '../model/chapitre';
 
 @Component({
   selector: 'app-qcm',
@@ -16,6 +17,7 @@ export class QcmComponent implements OnInit {
   idModule: number;
   mesModules: Array<Module>;
   currentModule: Module;
+  previousChapitre: Chapitre;
   nextModule: Module;
   questionsWithReponses: Array<Question>;
   currentQuestions: Array<Question>;
@@ -35,6 +37,8 @@ export class QcmComponent implements OnInit {
         this.mesModules = resp;
         let filtreCurrentModule = this.mesModules.filter(item => item.id == this.idModule);
         this.currentModule = filtreCurrentModule[0];
+        let filtrePreviousChapitre = this.currentModule.chapitres.filter(item => item.agencement == (this.currentModule.chapitres.length - 1));
+        this.previousChapitre = filtrePreviousChapitre[0];
         let filtreNextModule = this.mesModules.filter(item => item.agencement == (this.currentModule.agencement + 1));
         this.nextModule = filtreNextModule[0];
         this.qcmHttpService.findQuestionsWithReponsesById(this.idModule).subscribe(resp => {
