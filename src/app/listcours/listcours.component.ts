@@ -181,17 +181,14 @@ export class ListcoursComponent implements OnInit {
     }
 
 
-    introCours(idCours:number){
+    introCours(idCours:number) {
+      console.log(idCours)
 
-     this.listcoursservice.findIntroCours(idCours,0).subscribe(resp => {
-      this.module0 = resp;
-   });
-console.log(this.module0.id);
-
-this.router.navigate(['chapitre/'+idCours+'/'+this.module0.id+'/0']);
-
+      this.listcoursservice.findIntroCours(idCours, 0).subscribe(resp => {
+        this.module0 = resp;
+        this.router.navigate(['chapitre/' + [idCours] + '/' + this.module0.id + '/0']);
+      });
     }
-
 
 
 
