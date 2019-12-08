@@ -24,7 +24,7 @@
 <div class="container-fluid" style="margin-top:60px; height: 900px">
   <div class="my-3 p-3 rounded box-shadow">
     <div class="row" style="">
-      <div class="col-sm-2 justify-content-center container-fluid" style="border-radius: 10px; z-index: 1; background-image: linear-gradient(to top right, rgba(0,0,0,0.67), #d5d5d5); padding-left: 50px; padding-right: 50px; height: 1000px">
+      <div class="col-sm-2 justify-content-center container-fluid" style="border-radius: 10px; width: 250px; z-index: 1; background-image: linear-gradient(to top right, rgba(0,0,0,0.67), #d5d5d5); padding-left: 50px; padding-right: 50px; height: 1000px">
 
           <img src="../assets/img/skeelz_logo.png" class="pointer mt-4" style="width:140px" [routerLink]="['/']">
 
@@ -34,7 +34,7 @@
         <router-outlet></router-outlet>
       </div>
       <div class="col-sm-2 justify-content-center align-content-center container-fluid" style="height: 1000px">
-        <h3>section droite</h3>
+        <router-outlet name="side"></router-outlet>
       </div>
     </div>
   </div>

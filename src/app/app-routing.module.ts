@@ -17,7 +17,7 @@ import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 const routes: Routes = [
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
   {path: '', component: PageAccueilComponent},
-  {path: 'sommaire/:id', component: SommaireComponent},
+  {path: 'sommaire/:id', component: SommaireComponent, outlet:"side"},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'creationCours', component: CreationCoursComponent},
