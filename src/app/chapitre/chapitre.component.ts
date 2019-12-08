@@ -4,6 +4,12 @@ import {Chapitre} from '../model/chapitre';
 import {ChapitreHttpService} from './chapitre-http.service';
 import {Module} from '../model/module';
 import {SommaireHttpService} from '../sommaire/sommaire-http-service';
+import {UtilisateurHttpService} from '../utilisateur/utilisateur-http.service';
+import {Personne} from '../model/personne';
+import {CoursPersonne} from '../model/coursPersonne';
+import {EtatCours} from '../model/etatCours';
+import {Cours} from '../model/cours';
+import {ListcoursHttpService} from '../listcours/listcours.http.service';
 
 @Component({
   selector: 'app-chapitre',
@@ -12,7 +18,10 @@ import {SommaireHttpService} from '../sommaire/sommaire-http-service';
 })
 export class ChapitreComponent implements OnInit {
 
+  idUtilisateur: number;
+  currentPersonne: Personne;
   idCours: number;
+  currentCours: Cours;
   idModule: number;
   agencement: number;
   chapitre: Chapitre;
@@ -28,11 +37,13 @@ export class ChapitreComponent implements OnInit {
   agencementMaxDernierChapitre: number;
 
 
-  constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService) {
+  constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService,
+              private utilisateurHttpService: UtilisateurHttpService, private listcoursHttpService: ListcoursHttpService) {
     this.route.params.subscribe(params => {
       this.idCours = params['idCours'];
       this.idModule = params['idModule'];
       this.agencement = params['agencementCh'];
+      this.listcoursHttpService.findById(this.idCours).subscribe(resp => this.currentCours = resp);
       this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
         this.mesModules = resp;
         let filtreCurrentModule = this.mesModules.filter(item => item.id == this.idModule);
@@ -88,11 +99,24 @@ export class ChapitreComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.idUtilisateur = +localStorage.getItem('token');
+    this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
+      this.currentPersonne = resp;
+      console.log(this.currentPersonne);
+    });
+  }
 
+  Commencer() {
+    if(this.currentPersonne.coursPersonnes == undefined || !this.currentPersonne.coursPersonnes.find(item => item.cours.id == this.idCours)){
+      console.log("Le lien entre ce cours et cette personne n'existe pas")
+      let coursPersonne = new CoursPersonne;
+      coursPersonne.etatCours = EtatCours.SUIVI;
+      coursPersonne.personne = this.currentPersonne;
+      coursPersonne.cours = this.currentCours;
 
-    // if (this.chapitre.elementDeCours === undefined) {
-    //   this.chapitre.elementDeCours = new ElementDeCours(null, null, 'Paragraphe');
-    // }
+      console.log(coursPersonne);
+      this.utilisateurHttpService.createCoursPersonne(coursPersonne).subscribe(resp => console.log("Réponse de ma création de CoursPersonne en base"));
+    }
   }
 
 }
