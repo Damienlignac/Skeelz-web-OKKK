@@ -6,7 +6,7 @@ import {Module} from '../model/module';
 import {SommaireHttpService} from '../sommaire/sommaire-http-service';
 
 @Component({
-  selector: 'app-chapitre',
+  selector: 'chapitre',
   templateUrl: './chapitre.component.html',
   styleUrls: ['./chapitre.component.css']
 })
