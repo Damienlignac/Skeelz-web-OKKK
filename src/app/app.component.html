@@ -1,12 +1,20 @@
-<div class="head container-fluid">
-<div class="row">
-  <div class="col-sm-6"><img class="logo pointer" src="../assets/skeelz_logo.png" alt="Logo" [routerLink]="['/']"></div>
-  <div class="col-sm-6">
-
-    <nav class="navbar navbar-expand-lg navbar-light justify-content-end fixed-top">
-      <ul class="navbar-nav">
-        <li class="nav-item" routerLinkActive="active">
-          <a class="nav-link" [routerLink]="['/cours']">Cours</a>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark static-top fixed-top"
+     style="background-image: linear-gradient(to bottom right,rgb(44,146,240),rgb(248,249,255))">
+  <div class="container">
+    <a class="navbar-brand">
+      <img src="../assets/img/skeelz_logo.png" class="pointer" style="width:140px" [routerLink]="['/']">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" [routerLink]="['/cours']">Cours
+            <span class="sr-only">(current)</span>
+          </a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/dashboard']">Tableau de Bord</a>
@@ -15,25 +23,27 @@
           <a class="nav-link" [routerLink]="['/login']">Login</a>
         </li>
       </ul>
-    </nav>
-  </div>
-</div>
-</div>
-<div class="row">
-  <div class="col-sm-2">
-    <div class="container-fluid" name="container gauche">
-
     </div>
   </div>
-  <div class="col-sm-8">
-    <div class="container-fluid positionRelative" name="container centre">
-      <router-outlet></router-outlet>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="container-fluid" name="container droite">
-
+</nav>
+<div class="container-fluid position-absolute position-fixed" style="height: 20px; width: 100%; background-image: linear-gradient(white,rgba(255,255,255,0))">
+</div>
+<!-- Page Content -->
+<div class="container-fluid" style="margin-top: 165px;">
+  <div class="my-3 p-3 rounded box-shadow">
+    <div class="row" style="">
+      <div class="col-sm-2 justify-content-center align-content-center">
+        <h3>section gauche</h3>
+      </div>
+      <div class="col-sm-8 justify-content-center align-content-center">
+        <router-outlet></router-outlet>
+      </div>
+      <div class="col-sm-2 justify-content-center align-content-center">
+        <h3>section droite</h3>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- /.container -->
+</body>

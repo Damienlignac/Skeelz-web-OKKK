@@ -1,11 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {ListcoursHttpService} from './listcours.http.service';
 import {Cours} from '../model/cours';
 import {Difficulte} from '../model/difficulte';
-import {filter} from 'rxjs/operators';
 import {Skeelz} from '../model/skeelz';
-import {Router} from '@angular/router';
-import {AuthService} from '../auth.service';
+import {Etat} from '../model/etat';
 
 @Component({
   selector: 'listcours',
@@ -17,14 +15,13 @@ export class ListcoursComponent implements OnInit {
   id: string;
 
   cours: Cours = null;
-  difficulte: Difficulte = null;
+  difficultee: Difficulte = null;
   valeur = '';
-  courss: Array<Cours> = new Array<Cours>();
   skeelzs: Array<Skeelz> = new Array<Skeelz>();
   skeelzid: number = null;
-  diffe: Difficulte = null;
   loop = true;
   coursss: Array<Cours> = new Array<Cours>();
+  ordreDuree:string='null';
 
   constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
 
@@ -39,61 +36,141 @@ export class ListcoursComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-
-  list() {
-
-    if (this.loop === true) {
-      return this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
-    }
+  ngOnInit() {
   }
 
 
+  list() {
+    if (this.loop === true) {
+        return this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+    }
+  }
   chargeskeelz(): any {
-    this.skeelzs = this.listcoursservice.findAllSkeelz();
+    this.skeelzs = this.listcoursService.findAllSkeelz();
     return this.skeelzs;
   }
   recherchez() {
+    console.log(this.difficultee);
     console.log(this.skeelzid);
-    console.log(this.difficulte);
+    console.log(this.ordreDuree);
     this.loop = false;
 
     // @ts-ignore
-    if (this.difficulte == 'null' && this.skeelzid == null) {
-      console.log('diffi null skeelznull');
-      this.loop = true;
-      console.log(this.loop);
-      return this.list();
-    } else if (this.difficulte != null && this.skeelzid == null) {
-      console.log('diffi !=null skeelz==null');
-      this.listcoursservice.findByDifficulte(this.difficulte).subscribe(resp => {
-        this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
-      });
-      console.log(this.loop);
+    if (this.difficultee == null && this.skeelzid == null && this.ordreDuree =="null" ) {
+      console.log('diffi ==null skeelz==null ordre==null');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
       return this.coursss;
-    } else if (this.skeelzid != null && (this.difficulte == 'null' || this.difficulte == null)) {
-            console.log('diffi==null skeelz!=null');
-            console.log(this.skeelzid);
-            this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
+    }
+    // @ts-ignore
+    else if (this.difficultee == null && this.skeelzid == null && this.ordreDuree =="decroissant") {
+      console.log('diffi ==null skeelz==null ordre==decroissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      return this.coursss.sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
+    }
+    // @ts-ignore
+    else if ( this.difficultee == null && this.skeelzid == null && this.ordreDuree =='croissant') {
+      console.log('diffi !=null skeelz==null ordre==croissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      return this.coursss.sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
+    }
+// @ts-ignore
+    else if ( this.difficultee != null && this.skeelzid == null && this.ordreDuree == "null") {
+      console.log('diffi !=null skeelz==null ordre==null');
+      console.log(this.difficultee);
+
+      this.listcoursService.findByDifficulte(this.difficultee).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
+      });
+
+
+    }
+// @ts-ignore
+    else if ( this.difficultee != null && this.skeelzid == null && this.ordreDuree == "croissant") {
+  console.log('diffi !=null skeelz==null ordre==croissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+  this.listcoursService.findByDifficulte(this.difficultee).subscribe(resp => {
+  this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
+    console.log(this.coursss);
+});
+
+
+}
+// @ts-ignore
+    else if (this.difficultee != null && this.skeelzid == null && this.ordreDuree =="decroissant") {
+  console.log('diffi !=null skeelz==null  ordre==croissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+  this.listcoursService.findByDifficulte(this.difficultee ).subscribe(resp => {
+    this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
+  });
+
+}
+    // @ts-ignore
+    else if (this.skeelzid != null &&  this.difficultee == null && this.ordreDuree =="null") {
+            console.log('diffi==null skeelz!=null ordre==null');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+            this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
               this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
             });
             return this.coursss;
-          } else if (this.skeelzid != null &&  this.difficulte != null) {
-            console.log('diffi!=null skeelz!=null');
-            console.log(this.skeelzid);
-            return  this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
-              // tslint:disable-next-line:no-shadowed-variable
-              this.listcoursservice.findByDifficulte(this.difficulte).subscribe(resp => {
-                this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1); });
-            });
-
           }
+    // @ts-ignore
+    else if (this.skeelzid != null &&  this.difficultee == null&& this.ordreDuree =="croissant") {
+      console.log('diffi==null skeelz!=null  ordre==croissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
+      });
+    }
+    // @ts-ignore
+    else if (this.skeelzid != null &&  this.difficultee == null&& this.ordreDuree =="decroissant") {
+      console.log('diffi==null skeelz!=null  ordre==decroissant' );
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
+      });
+
+    }
+// @ts-ignore
+    else if (this.skeelzid != null &&  this.difficultee != null && this.ordreDuree =="null" ) {
+      console.log('diffi!=null skeelz!=null  ordre==null');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+       this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      });
+      }
+    // @ts-ignore
+    else if (this.skeelzid != null && this.difficultee != null && this.ordreDuree =="croissant" ) {
+      console.log('diffi!=null skeelz!=null  ordre==croissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));;
+      });
+
+    }
+    // @ts-ignore
+    else if (this.skeelzid != null && this.difficultee != null && this.ordreDuree =="decroissant" ) {
+      console.log('diffi!=null skeelz!=null  ordre==decroissant');
+      console.log(this.difficultee);
+      console.log(this.skeelzid);
+      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+        this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));;
+      });
     }
 
-
-
-
-
-
+    }
 
 
 
@@ -118,14 +195,14 @@ export class ListcoursComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.listcoursservice.findById(id).subscribe(resp => this.cours = resp);
+    this.listcoursService.findById(id).subscribe(resp => this.cours = resp);
     // if(this.stagiaire.adresse == null){
     //   this.stagiaire.adresse = new Adresse();
     // }
   }
 
   delete(id: number) {
-    this.listcoursservice.deleteBydId(id);
+    this.listcoursService.deleteBydId(id);
   }
 
   cancel() {

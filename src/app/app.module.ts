@@ -18,6 +18,7 @@ import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/adm
 import { LoginComponent } from './login/login.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 import {AuthGuard} from './auth.guard';
+import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,7 @@ import {AuthGuard} from './auth.guard';
     AdminCoursAValiderListComponent,
     LoginComponent,
     CreationCoursComponent
+    PageAccueilComponent
   ],
   imports: [
     BrowserModule,

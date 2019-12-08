@@ -10,11 +10,13 @@ import {AdminUserListComponent} from './admin-user-list/admin-user-list.componen
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
+import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 
 
 
 const routes: Routes = [
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
+  {path: '', component: PageAccueilComponent},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},

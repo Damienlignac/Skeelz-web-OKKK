@@ -1,12 +1,10 @@
-import {Injectable, Optional} from '@angular/core';
+import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 
 import {Observable} from 'rxjs';
 import {Difficulte} from '../model/difficulte';
-import {Cours} from '../model/cours';
-import {Skeelz} from '../model/skeelz';
-
+import {Etat} from '../model/etat';
 
 
 @Injectable({
@@ -29,7 +27,7 @@ export class ListcoursHttpService {
   }
 
   load() {
-    this.http.get(this.appConfigService.backEnd + "cours").subscribe(resp =>
+    this.http.get(this.appConfigService.backEnd + "cours/by-etat/OUVERT").subscribe(resp =>
       this.courss = resp);
   }
   load2() {
@@ -74,15 +72,15 @@ export class ListcoursHttpService {
     this.http.delete(this.appConfigService.backEnd + 'cours/' + id).subscribe(resp => this.load());
   }
 
-  findByDifficulte (difficulte :Difficulte): Observable<any>{
+  findByDifficulte (difficulte :Difficulte, etat :Etat=Etat.OUVERT): Observable<any>{
 
 
 
-    return this.http.get(this.appConfigService.backEnd + 'cours/by-difficulte/' + difficulte);
+    return this.http.get(this.appConfigService.backEnd + 'cours/by-difficulte/' + difficulte+'/' +etat);
   }
 
-  findBySkeelz(id: number): Observable<any>{
-    return this.http.get(this.appConfigService.backEnd +"skeelz/"+ id + "/courss");
+  findBySkeelz(id: number,  etat :Etat=Etat.OUVERT): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd +"skeelz/"+ id + "/courss/"+etat);
   }
 
 
