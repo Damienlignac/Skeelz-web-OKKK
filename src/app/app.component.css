@@ -1,13 +1,25 @@
 .nav-link{
   font-size: 20px;
   text-shadow: #3c3c3c;
+  font-size-adjust: inherit;
 }
 
 .pointer {
   cursor: pointer;
 }
+.margegauche{
+  box-shadow: 5px 5px 2px lightgray;
+  border-radius: 10px;
+  width: 250px;
+  z-index: 1;
+  background-image: linear-gradient(to top left, rgba(0,0,0,0.67), #d5d5d5);
+  padding-left: 50px;
+  padding-right: 50px;
+  min-height: 900px;
+  height: fit-content
+}
 body {
-
+  /*background: url('../assets/img/fondecran.jpg') no-repeat center center fixed;*/
   -webkit-background-size: cover;
   -moz-background-size: cover;
   background-size: cover;
