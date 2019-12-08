@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http';
 import {AppConfigService} from './app-config.service';
 import { SommaireComponent } from './sommaire/sommaire.component';
@@ -17,6 +17,7 @@ import {AdminUserListHttpService} from './admin-user-list/admin-user-list-http.s
 import { AdminCoursAValiderListComponent } from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 import { LoginComponent } from './login/login.component';
 import {CreationCoursComponent} from './creation-cours/creation-cours.component';
+import {AuthGuard} from './auth.guard';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 
 @NgModule({
@@ -40,8 +41,9 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
+    ReactiveFormsModule,
   ],
-  providers: [AppConfigService, AdminUserListHttpService],
+  providers: [AppConfigService, AdminUserListHttpService, AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule {

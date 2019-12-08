@@ -1,15 +1,7 @@
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark static-top fixed-top"
-     style="background-image: linear-gradient(to bottom right,rgb(44,146,240),rgb(248,249,255))">
+<nav class="navbar navbar-expand-lg navbar-dark static-top fixed-top" style="background-color: black">
   <div class="container">
-    <a class="navbar-brand">
-      <img src="../assets/img/skeelz_logo.png" class="pointer" style="width:140px" [routerLink]="['/']">
-    </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
-            aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarResponsive">
+
       <ul class="navbar-nav ml-auto">
         <li class="nav-item active">
           <a class="nav-link" [routerLink]="['/cours']">Cours
@@ -19,24 +11,29 @@
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/dashboard']">Tableau de Bord</a>
         </li>
-
+        <li class="nav-item">
+          <a class="nav-link" [routerLink]="['/login']">Login</a>
+        </li>
       </ul>
     </div>
-  </div>
+
 </nav>
-<div class="container-fluid position-absolute position-fixed" style="height: 20px; width: 100%; background-image: linear-gradient(white,rgba(255,255,255,0))">
+<div class="container-fluid position-fixed " style="height: 5px; width: 100%; background-image: linear-gradient(#747474,rgba(0,0,0,0))">
 </div>
 <!-- Page Content -->
-<div class="container-fluid" style="margin-top: 165px;">
+<div class="container-fluid" style="margin-top:60px; height: 900px">
   <div class="my-3 p-3 rounded box-shadow">
     <div class="row" style="">
-      <div class="col-sm-2 justify-content-center align-content-center">
+      <div class="col-sm-2 justify-content-center container-fluid" style="border-radius: 10px; z-index: 1; background-image: linear-gradient(to top right, rgba(0,0,0,0.67), #d5d5d5); padding-left: 50px; padding-right: 50px; height: 1000px">
+
+          <img src="../assets/img/skeelz_logo.png" class="pointer mt-4" style="width:140px" [routerLink]="['/']">
+
         <h3>section gauche</h3>
       </div>
-      <div class="col-sm-8 justify-content-center align-content-center">
+      <div class="col-sm-8 justify-content-center align-content-center container-fluid" style="height: 1000px">
         <router-outlet></router-outlet>
       </div>
-      <div class="col-sm-2 justify-content-center align-content-center">
+      <div class="col-sm-2 justify-content-center align-content-center container-fluid" style="height: 1000px">
         <h3>section droite</h3>
       </div>
     </div>
