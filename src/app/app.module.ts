@@ -33,7 +33,7 @@ import { PageAccueilComponent } from './page-accueil/page-accueil.component';
     AdminUserListComponent,
     AdminCoursAValiderListComponent,
     LoginComponent,
-    CreationCoursComponent
+    CreationCoursComponent,
     PageAccueilComponent
   ],
   imports: [

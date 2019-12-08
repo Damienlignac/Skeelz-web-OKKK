@@ -17,6 +17,7 @@ export class LoginComponent implements OnInit {
   message: string;
   returnUrl: string;
   listUtilisateur: Array<Utilisateur>;
+  currentUtilisateur: Utilisateur;
 
   constructor(private route: ActivatedRoute, private loginHttpService: LoginHttpService, private formBuilder: FormBuilder, private router: Router, public authService: AuthService) {
 
@@ -46,9 +47,14 @@ export class LoginComponent implements OnInit {
     } else {
       if (this.listUtilisateur.find(user => user.identifiant == this.f.identifiant.value && user.password == this.f.password.value)) {
         console.log('Login successful');
+        this.currentUtilisateur = this.listUtilisateur.find(user => user.identifiant == this.f.identifiant.value && user.password == this.f.password.value);
+        console.log(this.currentUtilisateur);
         //this.authService.authLogin(this.model);
         localStorage.setItem('isLoggedIn', 'true');
-        localStorage.setItem('token', this.f.identifiant.value);
+        localStorage.setItem('token', this.currentUtilisateur.id.toString());
+        localStorage.setItem('admin', this.currentUtilisateur.administrateur.toString());
+        localStorage.setItem('rh', this.currentUtilisateur.rh.toString());
+        localStorage.setItem('superUser', this.currentUtilisateur.superUser.toString());
         this.router.navigate([this.returnUrl]);
       } else {
         this.message = 'Please check your userid and password';

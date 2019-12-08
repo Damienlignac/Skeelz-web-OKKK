@@ -4,6 +4,8 @@ import {Cours} from '../model/cours';
 import {Difficulte} from '../model/difficulte';
 import {Skeelz} from '../model/skeelz';
 import {Etat} from '../model/etat';
+import {Router} from '@angular/router';
+import {AuthService} from '../auth.service';
 
 @Component({
   selector: 'listcours',
@@ -36,17 +38,16 @@ export class ListcoursComponent implements OnInit {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
-  ngOnInit() {
-  }
+
 
 
   list() {
     if (this.loop === true) {
-        return this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+        return this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
     }
   }
   chargeskeelz(): any {
-    this.skeelzs = this.listcoursService.findAllSkeelz();
+    this.skeelzs = this.listcoursservice.findAllSkeelz();
     return this.skeelzs;
   }
   recherchez() {
@@ -60,7 +61,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi ==null skeelz==null ordre==null');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      this.coursss= this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
       return this.coursss;
     }
     // @ts-ignore
@@ -68,7 +69,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi ==null skeelz==null ordre==decroissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      this.coursss= this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
       return this.coursss.sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
     }
     // @ts-ignore
@@ -76,7 +77,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi !=null skeelz==null ordre==croissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.coursss= this.listcoursService.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+      this.coursss= this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
       return this.coursss.sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
     }
 // @ts-ignore
@@ -84,7 +85,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi !=null skeelz==null ordre==null');
       console.log(this.difficultee);
 
-      this.listcoursService.findByDifficulte(this.difficultee).subscribe(resp => {
+      this.listcoursservice.findByDifficulte(this.difficultee).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
       });
 
@@ -95,7 +96,7 @@ export class ListcoursComponent implements OnInit {
   console.log('diffi !=null skeelz==null ordre==croissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-  this.listcoursService.findByDifficulte(this.difficultee).subscribe(resp => {
+  this.listcoursservice.findByDifficulte(this.difficultee).subscribe(resp => {
   this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
     console.log(this.coursss);
 });
@@ -107,7 +108,7 @@ export class ListcoursComponent implements OnInit {
   console.log('diffi !=null skeelz==null  ordre==croissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-  this.listcoursService.findByDifficulte(this.difficultee ).subscribe(resp => {
+  this.listcoursservice.findByDifficulte(this.difficultee ).subscribe(resp => {
     this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
   });
 
@@ -117,7 +118,7 @@ export class ListcoursComponent implements OnInit {
             console.log('diffi==null skeelz!=null ordre==null');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-            this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+            this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
               this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
             });
             return this.coursss;
@@ -127,7 +128,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi==null skeelz!=null  ordre==croissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+      this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));
       });
     }
@@ -136,7 +137,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi==null skeelz!=null  ordre==decroissant' );
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+      this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));
       });
 
@@ -146,7 +147,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi!=null skeelz!=null  ordre==null');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-       this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+       this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
       });
       }
@@ -155,7 +156,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi!=null skeelz!=null  ordre==croissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+      this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree > b.duree) ? 1 : ((b.duree > a.duree) ? -1 : 0));;
       });
 
@@ -165,7 +166,7 @@ export class ListcoursComponent implements OnInit {
       console.log('diffi!=null skeelz!=null  ordre==decroissant');
       console.log(this.difficultee);
       console.log(this.skeelzid);
-      this.listcoursService.findBySkeelz(this.skeelzid).subscribe(resp => {
+      this.listcoursservice.findBySkeelz(this.skeelzid).subscribe(resp => {
         this.coursss = resp.filter(cour => cour.difficulte.indexOf(this.difficultee) !==-1).filter(cour => cour.intitule.indexOf(this.valeur) !== -1).sort((a,b) => (a.duree < b.duree) ? 1 : ((b.duree < a.duree) ? -1 : 0));;
       });
     }
@@ -195,14 +196,14 @@ export class ListcoursComponent implements OnInit {
   }
 
   edit(id: number) {
-    this.listcoursService.findById(id).subscribe(resp => this.cours = resp);
+    this.listcoursservice.findById(id).subscribe(resp => this.cours = resp);
     // if(this.stagiaire.adresse == null){
     //   this.stagiaire.adresse = new Adresse();
     // }
   }
 
   delete(id: number) {
-    this.listcoursService.deleteBydId(id);
+    this.listcoursservice.deleteBydId(id);
   }
 
   cancel() {
