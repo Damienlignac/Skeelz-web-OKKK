@@ -3,6 +3,7 @@ import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 import {Observable} from 'rxjs';
 import {Utilisateur} from '../model/utilisateur';
+import {CoursPersonne} from '../model/coursPersonne';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,10 @@ export class UtilisateurHttpService {
 
   findById(id: number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + 'utilisateur/' + id);
+  }
+
+  findByUtilisateur(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
   }
 
   save(utilisateur: Utilisateur) {
