@@ -1,7 +1,7 @@
 export enum EtatCours{
-  VALIDE=("Validé"),
-  SUIVI=("Suivi"),
-  ADMINISTRE=("Administre")
+  VALIDE=("VALIDE"),
+  SUIVI=("SUIVI"),
+  ADMINISTRE=("ADMINISTRE")
 
 
 }

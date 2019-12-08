@@ -110,7 +110,9 @@ export class ChapitreComponent implements OnInit {
   }
 
   Commencer() {
-    if(this.currentPersonne.coursPersonnes == undefined || !this.currentPersonne.coursPersonnes.find(item => item.cours.id == this.idCours)){
+    console.log(this.currentPersonne);
+    console.log(this.currentPersonne.coursPersonne.length);
+    if(this.currentPersonne.coursPersonne == undefined || !this.currentPersonne.coursPersonne.find(item => item.cours.id == this.idCours)){
       console.log("Le lien entre ce cours et cette personne n'existe pas")
       let coursPersonne = new CoursPersonne;
       coursPersonne.etatCours = EtatCours.SUIVI;
