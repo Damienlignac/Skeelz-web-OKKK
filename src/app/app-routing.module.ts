@@ -11,12 +11,14 @@ import {CreationCoursComponent} from './creation-cours/creation-cours.component'
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {PageAccueilComponent} from './page-accueil/page-accueil.component';
+import {AppComponent} from './app.component';
 
 
 
 const routes: Routes = [
+  {path: '', redirectTo:'home', pathMatch:'full'},
+  {path:'home', component:PageAccueilComponent},
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
-  {path: '', component: PageAccueilComponent},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
