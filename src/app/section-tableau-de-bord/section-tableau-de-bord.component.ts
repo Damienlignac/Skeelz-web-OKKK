@@ -6,6 +6,7 @@ import {Personne} from '../model/personne';
 import {Skeelz} from '../model/skeelz';
 import {SectionTableauDeBordHttpService} from './section-tableau-de-bord-http-service';
 import {Competence} from '../model/competence';
+import {map} from 'rxjs/operators';
 
 @Component({
   selector: 'section-tableau-de-bord',
@@ -57,13 +58,22 @@ export class SectionTableauDeBordComponent implements OnInit {
               console.log(this.skeelzs);
               console.log(this.comps);
               for(let ske of this.skeelzs){ // je recupere mes skeelz
-                console.log(ske)
-                console.log('je suis ske')
+
                 for (let comp of this.comps) {
-                  console.log(comp);
+
+                  console.log(comp.competenceSkeelz);
                   console.log("je suis comp")
-                  for(let compske of  comp.competenceSkeelzs){ // je recupere les skeelz lié a la comp
-                    if(ske == compske.skeelz){
+                  console.log(comp);
+                  for(let compske of  (comp.competenceSkeelz)){ // je recupere les skeelz lié a la comp
+                    console.log("je suis comp.competenceSkeelzs")
+                    console.log(comp.competenceSkeelz);
+                    console.log('je suis ske')
+                    console.log(ske)
+                    console.log('je suis compske')
+                    console.log(compske)
+                    console.log('je suis compske')
+                    console.log(compske.skeelz)
+                    if(ske.id == compske.skeelz.id){
                       this.tmp = this.tmp + comp.ponderation; // j'affecte ma variable temp au point de ma comptence je dois remetrre cette vraiable a 0 quand je chope un autre skeelz
                       if(this.number1 < this.tmp) {
                         this.number1 = this.tmp;
