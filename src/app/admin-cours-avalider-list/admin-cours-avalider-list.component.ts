@@ -10,7 +10,6 @@ import {Cours} from '../model/cours';
 })
 export class AdminCoursAValiderListComponent implements OnInit {
 
-  listattente: Array<Cours> = new Array<Cours>();
 
   constructor(private coursAValiderListService: AdminCoursAValiderListService) {
 
