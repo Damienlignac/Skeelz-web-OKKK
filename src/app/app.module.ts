@@ -38,7 +38,8 @@ import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
     LoginComponent,
     CreationCoursComponent,
     PageAccueilComponent,
-    TableauDeBordComponent
+    TableauDeBordComponent,
+    EcranAdminComponent
   ],
   imports: [
     BrowserModule,
