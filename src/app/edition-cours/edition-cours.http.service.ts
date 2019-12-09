@@ -17,21 +17,21 @@ export class EditionCoursHttpService {
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService, private route: ActivatedRoute) {
   }
-  //
-  // findById(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'cours/' + id + '/modules/chapitres');
-  // }
-  //
-  // findByIdModule(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'module/' + id );
-  // }
-  //
-  // findById2(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'cours/' + id);
-  // }
-  // findByIdElement(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
-  // }
+
+  findById(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'cours/' + id + '/modules/chapitres');
+  }
+
+  findByIdModule(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'module/' + id );
+  }
+
+  findById2(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'cours/' + id);
+  }
+  findByIdElement(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
+  }
   //
   //
   // saveCours(cours: Cours, module: Module, chapitre : Chapitre, elements:Array<ElementDeCours>){
@@ -153,20 +153,7 @@ export class EditionCoursHttpService {
   //   }
   // }
 
-  findById(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd+'cours/' + id + '/modules/chapitres');
-  }
 
-  findByIdModule(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd+'module/' + id );
-  }
-
-  findById2(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd+'cours/' + id);
-  }
-  findByIdElement(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
-  }
 
 
 //   saveCours(cours: Cours, module: Module, chapitre : Chapitre, elements:Array<ElementDeCours>){

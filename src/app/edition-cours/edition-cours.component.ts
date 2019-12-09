@@ -18,14 +18,14 @@ import {Etat} from '../model/etat';
 })
 export class EditionCoursComponent implements OnInit {
 
-  // idCours: number;
-  // cours: Cours = new Cours();
-  // moduleAndChap: Array<Module>;
-  // currentModule: Module = new Module();
-  // currentChapitre = new Chapitre();
-  // elementDeCours: Array<ElementDeCours>;
-  // aAjouter: string;
-  // currentElement: ElementDeCours = new ElementDeCours();
+  idCours: number;
+  cours: Cours = new Cours();
+  moduleAndChap: Array<Module>;
+  currentModule: Module = new Module();
+  currentChapitre = new Chapitre();
+  elementDeCours: Array<ElementDeCours>;
+  aAjouter: string;
+  currentElement: ElementDeCours = new ElementDeCours();
 
 
   constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionCoursHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
@@ -35,23 +35,11 @@ export class EditionCoursComponent implements OnInit {
       this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
     });
   }
-  //
-  // moduleCourant($event, moduleId) {
-  //   this.currentModule = this.moduleAndChap.filter(module => module.id == moduleId)[0];
-  //   this.currentChapitre = new Chapitre();
-  //   this.currentElement = new ElementDeCours();
-  //   this.elementDeCours = null;
-  //
-  // }
-  //
-  // chapitreCourant($event, chapitreId) {
-  //   this.currentChapitre = this.currentModule.chapitres.filter(chapitre => chapitre.id == chapitreId)[0];
-  //   this.editionCoursHttpService.findByIdElement(this.currentChapitre.id).subscribe(resp => this.elementDeCours = resp);
-  //   this.currentElement = new ElementDeCours();
-  //
-  // }
-  //
-  //
+
+
+
+
+
   // nouveauChapitre() {
   //   this.currentChapitre = new Chapitre();
   //   let agencementMax: number = -1;
@@ -71,8 +59,8 @@ export class EditionCoursComponent implements OnInit {
   //     this.currentModule.chapitres.push(this.currentChapitre);
   //   }
   // }
-  //
-  //
+
+
   // nouveauElement() {
   //   this.currentElement= new ElementDeCours();
   //   let agencementMax: number = -1;
@@ -94,7 +82,7 @@ export class EditionCoursComponent implements OnInit {
   //     this.currentElement.type = 'ExtraitCode';
   //   }
   // }
-  //
+
   //
   // save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
   //   this.editionCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
@@ -103,14 +91,14 @@ export class EditionCoursComponent implements OnInit {
   //   this.elementDeCours = new Array<ElementDeCours>();
   //   console.log(this.currentModule);
   // }
-  //
+
   // saveValidate(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
   //   this.editionCoursHttpService.saveValidate(cours, currentModule, currentChapitre, elementDeCours);
   //   this.currentChapitre = new Chapitre();
   //   this.elementDeCours = new Array<ElementDeCours>();
   //   console.log(this.currentModule);
   // }
-  //
+
   // nouveauModule() {
   //   this.currentModule = new Module();
   //   let agencementMax: number = -1;
@@ -127,8 +115,8 @@ export class EditionCoursComponent implements OnInit {
   //   this.elementDeCours = null;
   //   this.currentElement = new ElementDeCours();
   // }
-  //
-  //
+
+
   // enregistrerEvent() {
   //   if (!this.elementDeCours) {
   //     this.elementDeCours = new Array<ElementDeCours>();

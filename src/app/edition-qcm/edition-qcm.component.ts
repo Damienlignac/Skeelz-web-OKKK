@@ -19,15 +19,15 @@ import {AppConfigService} from '../app-config.service';
 })
 export class EditionQcmComponent implements OnInit {
 
-  // idCours: number;
-  // idModule:number;
-  // cours: Cours = new Cours();
-  // currentQuestion: Question = new Question();
-  // currentModule: Module = new Module();
-  // currentReponse: Reponse = new Reponse();
-  // questions : Array<Question> = new Array<Question>();
-  // aAjouter: string;
-  // currentElement: ElementDeCours = new ElementDeCours();
+  idCours: number;
+  idModule:number;
+  cours: Cours = new Cours();
+  currentQuestion: Question = new Question();
+  currentModule: Module = new Module();
+  currentReponse: Reponse = new Reponse();
+  questions : Array<Question> = new Array<Question>();
+  aAjouter: string;
+  currentElement: ElementDeCours = new ElementDeCours();
 
 
   constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionQcmHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
