@@ -93,7 +93,7 @@ export class EditionCoursHttpService {
   }
 
   saveValidate(cours: Cours, module: Module, chapitre : Chapitre, elements:Array<ElementDeCours>){
-    cours.etat="ATTENTE";
+    cours.etat=Etat.ATTENTE;
     if (cours.id) {
       this.http.put(this.appConfigService.backEnd + 'cours/' + cours.id, cours).subscribe(resp => {
         if (module.id){

@@ -25,12 +25,15 @@
     </div>
     <div class="form-group">
       <select class="form-control"  #modu (change)="moduleCourant($event, modu.value)"   >
-        <option value=""disabled selected>Module</option>
+        <option value="">Module</option>
         <option *ngFor="let module of moduleAndChap" [value] = "module.id" [selected]="module.id == currentModule.id">{{module.agencement}} </option>
       </select>
     </div>
     <div class="form-group">
       <button type="button" (click)="nouveauModule()">Nouveau Module</button>
+    </div>
+    <div *ngIf="currentModule.id && currentModule.agencement!=0" class="form-group">
+      <button type="button" [routerLink]="['/editionQcm/'+ cours.id + '/' + currentModule.id]">Editer le QCM</button>
     </div>
     <div class="form-group">
       <input  [(ngModel)]="currentModule.intitule" type="text" class="form-control" placeholder="Intitulé du module courant">
