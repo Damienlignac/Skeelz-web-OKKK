@@ -13,8 +13,8 @@ import {Etat} from '../model/etat';
 })
 export class CreationCoursComponent implements OnInit {
 
-  idCours: number;
-  cours: Cours = new Cours();
+  // idCours: number;
+  // cours: Cours = new Cours();
 
 
   constructor(private http: HttpClient,private router: Router, private creationCoursHttpService: CreationCoursHttpService,private appConfigService: AppConfigService) {
@@ -28,7 +28,6 @@ export class CreationCoursComponent implements OnInit {
       console.log(this.idCours)
     })
   }
-
 
 
   ngOnInit() {

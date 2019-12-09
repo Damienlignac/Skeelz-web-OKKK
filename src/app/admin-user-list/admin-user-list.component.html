@@ -25,7 +25,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let pers  of list()" [routerLink]="['/admin-user-list']">
+    <tr *ngFor="let pers  of list()">
       <td>{{pers.nom | uppercase}}</td>
       <td>{{pers.prenom}}</td>
       <td>{{pers.telephone}}</td>

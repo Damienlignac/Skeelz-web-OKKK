@@ -17,26 +17,31 @@ import {Reponse} from '../model/reponse';
 })
 export class EditionQcmComponent implements OnInit {
 
-  idCours: number;
-  idModule:number;
-  cours: Cours = new Cours();
-  currentQuestion: Question = new Question();
-  currentModule: Module = new Module();
-  currentReponse: Reponse = new Reponse();
-  questions : Array<Question> = new Array<Question>();
-  aAjouter: string;
-  currentElement: ElementDeCours = new ElementDeCours();
+  // idCours: number;
+  // idModule:number;
+  // cours: Cours = new Cours();
+  // currentQuestion: Question = new Question();
+  // currentModule: Module = new Module();
+  // currentReponse: Reponse = new Reponse();
+  // questions : Array<Question> = new Array<Question>();
+  // aAjouter: string;
+  // currentElement: ElementDeCours = new ElementDeCours();
 
 
   constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionQcmHttpService) {
-    this.route.params.subscribe(params => {
-      this.idCours = params['idCours'];
-      this.idModule = params['idModule']
-      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-      this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
-      this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
-    });
+    // this.route.params.subscribe(params => {
+    //   this.idCours = params['idCours'];
+    //   this.idModule = params['idModule']
+    //   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+    //   this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+    //   this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+    // });
   }
+  //
+  // questionCourant($event, questionId) {
+  //   this.currentQuestion = this.questions.filter(question => question.id == questionId)[0];
+  //   this.currentReponse = new Reponse();
+  // }
 
   questionCourant($event, questionId) {
     this.currentQuestion = this.questions.filter(question => question.id == questionId)[0];
@@ -52,8 +57,17 @@ export class EditionQcmComponent implements OnInit {
   }
 
 
-  // ajouterReponse() {
-  //   this.currentReponse= new Reponse();
+  // nouveauElement() {
+  //   this.currentElement= new ElementDeCours();
+  //   let agencementMax: number = -1;
+  //   if (this.elementDeCours) {
+  //     for (let elem of this.elementDeCours) {
+  //       if (elem.agencement > agencementMax) {
+  //         agencementMax = elem.agencement;
+  //       }
+  //     }
+  //   }
+  //   this.currentElement.agencement = agencementMax + 1;
   //   if (this.aAjouter == 'texte') {
   //     this.currentElement.type = 'Paragraphe';
   //   }
@@ -66,10 +80,12 @@ export class EditionQcmComponent implements OnInit {
   // }
 
 
-  save(currentModule : Module, question : Question, reponses : Array<Reponse>) {
-    this.editionCoursHttpService.saveQcm(currentModule, question, reponses);
-    this.currentQuestion=new Question()
-    console.log(this.currentQuestion);
+  save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
+    this.editionCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
+    this.currentModule = new Module();
+    this.currentChapitre = new Chapitre();
+    this.elementDeCours = new Array<ElementDeCours>();
+    console.log(this.currentModule);
   }
 
   enregistrerReponse() {
