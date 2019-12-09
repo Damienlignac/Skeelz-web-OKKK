@@ -23,8 +23,8 @@ export class CreationCoursComponent implements OnInit {
   save(cours:Cours) {
     cours.etat =Etat.FERME
     this.http.post(this.appConfigService.backEnd + 'cours', cours).subscribe(resp => {
-      this.idCours= resp.id;
-      this.router.navigate(['/editionCours/' + this.idCours])
+      this.cours= resp;
+      this.router.navigate(['/editionCours/' + this.cours.id])
       console.log(this.idCours)
     })
   }

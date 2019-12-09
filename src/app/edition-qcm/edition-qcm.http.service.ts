@@ -47,7 +47,9 @@ export class EditionQcmHttpService {
             this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe();
 
           }}})}}
-      )};
+      )
+
+  };
 
 
 
