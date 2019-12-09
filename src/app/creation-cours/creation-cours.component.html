@@ -1,14 +1,16 @@
 <div>
-  <div class="form-inline" style="width: 120%">
-    <h3 style="margin-top: 10px" style="width: 30%"> Rédiger un cours -</h3>
-    <div class="form-group" style="margin: 10px">
-      <input [(ngModel)]="cours.intitule" class="form-control" type="text" id="nom" placeholder="Intitulé du cours">
+  <div class="form-inline" style="width: 100%">
+    <div style="margin-top: 10px" style="width: 20%; font-weight: bolder; font-size: x-large"> Rédiger un cours -</div>
+    <div class="form-group" style="margin: 0px; width:40%">
+      <textarea [(ngModel)]="cours.intitule" class="form-control textarea" rows="1" style="width: 100%; font-weight: bolder; font-size: larger; text-decoration: underline; resize: none" id="nom" placeholder="Intitulé du cours"></textarea>
     </div>
-    <div class="form-group" style="margin: 10px">
-      <input [(ngModel)]="cours.duree" class="form-control" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
+    <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+    <div class="form-inline" style="margin: 0px; width:20%">
+      <input [(ngModel)]="cours.duree" style="margin: 10px; width:100%" class="form-control textarea" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
     </div>
-    <div class="form-group" style="margin: 10px">
-      <select class="form-control" id="niveauEtude"  [(ngModel)]="cours.difficulte" >
+    <div><i class="fa fa-line-chart" aria-hidden="true"></i></div>
+    <div class="form-group" style="margin: 0px ; width:15%">
+      <select class="form-control textarea" id="niveauEtude"  [(ngModel)]="cours.difficulte">
         <option value="" disabled>Difficulté</option>
         <option value="FACILE">Facile</option>
         <option value="MOYEN">Moyen</option>
@@ -16,18 +18,20 @@
       </select>
     </div>
   </div>
-
+  <br>
+  <br>
+  <br>
 
   <div class="card-body">
 
     <div class="form-group">
-      <input [(ngModel)]="cours.description" type="text" class="form-control" placeholder="Description du cours">
+      <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea" placeholder="Description du cours"></textarea>
     </div>
 
         <div>
           <div *ngIf="!idCours"class="btn-group btn-group-lg float-right">
-            <a class="btn btn-success" >
-              <i class="fa fa-check" (click)="save(cours)"> Enregistrer</i>
+            <a class="btn btn-outline-success" >
+              <i class="fa fa-check green" (click)="save(cours)" style="color: green"> Enregistrer</i>
             </a>
           </div>
         </div>
