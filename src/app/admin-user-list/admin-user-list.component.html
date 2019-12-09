@@ -2,14 +2,6 @@
   <div style="font-size: x-large; font-family: 'Candara'; font-weight:bolder; color: darkcyan">Vue Admin - Liste des
     Utilisateurs :
   </div>
-  <div class="dropdown">
-    <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" >Filtrer par Compétence
-      <span class="caret"></span></button>
-    <ul class="dropdown-menu">
-      <option *ngFor="let comp of chargeCompetences()" >{{comp.intitule}}</option>
-    </ul>
-  </div>
-
   <br>
   <!--liste des personnes (utilisateurs en vue administrateur)-->
   <table class="table table-bordered table-striped text-lg-left">
@@ -20,6 +12,12 @@
       <th>Téléphone</th>
       <th>Note Globale</th>
       <th>Compétences</th>
+      <th>
+        <select class="form-control select3" [(ngModel)]="skeelzid">
+          <option [ngValue]="null" class="selected">Skeelz</option>
+          <option *ngFor="let ske of chargeskeelz()" value="{{ske.id}}">{{ske.intitule}}</option>
+        </select>
+      </th>
       <th>Détail</th>
       <th>Droits d'accès</th>
     </tr>
@@ -32,6 +30,10 @@
       <td>{{pers.noteGlobal}}</td>
       <td *ngIf="pers.competences" style="font-size: x-small">
         <a *ngFor="let comp of pers.competences">{{comp.intitule}}</a>
+      </td>
+      <td *ngIf="!pers.competences"></td>
+      <td *ngIf="pers.skeelzs" style="font-size: x-small">
+        <a *ngFor="let skee of pers.skeelzs">{{skee.intitule}}</a>
       </td>
       <td *ngIf="!pers.competences"></td>
       <td style="font-size: xx-small" class="nav-link">Fiche profil</td>
