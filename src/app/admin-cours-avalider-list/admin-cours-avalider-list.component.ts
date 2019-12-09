@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminCoursAValiderListService} from './admin-cours-avalider-list.service';
+
 
 @Component({
   selector: 'app-admin-cours-avalider-list',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCoursAValiderListComponent implements OnInit {
 
-  constructor() { }
+  listedecours: any;
 
-  ngOnInit() {
+  constructor(private coursAValiderListService: AdminCoursAValiderListService) {
+  this.listattente();
+  }
+
+  ngOnInit() {}
+
+  listattente(){
+  return  this.listedecours = this.coursAValiderListService.findAllEnAttente();
+    console.log(this.listedecours);
   }
 
 }
