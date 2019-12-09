@@ -14,7 +14,7 @@ export class SectionTableauDeBordComponent implements OnInit {
   idUtilisateur: number;
   currentPersonne: Personne;
 
-  skeelzs:any;
+  skeelzs: any;
 
 
   constructor(private tableauDeBordHttpService: TableauDeBordHttpService, private router: Router, public authService: AuthService, private route: ActivatedRoute) {
@@ -31,11 +31,12 @@ export class SectionTableauDeBordComponent implements OnInit {
   ngOnInit() {
   }
 
+
   listSkeelz(){
     this.skeelzs = this.tableauDeBordHttpService.loadPersonneSkeelz(this.currentPersonne.id);
     return this.skeelzs;
   }
 
 
-}
+
 }

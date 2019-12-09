@@ -40,7 +40,7 @@ import { SectionTableauDeBordComponent } from './section-tableau-de-bord/section
     CreationCoursComponent,
     PageAccueilComponent,
     TableauDeBordComponent,
-    EcranAdminComponent
+    EcranAdminComponent,
     EditionQcmComponent,
     SectionTableauDeBordComponent,
   ],

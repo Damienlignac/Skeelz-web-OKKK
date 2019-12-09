@@ -16,7 +16,7 @@ import {Personne} from '../model/personne';
 export class TableauDeBordComponent implements OnInit {
 
   cours: any;
-  
+
   idUtilisateur: number;
   currentPersonne: Personne;
   coursss: any;

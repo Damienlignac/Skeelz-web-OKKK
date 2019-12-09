@@ -34,8 +34,8 @@ const routes: Routes = [
   {path: 'admin', component: EcranAdminComponent, outlet: 'primary', children: [
       {path: '', component: AdminUserListComponent, outlet: 'outsup'},
       {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
-    ]}
-  {path: 'dashboard/:idPersonne', component: TableauDeBordComponent}
+    ]},
+  {path: 'dashboard/:idPersonne', component: TableauDeBordComponent},
 ];
 
 @NgModule({
