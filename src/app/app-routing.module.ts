@@ -14,6 +14,7 @@ import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 import {EcranAdminComponent} from './ecran-admin/ecran-admin.component';
 import {AdminCoursAValiderListComponent} from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
+import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 
 
 
@@ -25,6 +26,7 @@ const routes: Routes = [
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
+  {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent},
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
