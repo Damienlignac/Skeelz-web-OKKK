@@ -9,6 +9,8 @@ import {EditionQcmHttpService} from './edition-qcm.http.service';
 import {FormGroup} from '@angular/forms';
 import {Question} from '../model/question';
 import {Reponse} from '../model/reponse';
+import {HttpClient} from '@angular/common/http';
+import {AppConfigService} from '../app-config.service';
 
 @Component({
   selector: 'app-edition-cours',
@@ -17,25 +19,25 @@ import {Reponse} from '../model/reponse';
 })
 export class EditionQcmComponent implements OnInit {
 
-  // idCours: number;
-  // idModule:number;
-  // cours: Cours = new Cours();
-  // currentQuestion: Question = new Question();
-  // currentModule: Module = new Module();
-  // currentReponse: Reponse = new Reponse();
-  // questions : Array<Question> = new Array<Question>();
-  // aAjouter: string;
-  // currentElement: ElementDeCours = new ElementDeCours();
+  idCours: number;
+  idModule:number;
+  cours: Cours = new Cours();
+  currentQuestion: Question = new Question();
+  currentModule: Module = new Module();
+  currentReponse: Reponse = new Reponse();
+  questions : Array<Question> = new Array<Question>();
+  aAjouter: string;
+  currentElement: ElementDeCours = new ElementDeCours();
 
 
-  constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionQcmHttpService) {
-    // this.route.params.subscribe(params => {
-    //   this.idCours = params['idCours'];
-    //   this.idModule = params['idModule']
-    //   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-    //   this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
-    //   this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
-    // });
+  constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionQcmHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
+    this.route.params.subscribe(params => {
+      this.idCours = params['idCours'];
+      this.idModule = params['idModule']
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+      this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+    });
   }
   //
   // questionCourant($event, questionId) {
@@ -45,6 +47,7 @@ export class EditionQcmComponent implements OnInit {
 
   questionCourant($event, questionId) {
     this.currentQuestion = this.questions.filter(question => question.id == questionId)[0];
+    this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
     this.currentReponse = new Reponse();
   }
 
@@ -80,13 +83,82 @@ export class EditionQcmComponent implements OnInit {
   // }
 
 
-  save(cours:Cours, currentModule : Module, currentChapitre: Chapitre, elementDeCours: Array<ElementDeCours>) {
-    this.editionCoursHttpService.saveCours(cours, currentModule, currentChapitre, elementDeCours);
-    this.currentModule = new Module();
-    this.currentChapitre = new Chapitre();
-    this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
+  saveQcm(module : Module, question : Question, reponses : Array<Reponse>) {
+    module.cours = this.cours;
+    this.http.put(this.appConfigService.backEnd + 'module/' + module.id, module).subscribe( resp =>{
+      if (question.id){
+        question.module = <Module> resp
+        this.http.put(this.appConfigService.backEnd + 'question/' + question.id, question).subscribe( resp =>{
+          for (let reponse of reponses){
+            if (reponse.id){
+              reponse.question = <Question> resp;
+              this.http.put(this.appConfigService.backEnd + 'reponse/' + reponse.id, reponse).subscribe(resp =>
+              {
+                this.route.params.subscribe(params => {
+                  this.idCours = params['idCours'];
+                  this.idModule = params['idModule']
+                  this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+                  this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+                  this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+                });
+              })
+            }
+            else{
+              reponse.question = <Question> resp;
+
+              this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe(resp =>
+              {
+                this.route.params.subscribe(params => {
+                  this.idCours = params['idCours'];
+                  this.idModule = params['idModule']
+                  this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+                  this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+                  this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+                });
+              })
+
+            }}})}
+      else {
+        question.module = <Module> resp;
+        this.http.post(this.appConfigService.backEnd + 'question', question).subscribe( resp =>{
+          for (let reponse of reponses){
+            if (reponse.id){
+              reponse.question = <Question> resp;
+              this.http.put(this.appConfigService.backEnd + 'reponse/' + reponse.id, reponse).subscribe(resp =>
+              {
+                this.route.params.subscribe(params => {
+                  this.idCours = params['idCours'];
+                  this.idModule = params['idModule']
+                  this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+                  this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+                  this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+                });
+              })
+            }
+            else{
+              console.log(reponse)
+              reponse.question = <Question> resp;
+              this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe(resp =>
+              {
+                this.route.params.subscribe(params => {
+                  this.idCours = params['idCours'];
+                  this.idModule = params['idModule']
+                  this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+                  this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+                  this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+                });
+              })
+
+            }}})
+      }}
+    )
+    // this.editionCoursHttpService.saveQcm(currentModule, question, reponses);
+    console.log(this.currentQuestion);
+    this.currentQuestion=new Question();
+
   }
+
+
 
   enregistrerReponse() {
     if (!this.currentQuestion.reponses) {

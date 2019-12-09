@@ -18,18 +18,18 @@ export class EditionQcmHttpService {
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
   }
-  //
-  // findByIdModule(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'module/' + id );
-  // }
-  //
-  // findQuestionReponses(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'module/' + id +'/questionsAndReponses');
-  // }
-  //
-  // findById2(id: number): Observable<any> {
-  //   return this.http.get(this.appConfigService.backEnd+'cours/' + id);
-  // }
+
+  findByIdModule(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'module/' + id );
+  }
+
+  findQuestionReponses(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'module/' + id +'/questionsAndReponses');
+  }
+
+  findById2(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'cours/' + id);
+  }
   //
   //
   //
@@ -70,29 +70,41 @@ export class EditionQcmHttpService {
 
 
 
-  findById2(id: number): Observable<any> {
-    return this.http.get(this.appConfigService.backEnd+'cours/' + id);
-  }
 
 
-
-  saveQcm( module: Module, question:Question, reponses:Array<Reponse>){
-    this.http.put(this.appConfigService.backEnd + 'module/' + module.id, module).subscribe( resp =>{
-      if (question.id){
-        this.http.put(this.appConfigService.backEnd + 'question/' + question.id, question).subscribe( resp =>{
-        for (let reponse of reponses){
-          if (reponse.id){
-            reponse.question = resp;
-            this.http.put(this.appConfigService.backEnd + 'reponse/' + reponse.id, reponse).subscribe();
-          }
-          else{
-            reponse.question = resp;
-            this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe();
-
-          }}})}}
-      )
-
-  };
+  // saveQcm( module: Module, question:Question, reponses:Array<Reponse>){
+  //   this.http.put(this.appConfigService.backEnd + 'module/' + module.id, module).subscribe( resp =>{
+  //     if (question.id){
+  //       this.http.put(this.appConfigService.backEnd + 'question/' + question.id, question).subscribe( resp =>{
+  //       for (let reponse of reponses){
+  //         if (reponse.id){
+  //           reponse.question = resp;
+  //           this.http.put(this.appConfigService.backEnd + 'reponse/' + reponse.id, reponse).subscribe();
+  //         }
+  //         else{
+  //           reponse.question = resp;
+  //
+  //           this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe();
+  //
+  //         }}})}
+  //   else {
+  //       question.module = resp;
+  //       // this.http.post(this.appConfigService.backEnd + 'question', question).subscribe( resp =>{
+  //         for (let reponse of reponses){
+  //           if (reponse.id){
+  //             reponse.question = resp;
+  //             this.http.put(this.appConfigService.backEnd + 'reponse/' + reponse.id, reponse).subscribe();
+  //           }
+  //           else{
+  //             console.log(reponse)
+  //             reponse.question = resp;
+  //             this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe();
+  //
+  //           }}})
+  //     }}
+  //     )
+  //
+  // };
 
 
 

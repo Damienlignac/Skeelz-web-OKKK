@@ -13,8 +13,8 @@ import {Etat} from '../model/etat';
 })
 export class CreationCoursComponent implements OnInit {
 
-  // idCours: number;
-  // cours: Cours = new Cours();
+  idCours: number;
+  cours: Cours = new Cours();
 
 
   constructor(private http: HttpClient,private router: Router, private creationCoursHttpService: CreationCoursHttpService,private appConfigService: AppConfigService) {
@@ -23,7 +23,7 @@ export class CreationCoursComponent implements OnInit {
   save(cours:Cours) {
     cours.etat =Etat.FERME
     this.http.post(this.appConfigService.backEnd + 'cours', cours).subscribe(resp => {
-      this.cours= resp;
+      this.cours= <Cours> resp;
       this.router.navigate(['/editionCours/' + this.cours.id])
       console.log(this.idCours)
     })
