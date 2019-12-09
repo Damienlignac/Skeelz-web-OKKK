@@ -124,3 +124,13 @@ div{
   border-radius: 10px;
 }
 
+
+.vertical-menu {
+  position: center;
+  width: 200px;
+  height: 150px;
+}
+
+.indentation {
+  margin-left: 20px;
+}

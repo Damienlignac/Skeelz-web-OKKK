@@ -5,6 +5,7 @@ import {AppConfigService} from '../app-config.service';
 import {Observable} from 'rxjs';
 import {Difficulte} from '../model/difficulte';
 import {Etat} from '../model/etat';
+import {Personne} from '../model/personne';
 
 
 @Injectable({
@@ -12,6 +13,8 @@ import {Etat} from '../model/etat';
 })
 export class TableauDeBordHttpService {
   private courss: any;
+  idUtilisateur: number;
+  currentPersonne: Personne;
 
   private skeelzs:any;
   private idPersonne:number;
@@ -21,27 +24,40 @@ export class TableauDeBordHttpService {
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
-    this.loadCoursSuivie();
-    this.loadCoursTermine();
-    this.loadCoursCree();
-    this.loadPersonneSkeelz();
 
+    this.idUtilisateur = +localStorage.getItem('token');
+    this.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
+      this.currentPersonne = resp;
+      console.log(this.currentPersonne);
+
+    this.loadCoursSuivie(this.currentPersonne.id);
+    this.loadCoursTermine(this.currentPersonne.id);
+    this.loadCoursCree(this.currentPersonne.id);
+    this.loadPersonneSkeelz(this.currentPersonne.id);
+  });
   }
 
-  loadCoursSuivie() {
+  findByUtilisateur(id:number): Observable<any>{
+
+      return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
+  }
+
+
+
+  loadCoursSuivie(id:number) {
     this.http.get(this.appConfigService.backEnd + "personne/"+this.idPersonne+"/courss/SUIVIE").subscribe(resp =>
       this.courss = resp);
   }
-  loadCoursTermine() {
+  loadCoursTermine(id:number) {
     this.http.get(this.appConfigService.backEnd + "personne/"+this.idPersonne+"/courss/VALIDE").subscribe(resp =>
       this.courss = resp);
   }
-  loadCoursCree() {
+  loadCoursCree(id:number) {
     this.http.get(this.appConfigService.backEnd + "personne/"+this.idPersonne+"/courss/ADMISNISTRE").subscribe(resp =>
       this.courss = resp);
   }
 
-  loadPersonneSkeelz() {
+  loadPersonneSkeelz(id:number) {
     this.http.get(this.appConfigService.backEnd + "personne/"+this.idPersonne+"/skeelz").subscribe(resp =>
       this.skeelzs = resp);
   }

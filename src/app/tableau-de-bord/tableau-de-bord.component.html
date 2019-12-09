@@ -50,6 +50,15 @@
 </table>
 
 
+<div class="vertical-menu"> Sommaire
+  <hr>
+  <li *ngFor="let module of moduleAndChap ">
+    {{module.intitule}}
+    <div class = "indentation" *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/', idCours, module.id, chapitre.agencement]">
+      {{chapitre.titre}}
+    </div>
+  </li>
+</div>
 
 
 
