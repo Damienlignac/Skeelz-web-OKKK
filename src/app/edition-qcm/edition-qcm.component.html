@@ -20,39 +20,18 @@
       <button type="button" (click)="nouvelleQuestion()">Nouvelle Question</button>
     </div>
     <div class="form-group">
-      <input  [(ngModel)]="currentQuestion.question" type="text" class="form-control" placeholder="Intitulé du module courant">
+      <input  [(ngModel)]="currentQuestion.question" type="text" class="form-control" placeholder="Ecrivez votre question">
     </div>
-<!--    <div *ngIf="currentModule.intitule!=null">-->
-<!--      <div *ngIf="currentChapitre.titre!=null">-->
-<!--    <div class="form-group" *ngFor="let element of elementDeCours ">-->
-<!--      <div *ngIf="element.type  === 'Paragraphe'">-->
-<!--        <textarea [(ngModel)]="element.titre" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>-->
-<!--        <textarea [(ngModel)]="element.texte" class="form-control textarea" placeholder="Entrer votre texte" style="width: 100%"></textarea>-->
-<!--        <br>-->
-<!--      </div>-->
-<!--      <div *ngIf="element.type  === 'Image'">-->
-<!--        <input  type="file" class="form-control textarea" placeholder="Choisissez votre image">-->
-<!--        <input  type="text" class="form-control textarea" placeholder="Entrer votre texte">-->
-<!--        <br>-->
-<!--      </div>-->
-<!--      <div *ngIf="element.type  === 'ExtraitCode'">-->
-<!--        <input [(ngModel)]="element.chemin" type="text" class="form-control textarea" placeholder="Entrer votre titre">-->
-<!--        <input [(ngModel)]="element.commentaire" type="text" class="form-control textarea" placeholder="Entrer votre texte">-->
-<!--        <br>-->
-<!--      </div>-->
-<!--    </div>-->
-
+    <div *ngIf="currentQuestion.question!=null">
     <br>
-<!--    <div class="form-group">-->
-<!--      <p>Sélectionner un type de contenu:</p>-->
-<!--      <input type="radio" id="texte" name="contenu" value="texte" checked [(ngModel)]="aAjouter" (click)="nouveauElement()">-->
-<!--      <label for="texte">Texte</label>-->
-<!--      <input type="radio" id="Image" name="contenu" value="image" [(ngModel)]="aAjouter" (click)="nouveauElement()">-->
-<!--      <label for="Image">Image</label>-->
-<!--      <input type="radio" id="ExtraitCode" name="contenu" value="extraitCode" [(ngModel)]="aAjouter" (click)="nouveauElement()">-->
-<!--      <label for="ExtraitCode">Extrait de code</label>-->
-<!--    </div>-->
-<!--  <div *ngIf="currentElement.type  === 'Paragraphe'">-->
+
+      <div class="form-group" *ngFor="let reponse of currentQuestion.reponses ">
+
+        <div >
+          <textarea [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+          <br>
+        </div>
+
 <!--    <textarea [(ngModel)]="currentElement.titre" class="form-control textareatitle" type="text"  placeholder="Entrer votre titre"></textarea>-->
 <!--    <textarea [(ngModel)]="currentElement.texte" type="text" class="form-control textarea" placeholder="Entrer votre texte"></textarea>-->
 <!--    <br>-->
@@ -75,8 +54,11 @@
 <!--    <div class="form-group">-->
 <!--      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>-->
 <!--    </div>-->
-<!--  </div>-->
-
+  </div>
+      <textarea [(ngModel)]="currentReponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+      <div class="form-group">
+        <button type="button" (click)="enregistrerReponse()">Enregistrer l'élèment</button>
+      </div>
   </div>
   </div>
   </div>
@@ -91,4 +73,4 @@
 <!--    </div>-->
 <!--  </div>-->
 <!--</div>-->
-<!--</div>-->
+</div>
