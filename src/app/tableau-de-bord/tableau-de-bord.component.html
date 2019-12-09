@@ -50,77 +50,55 @@
 </table>
 
 
-<div class="vertical-menu"> Sommaire
-  <hr>
-  <li *ngFor="let module of moduleAndChap ">
-    {{module.intitule}}
-    <div class = "indentation" *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/', idCours, module.id, chapitre.agencement]">
-      {{chapitre.titre}}
-    </div>
-  </li>
-</div>
 
+<!--  <div  *ngFor="let cour  of  listCoursSuivie() "      (click)="introCours(cour.id)"        class=" back1 box">-->
+<!--    <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
+<!--      <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
+<!--    </div>-->
+<!--    <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
+<!--      <img class="Img center" src="../../assets/img/no_img.png">-->
+<!--    </div>-->
+<!--    <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
+<!--      <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
+<!--    </div>-->
+<!--    <div style="visibility: hidden"></div>-->
+<!--    <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
+<!--    <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
+<!--    <div class="back4 ">{{cour.description}}   </div>-->
+<!--    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
+<!--  </div>-->
 
+<!--<div  *ngFor="let cour  of  listCoursCree() "      (click)="introCours(cour.id)"        class=" back1 box">-->
+<!--  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
+<!--    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
+<!--  </div>-->
+<!--  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
+<!--    <img class="Img center" src="../../assets/img/no_img.png">-->
+<!--  </div>-->
+<!--  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
+<!--    <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
+<!--  </div>-->
+<!--  <div style="visibility: hidden"></div>-->
+<!--  <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
+<!--  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
+<!--  <div class="back4 ">{{cour.description}}   </div>-->
+<!--  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
+<!--</div>-->
 
-
-
-
-
-
-
-
-
-
-
-
-  <div  *ngFor="let cour  of  listCoursSuivie() "      (click)="introCours(cour.id)"        class=" back1 box">
-    <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
-      <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
-    </div>
-    <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">
-      <img class="Img center" src="../../assets/img/no_img.png">
-    </div>
-    <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">
-      <img class="Img" src="../../assets/img/imgtrollArnaud.png">
-    </div>
-    <div style="visibility: hidden"></div>
-    <div class="back3 "><h6>{{cour.intitule}} </h6></div>
-    <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
-    <div class="back4 ">{{cour.description}}   </div>
-    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
-  </div>
-
-<div  *ngFor="let cour  of  listCoursCree() "      (click)="introCours(cour.id)"        class=" back1 box">
-  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
-    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
-  </div>
-  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">
-    <img class="Img center" src="../../assets/img/no_img.png">
-  </div>
-  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">
-    <img class="Img" src="../../assets/img/imgtrollArnaud.png">
-  </div>
-  <div style="visibility: hidden"></div>
-  <div class="back3 "><h6>{{cour.intitule}} </h6></div>
-  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
-  <div class="back4 ">{{cour.description}}   </div>
-  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
-</div>
-
-<div  *ngFor="let cour  of  listCoursTermine()"      (click)="introCours(cour.id)"        class=" back1 box">
-  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
-    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
-  </div>
-  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">
-    <img class="Img center" src="../../assets/img/no_img.png">
-  </div>
-  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">
-    <img class="Img" src="../../assets/img/imgtrollArnaud.png">
-  </div>
-  <div style="visibility: hidden"></div>
-  <div class="back3 "><h6>{{cour.intitule}} </h6></div>
-  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>
-  <div class="back4 ">{{cour.description}}   </div>
-  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>
-</div>
+<!--<div  *ngFor="let cour  of  listCoursTermine()"      (click)="introCours(cour.id)"        class=" back1 box">-->
+<!--  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
+<!--    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
+<!--  </div>-->
+<!--  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
+<!--    <img class="Img center" src="../../assets/img/no_img.png">-->
+<!--  </div>-->
+<!--  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
+<!--    <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
+<!--  </div>-->
+<!--  <div style="visibility: hidden"></div>-->
+<!--  <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
+<!--  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
+<!--  <div class="back4 ">{{cour.description}}   </div>-->
+<!--  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
+<!--</div>-->
 

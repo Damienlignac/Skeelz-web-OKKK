@@ -127,10 +127,10 @@ div{
 
 .vertical-menu {
   position: center;
-  width: 200px;
   height: 150px;
 }
 
 .indentation {
   margin-left: 20px;
+  width: 200px;
 }
