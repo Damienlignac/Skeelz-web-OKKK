@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
   {path: 'admin-user-list', component: AdminUserListComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'tableaudebord', component: TableauDeBordComponent}
+  {path: 'dashboard', component: TableauDeBordComponent}
 ];
 
 @NgModule({
