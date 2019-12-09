@@ -13,6 +13,7 @@ import {AuthGuard} from './auth.guard';
 import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 import {AppComponent} from './app.component';
 import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
+import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 
 
 
@@ -23,6 +24,7 @@ const routes: Routes = [
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
+  {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent},
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
