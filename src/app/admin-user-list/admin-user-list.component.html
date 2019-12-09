@@ -6,7 +6,7 @@
     <button class="btn btn-warning dropdown-toggle" type="button" data-toggle="dropdown" >Filtrer par Compétence
       <span class="caret"></span></button>
     <ul class="dropdown-menu">
-      <option *ngFor="let comp of chargeCompetences()">{{comp.intitule}}</option>
+      <option *ngFor="let comp of chargeCompetences()" >{{comp.intitule}}</option>
     </ul>
   </div>
 
@@ -34,7 +34,7 @@
         <a *ngFor="let comp of pers.competences">{{comp.intitule}}</a>
       </td>
       <td *ngIf="!pers.competences"></td>
-      <td style="font-size: xx-small">Fiche profil</td>
+      <td style="font-size: xx-small" class="nav-link">Fiche profil</td>
       <td style="font-size: x-small"><a *ngIf="pers.utilisateur.rh==true">manager RH,</a>
         <a *ngIf="pers.utilisateur.administrateur==true"> administrateur,</a>
         <!--        <a *ngIf="pers.utilisateur.superUser==true"> Super Admin</a> -->

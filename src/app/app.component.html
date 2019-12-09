@@ -8,7 +8,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/dashboard']">Tableau de Bord</a>
+          <a class="nav-link" [routerLink]="['/dashboard/:idPersonne']">Tableau de Bord</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/login']">Login</a>
@@ -27,12 +27,12 @@
 
           <img src="../assets/img/skeelz_logo.png" class="pointer mt-4" style="width:140px" [routerLink]="['/home']">
 
-        <h3>section gauche</h3>
       </div>
       <div class="col-sm-8 justify-content-center align-content-center container-fluid" style="min-height: 900px; height: min-content">
-        <router-outlet></router-outlet>
+        <router-outlet name="primary"></router-outlet>
       </div>
       <div class="col-sm-2 justify-content-center align-content-center container-fluid" style="min-height: 900px; height: fit-content">
+        <p>section droite</p>
         <router-outlet name="side"></router-outlet>
       </div>
     </div>

@@ -20,7 +20,9 @@ import {CreationCoursComponent} from './creation-cours/creation-cours.component'
 import {AuthGuard} from './auth.guard';
 import { PageAccueilComponent } from './page-accueil/page-accueil.component';
 import { TableauDeBordComponent } from './tableau-de-bord/tableau-de-bord.component';
+import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
+import { SectionTableauDeBordComponent } from './section-tableau-de-bord/section-tableau-de-bord.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +40,9 @@ import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
     CreationCoursComponent,
     PageAccueilComponent,
     TableauDeBordComponent,
+    EcranAdminComponent,
     EditionQcmComponent,
+    SectionTableauDeBordComponent,
   ],
   imports: [
     BrowserModule,

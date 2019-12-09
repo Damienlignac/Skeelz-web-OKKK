@@ -11,7 +11,8 @@ import {CreationCoursComponent} from './creation-cours/creation-cours.component'
 import {LoginComponent} from './login/login.component';
 import {AuthGuard} from './auth.guard';
 import {PageAccueilComponent} from './page-accueil/page-accueil.component';
-import {AppComponent} from './app.component';
+import {EcranAdminComponent} from './ecran-admin/ecran-admin.component';
+import {AdminCoursAValiderListComponent} from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 
@@ -23,14 +24,18 @@ const routes: Routes = [
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
+  {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent},
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
-  {path: 'admin-user-list', component: AdminUserListComponent},
   {path: 'login', component: LoginComponent},
-  {path: 'dashboard', component: TableauDeBordComponent}
+  {path: 'admin', component: EcranAdminComponent, outlet: 'primary', children: [
+      {path: '', component: AdminUserListComponent, outlet: 'outsup'},
+      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
+    ]},
+  {path: 'dashboard/:idPersonne', component: TableauDeBordComponent},
 ];
 
 @NgModule({
