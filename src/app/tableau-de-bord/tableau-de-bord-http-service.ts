@@ -14,9 +14,12 @@ import {ActivatedRoute} from '@angular/router';
   providedIn: 'root'
 })
 export class TableauDeBordHttpService {
-  private courss: any;
 
-  currentPersonne: Personne;
+  private coursSuivies: any;
+  private coursTermines: any;
+  private coursAdministres: any;
+private idUtilisateur:number;
+  private currentPersonne: Personne;
 
   private skeelzs:any;
 
@@ -26,19 +29,7 @@ export class TableauDeBordHttpService {
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService,public authService: AuthService,private route: ActivatedRoute) {
-  //
-  //   this.idUtilisateur = +localStorage.getItem('token');
-  //   this.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
-  //     this.currentPersonne = resp;
-  //     this.route.params.subscribe(params => {
-  //       this.currentPersonne.id = params['idPersonne'];
-  //     });
-  //
-  //   this.loadCoursSuivie(this.currentPersonne.id);
-  //   this.loadCoursTermine(this.currentPersonne.id);
-  //   this.loadCoursCree(this.currentPersonne.id);
-  //   this.loadPersonneSkeelz(this.currentPersonne.id);
-  // });
+
   }
 
   findByUtilisateur(id:number): Observable<any>{
@@ -48,17 +39,14 @@ export class TableauDeBordHttpService {
 
 
 
-  loadCoursSuivie(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/SUIVIE").subscribe(resp =>
-      this.courss = resp);
+  loadCoursSuivie(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/SUIVI");
   }
-  loadCoursTermine(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/VALIDE").subscribe(resp =>
-      this.courss = resp);
+  loadCoursTermine(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/VALIDE");
   }
-  loadCoursCree(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/ADMINISTRE").subscribe(resp =>
-      this.courss = resp);
+  loadCoursCree(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/ADMINISTRE");
   }
 
   loadPersonneSkeelz(id:number) {
@@ -66,15 +54,15 @@ export class TableauDeBordHttpService {
       this.skeelzs = resp);
   }
 
-  //
+
   // findAllCoursSuivie(): any {
-  //   return this.courss;
+  //   return this.coursSuivies;
   // }
   // findAllCoursTermine(): any {
-  //   return this.courss;
+  //   return this.coursTermines;
   // }
   // findAllCoursCreer(): any {
-  //   return this.courss;
+  //   return this.coursAdministres;
   // }
   // findAllPersonneSkeelz(): any {
   //   return this.skeelzs;

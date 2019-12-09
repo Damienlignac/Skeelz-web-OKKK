@@ -16,42 +16,19 @@ import {ActivatedRoute} from '@angular/router';
 export class SectionTableauDeBordHttpService {
 
 
+
   constructor(private http: HttpClient, private appConfigService: AppConfigService,public authService: AuthService,private route: ActivatedRoute) {
-  //
-  //   this.idUtilisateur = +localStorage.getItem('token');
-  //   this.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
-  //     this.currentPersonne = resp;
-  //     this.route.params.subscribe(params => {
-  //       this.currentPersonne.id = params['idPersonne'];
-  //     });
-  //
-  //   this.loadCoursSuivie(this.currentPersonne.id);
-  //   this.loadCoursTermine(this.currentPersonne.id);
-  //   this.loadCoursCree(this.currentPersonne.id);
-  //   this.loadPersonneSkeelz(this.currentPersonne.id);
-  // });
+
   }
 
-
-  //
-  // findAllCoursSuivie(): any {
-  //   return this.courss;
-  // }
-  // findAllCoursTermine(): any {
-  //   return this.courss;
-  // }
-  // findAllCoursCreer(): any {
-  //   return this.courss;
-  // }
-  // findAllPersonneSkeelz(): any {
-  //   return this.skeelzs;
-  // }
-
-
-  findIntroCours(id:number, agencement0:number=0){
-
-    return this.http.get(this.appConfigService.backEnd +"module/FindByIdCoursAndAgencement/"+ id +":"+agencement0);
+  findByUtilisateur(id:number): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
   }
 
-
+  loadPersonneSkeelz(id:number): Observable<any> {
+  return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/skeelzs");
+}
+  loadPersonneCompetence(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/competences");
+  }
 }

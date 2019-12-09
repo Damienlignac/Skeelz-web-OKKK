@@ -36,7 +36,7 @@
 </div>
 
 <div *ngIf="loop==true">
-<div  *ngFor="let cour  of  list() "      (click)="introCours(cour.id)"        class=" back1 box">
+<div  *ngFor="let cour  of  list() "   (click)="introCours(cour.id)"        class=" back1 box">
     <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">
       <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">
       </div>
