@@ -45,8 +45,6 @@ export class ListcoursComponent implements OnInit {
     this.router.navigate(['/login']);
   }
 
-
-
   list() {
     if (this.loop === true) {
         return this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);

@@ -24,7 +24,6 @@ const routes: Routes = [
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
-  {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent},
   {path: 'creationCours', component: CreationCoursComponent},

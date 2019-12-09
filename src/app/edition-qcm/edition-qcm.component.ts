@@ -19,15 +19,15 @@ import {AppConfigService} from '../app-config.service';
 })
 export class EditionQcmComponent implements OnInit {
 
-  idCours: number;
-  idModule:number;
-  cours: Cours = new Cours();
-  currentQuestion: Question = new Question();
-  currentModule: Module = new Module();
-  currentReponse: Reponse = new Reponse();
-  questions : Array<Question> = new Array<Question>();
-  aAjouter: string;
-  currentElement: ElementDeCours = new ElementDeCours();
+  // idCours: number;
+  // idModule:number;
+  // cours: Cours = new Cours();
+  // currentQuestion: Question = new Question();
+  // currentModule: Module = new Module();
+  // currentReponse: Reponse = new Reponse();
+  // questions : Array<Question> = new Array<Question>();
+  // aAjouter: string;
+  // currentElement: ElementDeCours = new ElementDeCours();
 
 
   constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionQcmHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
@@ -39,6 +39,11 @@ export class EditionQcmComponent implements OnInit {
       this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
     });
   }
+  //
+  // questionCourant($event, questionId) {
+  //   this.currentQuestion = this.questions.filter(question => question.id == questionId)[0];
+  //   this.currentReponse = new Reponse();
+  // }
 
   questionCourant($event, questionId) {
     this.currentQuestion = this.questions.filter(question => question.id == questionId)[0];
@@ -55,8 +60,17 @@ export class EditionQcmComponent implements OnInit {
   }
 
 
-  // ajouterReponse() {
-  //   this.currentReponse= new Reponse();
+  // nouveauElement() {
+  //   this.currentElement= new ElementDeCours();
+  //   let agencementMax: number = -1;
+  //   if (this.elementDeCours) {
+  //     for (let elem of this.elementDeCours) {
+  //       if (elem.agencement > agencementMax) {
+  //         agencementMax = elem.agencement;
+  //       }
+  //     }
+  //   }
+  //   this.currentElement.agencement = agencementMax + 1;
   //   if (this.aAjouter == 'texte') {
   //     this.currentElement.type = 'Paragraphe';
   //   }
