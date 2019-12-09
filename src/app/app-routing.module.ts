@@ -13,6 +13,7 @@ import {AuthGuard} from './auth.guard';
 import {PageAccueilComponent} from './page-accueil/page-accueil.component';
 import {EcranAdminComponent} from './ecran-admin/ecran-admin.component';
 import {AdminCoursAValiderListComponent} from './admin-cours-avalider-list/admin-cours-avalider-list.component';
+import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
 
 
 
@@ -26,13 +27,7 @@ const routes: Routes = [
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
-  {path: 'admin', component: EcranAdminComponent,
-    children: [
-      {path: '', component: AdminUserListComponent, outlet: 'outsup'},
-      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
-    ]
-  },
-   {path: 'admin-user-list', component: AdminUserListComponent},
+  {path: 'admin-user-list', component: AdminUserListComponent},
   {path: 'login', component: LoginComponent}
 ];
 
