@@ -23,12 +23,16 @@ const routes: Routes = [
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
   {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
+  {path: 'sommaire/:id', component: SommaireComponent},
   {path: 'editionCours/:id', component: EditionCoursComponent},
   {path: 'creationCours', component: CreationCoursComponent},
   {path: 'utilisateur', component: UtilisateurComponent},
   {path: 'qcm/:idCours/:idModule', component: QcmComponent},
-  {path: 'admin-user-list', component: AdminUserListComponent},
-  {path: 'login', component: LoginComponent}
+  {path: 'login', component: LoginComponent},
+  {path: 'admin', component: EcranAdminComponent, outlet: 'primary', children: [
+      {path: '', component: AdminUserListComponent, outlet: 'outsup'},
+      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
+    ]}
 ];
 
 @NgModule({

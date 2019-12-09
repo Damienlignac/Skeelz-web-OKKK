@@ -36,7 +36,8 @@ import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
     AdminCoursAValiderListComponent,
     LoginComponent,
     CreationCoursComponent,
-    PageAccueilComponent
+    PageAccueilComponent,
+    EcranAdminComponent
   ],
   imports: [
     BrowserModule,
