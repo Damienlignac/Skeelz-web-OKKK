@@ -1,18 +1,38 @@
 
+<div class="positionFixeEtTaille ">
+<div class="colorPosDivprincipal .bg-info">
 
-<div class="vertical-menu">
+  <div class="PointEntour">
+    <div class="PointText text-center"><b>Note global :</b></div>
+    <br>
+    <div class="Point text-center"><b>{{this.npteGlobal}}</b></div>
+    <div class="Point text-center" *ngIf="this.npteGlobal<=25"><b>Continuez à vous entrainer !</b></div>
+    <div class="Point text-center" *ngIf="this.npteGlobal<=50 && this.npteGlobal>25"><b>C'est bien, continuez</b></div>
+    <div class="Point text-center"*ngIf="this.npteGlobal<=100 && this.npteGlobal>50"><b>Vous faites partie des meilleurs !!!</b></div>
+  </div>
 
-  <div *ngIf="this.skeelznumber1!=null" class="div1">
-  <div>{{this.skeelznumber1.intitule}} </div>
-   <div>{{this.number1}} </div>
+
+  <div class="diventourtext">
+  <div class="text-center divtext font-weight-normal"><b>Vos 3 meilleurs Skeelzs :</b></div>
 </div>
-  <div *ngIf="this.skeelznumber2!=null">
-  <div>{{this.skeelznumber2.intitule}} </div>
-  <div>{{this.number2}} </div>
-</div>
-  <div *ngIf="this.skeelznumber3!=null" >
-  <div>{{this.skeelznumber3.intitule}} </div>
-  <div>{{this.number3}} </div>
+  <div class="divSkeelz">
+        <div *ngIf="this.skeelznumber1!=null" class="div1">
+          <div class="text-center"><i class="fa fa-trophy fa-2x " aria-hidden="true" style="color: gold" ></i></div>
+          <div class="text-center">Skeelz n°1 : <b>{{this.skeelznumber1.intitule}}</b> </div>
+             <div class="text-center">Nombre des points : <b>{{this.number1}}</b> </div>
+        </div>
+        <div  *ngIf="this.skeelznumber2!=null" class="div2">
+          <div class="text-center"><i class="fa fa-rocket  fa-2x" aria-hidden="true"  style="color: gold"></i></div>
+              <div class="text-center">Skeelz n°2 : <b>{{this.skeelznumber2.intitule}}</b> </div>
+              <div class="text-center">Nombre des points : <b>{{this.number2}}</b> </div>
+      </div>
+
+      <div *ngIf="this.skeelznumber3!=null"  class="div3">
+          <div class="text-center"><i class="fa fa-bolt  fa-2x" aria-hidden="true"  style="color: gold"></i></div>
+              <div class="text-center">Skeelz n°2 : <b>{{this.skeelznumber3.intitule}}</b> </div>
+              <div class="text-center">Nombre des points : <b>{{this.number3}}</b> </div>
+      </div>
+    </div>
 </div>
 </div>
 

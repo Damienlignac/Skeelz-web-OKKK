@@ -1,20 +1,55 @@
-.vertical-menu {
-  position: center;
-  height: 150px;
-  background-color: red;
-}
-
-.indentation {
-  margin-left: 20px;
-  width: 200px;
+.positionFixeEtTaille {
+position: fixed;
+right: 19px;
+  top:20%;
+height: 70%;
+  width: 250px;
+  border-radius: 10px;
+  border: solid;
+  background-color:lightblue;
 }
 
 .div1{
-  background-color: skyblue;
+  position: absolute;
+  width: 100%;
+  height: 33%;
+
+  border-radius: 10px;
 }
 .div2{
-  background-color: gray;
+  position: absolute;
+  width: 100%;
+  height: 33%;
+  top:33%;
+    border-radius: 10px;
 }
-.div1{
-  background-color: yellow;
+.div3{
+  position: absolute;
+  width: 100%;
+  height: 33%;
+  top:66%;
+  border-radius: 10px;
+}
+
+
+
+
+.divSkeelz{
+  position: absolute;
+  bottom: 0%;
+width: 100%;
+  height:50%;
+  border-radius: 10px;
+
+}
+.diventourtext{
+  position: absolute;
+  height: 10%;
+  top:40%;
+  width: 100%;
+}
+.divtext{
+  position: absolute;
+  top:0;
+  width: 100%;
 }
