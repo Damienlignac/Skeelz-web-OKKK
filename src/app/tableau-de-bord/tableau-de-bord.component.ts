@@ -17,10 +17,15 @@ export class TableauDeBordComponent implements OnInit {
 
   cours: any;
 
-  idUtilisateur: number;
-  currentPersonne: Personne;
-  coursss: any;
-  module0: any;
+  private idUtilisateur: number;
+  private currentPersonne: Personne;
+  private coursSuivie: Array<Cours>=new Array<Cours>();
+
+  private coursTermine: Array<Cours>=new Array<Cours>();
+
+  private coursAdministre:Array<Cours>=new Array<Cours>();
+
+  private module0: any;
 
 
 
@@ -29,13 +34,11 @@ export class TableauDeBordComponent implements OnInit {
     this.idUtilisateur = +localStorage.getItem('token');
     this.tableauDeBordHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
-      this.route.params.subscribe(params => {
-        this.currentPersonne.id = params['idPersonne'];
-      });
-      this.listCoursSuivie();
-      this.listCoursTermine();
-      this.listCoursCree();
-      // this.listSkeelz();
+
+      this.listCoursSuivie()
+      this.listCoursTermine()
+     this.listCoursCree()
+
     });
 
   }
@@ -44,20 +47,21 @@ export class TableauDeBordComponent implements OnInit {
   }
 
   listCoursSuivie() {
-  this.coursss =this.tableauDeBordHttpService.loadCoursSuivie(this.currentPersonne.id);
-    return this.coursss
+
+    return this.tableauDeBordHttpService.loadCoursSuivie(this.currentPersonne.id).subscribe(resp => this.coursSuivie = resp);
 
   }
 
+
   listCoursTermine() {
-    this.coursss=  this.tableauDeBordHttpService.loadCoursTermine(this.currentPersonne.id);
-    return this.coursss
+
+      return this.tableauDeBordHttpService.loadCoursTermine(this.currentPersonne.id).subscribe(resp => this.coursTermine = resp);;
 
   }
 
   listCoursCree() {
-    this.coursss=this.tableauDeBordHttpService.loadCoursCree(this.currentPersonne.id);
-    return this.coursss;
+
+      return this.tableauDeBordHttpService.loadCoursCree(this.currentPersonne.id).subscribe(resp => this.coursAdministre = resp);;
 
   }
 
@@ -68,21 +72,16 @@ export class TableauDeBordComponent implements OnInit {
 
 
   introCours(idCours: number) {
-
-
     this.tableauDeBordHttpService.findIntroCours(idCours, 0).subscribe(resp => {
       this.module0 = resp;
-      this.router.navigate(['chapitre/' + [idCours] + '/' + this.module0.id + '/0']);
+      this.router.navigate(['/chapitre/' + [idCours] + '/' + this.module0.id + '/0']);
     });
   }
-
   editionCours(idCours: number) {
-
-
-    // this.tableauDeBordHttpService.findIntroCours(idCours).subscribe(resp => {
-    //   this.cours = resp;
-      this.router.navigate(['editionCours/' + [idCours] ]);
-
+    this.tableauDeBordHttpService.findIntroCours(idCours).subscribe(resp => {
+      this.cours = resp;
+      this.router.navigate(['/editionCours/' + [idCours]]);
+    });
   }
 
 

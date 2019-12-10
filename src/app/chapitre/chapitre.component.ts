@@ -31,6 +31,7 @@ export class ChapitreComponent implements OnInit {
   dernierChapitre: boolean;
   premierChapitre: boolean;
   mesModules: Array<Module>;
+  currentCoursPersonne: Array<CoursPersonne>;
   currentModule: Module;
   previousModule: Module;
   dernierModule: boolean;
@@ -42,6 +43,7 @@ export class ChapitreComponent implements OnInit {
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService,
               private utilisateurHttpService: UtilisateurHttpService, private listcoursHttpService: ListcoursHttpService, private http: HttpClient,
               private appConfigService: AppConfigService) {
+    console.log("J'entre dans le constructeur de chapitre");
     this.route.params.subscribe(params => {
       this.idCours = params['idCours'];
       this.idModule = params['idModule'];
@@ -102,17 +104,22 @@ export class ChapitreComponent implements OnInit {
   }
 
   ngOnInit() {
+    console.log("J'entre dans le Init de chapitre");
     this.idUtilisateur = +localStorage.getItem('token');
     this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
       console.log(this.currentPersonne);
+      this.chapitreHttpService.findCoursPersonneByIdPersonne(this.currentPersonne.id).subscribe(resp => {
+        this.currentCoursPersonne = resp;
+      })
     });
   }
 
   Commencer() {
+    console.log("Version de la personne avant de lui associer le cours" );
     console.log(this.currentPersonne);
     console.log(this.currentPersonne.coursPersonne.length);
-    if(this.currentPersonne.coursPersonne == undefined || !this.currentPersonne.coursPersonne.find(item => item.cours.id == this.idCours)){
+    if(this.currentPersonne.coursPersonne == undefined || !this.currentCoursPersonne.find(item => item.cours.id == this.idCours)){
       console.log("Le lien entre ce cours et cette personne n'existe pas")
       let coursPersonne = new CoursPersonne;
       coursPersonne.etatCours = EtatCours.SUIVI;
@@ -120,7 +127,14 @@ export class ChapitreComponent implements OnInit {
       coursPersonne.cours = this.currentCours;
 
       console.log(coursPersonne);
-      this.http.post(this.appConfigService.backEnd + 'CoursPersonne', coursPersonne).subscribe(resp => console.log(resp));
+      this.http.post(this.appConfigService.backEnd + 'CoursPersonne', coursPersonne).subscribe(resp => {
+        console.log(resp);
+        this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
+          this.currentPersonne = resp;
+          console.log("Version Update de la Personne avec le cours associé : ");
+          console.log(this.currentPersonne);
+        });
+      });
     }
   }
 

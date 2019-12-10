@@ -6,15 +6,15 @@ export class CompetenceSkeelz {
   id: number;
   version: number;
   skeelz: Skeelz;
-  competence: Competence;
+  competences: Array<Competence> = new Array<Competence>();
   bilanCompetence: BilanCompetence;
 
 
-  constructor(id?: number, version?: number, skeelz?: Skeelz, competence?: Competence, bilanCompetence?: BilanCompetence) {
+  constructor(id?: number, version?: number, skeelz?: Skeelz, competences?: Array<Competence>, bilanCompetence?: BilanCompetence) {
     this.id = id;
     this.version = version;
     this.skeelz = skeelz;
-    this.competence = competence;
+    this.competences = competences;
     this.bilanCompetence = bilanCompetence;
   }
 }

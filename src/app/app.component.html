@@ -8,7 +8,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/dashboard/:idPersonne']">Tableau de Bord</a>
+          <a class="nav-link" [routerLink]="['/dashboard']">Tableau de Bord</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" [routerLink]="['/login']">Login</a>
@@ -17,10 +17,10 @@
     </div>
 
 </nav>
-<div class="container-fluid position-fixed " style="height: 7px; width: 100%; background-image: linear-gradient(#747474,rgba(0,0,0,0))">
+<div class="container-fluid position-fixed " style="height: 7px; width: 100%; background-image: linear-gradient(#747474,rgba(0,0,0,0)); border-style: solid;">
 </div>
 <!-- Page Content -->
-<div class="container-fluid" style="margin-top:60px; height: 900px">
+<div class="container-fluid" style="margin-top:60px; height: 900px border-style: solid;">
   <div class="my-3 p-3 rounded box-shadow">
     <div class="row" style="">
       <div class="col-sm-2 justify-content-center container-fluid margegauche">
@@ -31,7 +31,7 @@
       <div class="col-sm-8 justify-content-center align-content-center container-fluid" style="min-height: 900px; height: min-content">
         <a>OUTLET PRINCIPAL</a><router-outlet name="primary"></router-outlet><a>OUTLET PRINCIPAL</a>
       </div>
-      <div class="col-sm-2 justify-content-center align-content-center container-fluid" style="min-height: 900px; height: fit-content">
+      <div class="col-sm-2 justify-content-center align-content-center container-fluid " style="min-height: 900px; height: fit-content; border-style: solid;">
         <p>section droite</p>
         <a>OUTLET SIDE</a><router-outlet name="side"></router-outlet><a>OUTLET SIDE</a>
       </div>

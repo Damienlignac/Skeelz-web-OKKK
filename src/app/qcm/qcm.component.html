@@ -9,7 +9,7 @@
 </div>
 
 <div *ngIf="tentative">Vous avez eu {{nbReponsesJustes}} réponse(s) juste(s) et {{nbReponsesFausses}} réponse(s) fausse(s) sur {{totalReponsesJustes}} bonnes réponses</div>
-<div *ngIf="(nbReponsesJustes == totalReponsesJustes) && nbReponsesFausses == 0">Bravo vous avez réussi le QCM</div>
+<div *ngIf="reussi">Bravo vous avez réussi le QCM</div>
 <button [routerLink]="['/chapitre/', idCours, idModule, previousChapitre.agencement]">Précédent</button>
-<button (click)="valider()">Valider</button>
-<button *ngIf="(nbReponsesJustes == totalReponsesJustes) && nbReponsesFausses == 0" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]">Passer au module suivant</button>
+<button *ngIf="!reussi" (click)="valider()">Valider</button>
+<button *ngIf="reussi && !dernierModule" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]">Passer au module suivant</button>

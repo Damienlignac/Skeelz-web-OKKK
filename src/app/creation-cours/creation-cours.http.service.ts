@@ -16,5 +16,8 @@ export class CreationCoursHttpService {
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
   }
+  findByUtilisateur(id:number): Observable<any>{
 
+    return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
+  }
 }

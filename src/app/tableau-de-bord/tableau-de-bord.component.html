@@ -1,104 +1,60 @@
-<p>tableau-de-bord works!</p>
-
+<br>
+<br>
+<br>
 <table class="table table-striped">
   <thead>
   <tr>
     <th>Cours suivie</th>
+    <th> </th>
+    <th> </th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let cour  of  listCoursSuivie()" (click)="introCours(cour.id)">
+  <tr *ngFor="let cour  of  this.coursSuivie" (click)="introCours(cour.id)"  class="ligne">
     <td>{{cour.intitule}}</td>
-    <td><i class="fa fa-clock-o" aria-hidden="true">{{cour.duree}}</i></td>
-    <td><i class="fa fa-line-chart" aria-hidden="true">{{cour.difficulte}}</i></td>
+    <td><i class="fa fa-clock-o" aria-hidden="true">     {{cour.duree}}  Heures</i></td>
+    <td><i class="fa fa-line-chart" aria-hidden="true">     {{cour.difficulte}}</i></td>
   </tr>
   </tbody>
 </table>
 <br>
 <br>
 <br>
-<table class="table table-striped">
+<table class="table ">
   <thead>
   <tr>
     <th>Cours Termine</th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let cour  of  listCoursTermine()" (click)="introCours(cour.id)">
+  <tr *ngFor="let cour  of  this.coursTermine" (click)="introCours(cour.id)" class="ligne">
     <td>{{cour.intitule}}</td>
-    <td><i class="fa fa-clock-o" aria-hidden="true">{{cour.duree}}</i></td>
-    <td><i class="fa fa-line-chart" aria-hidden="true">{{cour.difficulte}} </i></td>
+    <td><i class="fa fa-clock-o" aria-hidden="true">     {{cour.duree}}  Heures</i></td>
+    <td><i class="fa fa-line-chart" aria-hidden="true">     {{cour.difficulte}} </i></td>
   </tr>
   </tbody>
 </table>
 <br>
 <br>
 <br>
-<table class="table table-striped">
+<table class="table table-striped ">
   <thead>
   <tr>
     <th>Cours Cree</th>
+    <th> </th>
+    <th> </th>
   </tr>
   </thead>
   <tbody>
-  <tr *ngFor="let cour  of  listCoursCree()" (click)="editionCours(cour.id)">
+  <tr *ngFor="let cour  of  this.coursAdministre" (click)="editionCours(cour.id)"  class="ligne">
     <td>{{cour.intitule}}</td>
-    <td><i class="fa fa-clock-o" aria-hidden="true">{{cour.duree}}</i></td>
-    <td><i class="fa fa-line-chart" aria-hidden="true">{{cour.difficulte}} </i></td>
+    <td><i class="fa fa-clock-o" aria-hidden="true">     {{cour.duree}}  Heures</i></td>
+    <td><i class="fa fa-line-chart" aria-hidden="true">     {{cour.difficulte}} </i></td>
   </tr>
   </tbody>
 </table>
 
+<button [routerLink]="['/dashboard/skeelz']">dashbord/skeelz</button>
 
 
-<!--  <div  *ngFor="let cour  of  listCoursSuivie() "      (click)="introCours(cour.id)"        class=" back1 box">-->
-<!--    <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
-<!--      <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
-<!--    </div>-->
-<!--    <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
-<!--      <img class="Img center" src="../../assets/img/no_img.png">-->
-<!--    </div>-->
-<!--    <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
-<!--      <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
-<!--    </div>-->
-<!--    <div style="visibility: hidden"></div>-->
-<!--    <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
-<!--    <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
-<!--    <div class="back4 ">{{cour.description}}   </div>-->
-<!--    <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
-<!--  </div>-->
-
-<!--<div  *ngFor="let cour  of  listCoursCree() "      (click)="introCours(cour.id)"        class=" back1 box">-->
-<!--  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
-<!--    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
-<!--  </div>-->
-<!--  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
-<!--    <img class="Img center" src="../../assets/img/no_img.png">-->
-<!--  </div>-->
-<!--  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
-<!--    <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
-<!--  </div>-->
-<!--  <div style="visibility: hidden"></div>-->
-<!--  <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
-<!--  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
-<!--  <div class="back4 ">{{cour.description}}   </div>-->
-<!--  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
-<!--</div>-->
-
-<!--<div  *ngFor="let cour  of  listCoursTermine()"      (click)="introCours(cour.id)"        class=" back1 box">-->
-<!--  <div class="back2 img-container" *ngIf="cour.cheminImageCours != null && cour.cheminImageCours != 'Le chemin'">-->
-<!--    <img class="Img center" src="../../assets/img/{{cour.cheminImageCours}}">-->
-<!--  </div>-->
-<!--  <div class="back2 img-container " *ngIf="cour.cheminImageCours == null">-->
-<!--    <img class="Img center" src="../../assets/img/no_img.png">-->
-<!--  </div>-->
-<!--  <div class="back2" *ngIf="cour.cheminImageCours == 'Le chemin'">-->
-<!--    <img class="Img" src="../../assets/img/imgtrollArnaud.png">-->
-<!--  </div>-->
-<!--  <div style="visibility: hidden"></div>-->
-<!--  <div class="back3 "><h6>{{cour.intitule}} </h6></div>-->
-<!--  <div class="back6"><i class="fa fa-clock-o" aria-hidden="true"></i> Durée : {{cour.duree}} Heures</div>-->
-<!--  <div class="back4 ">{{cour.description}}   </div>-->
-<!--  <div class="back7 "><i class="fa fa-line-chart" aria-hidden="true"></i> Niveau : {{cour.difficulte}} </div>-->
-<!--</div>-->
 
