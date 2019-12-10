@@ -20,10 +20,13 @@
     <td>{{cour.duree}}h</td>
     <td style="width: fit-content">
     <div class="btn-group-vertical button-group-sm">
-      <button type="button" class="btn btn-success">Valider</button>
+      <button type="button" class="btn btn-success" (click)="valider(cour.id)">Valider</button>
       <button type="button" class="btn btn-danger">Décliner</button>
     </div>
     </td>
+  </tr>
+  <tr *ngIf="aucun == true">
+    <td colspan="5"><h3 class="text-success">Vous n'avez aucun cours en attente de validation pour le moment.</h3></td>
   </tr>
   </tbody>
 </table>

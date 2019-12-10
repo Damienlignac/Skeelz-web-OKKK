@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Personne} from '../model/personne';
 import {AdminUserListHttpService} from './admin-user-list-http.service';
-import {Competence} from '../model/competence';
+import {Skeelz} from '../model/skeelz';
 
 @Component({
   selector: 'app-personne',
@@ -12,11 +12,11 @@ export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
   personnes: Array<Personne>;
-  competences: any;
-  valeur: any;
+  skeelzarray: Array<Skeelz>;
+  idSkeelz: number;
+  personneSkeelz: Array<Personne> = new Array<Personne>();
 
   constructor(private adminUserListService: AdminUserListHttpService) {
-
   }
 
 
@@ -29,28 +29,20 @@ export class AdminUserListComponent implements OnInit {
     return this.personnes;
   }
 
+  chargeskeelzs(){
+    this.skeelzarray = this.adminUserListService.findAllSkeelz();
+    return this.skeelzarray;
+  }
 
-  chargeCompetences(): any {
-    this.competences = this.adminUserListService.findAllCompetences();
-    return this.competences;
+  filtreskeelz(){
+ this.adminUserListService.findBySkeelz(this.idSkeelz).subscribe(resp=>{
+   this.personneSkeelz = resp;
+   console.log(this.personneSkeelz);
+   return this.personneSkeelz;
+ });
   }
 
 
-  add() {
-    this.personne = new Personne();
-  }
 
-  edit(id: number) {
-    this.adminUserListService.findById(id).subscribe(resp => this.personne = resp);
-
-  }
-
-  delete(id: number) {
-    this.adminUserListService.deleteBydId(id);
-  }
-
-  cancel() {
-    this.personne = null;
-  }
 
 }
