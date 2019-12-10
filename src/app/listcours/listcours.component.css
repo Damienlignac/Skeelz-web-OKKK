@@ -93,7 +93,7 @@ top : 8%;
   margin: 10px;
 }
 .box:hover {
-  box-shadow: 0 0 11px rgba(33,33,33,.2);
+  box-shadow: 0 0 11px rgba(63, 240, 147, 0.65);
 }
 div{
   display: block;
@@ -124,3 +124,9 @@ position: absolute;              /* 2 */
   border-radius: 10px;
 }
 
+.pointer{
+  cursor: pointer;
+}
+.ombre{
+  box-shadow: 2px 2px 2px #505050;
+}
