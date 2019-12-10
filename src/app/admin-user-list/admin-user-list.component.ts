@@ -12,11 +12,11 @@ export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
   personnes: Array<Personne>;
-  skeelzs: Array<Skeelz>;
-  valeur: any;
+  skeelzarray: Array<Skeelz>;
+  idSkeelz: number;
+  personneSkeelz: Array<Personne> = new Array<Personne>();
 
   constructor(private adminUserListService: AdminUserListHttpService) {
-
   }
 
 
@@ -29,10 +29,20 @@ export class AdminUserListComponent implements OnInit {
     return this.personnes;
   }
 
-
-  chargeskeelz(): any {
-    this.skeelzs = this.adminUserListService.findAllSkeelzs();
-    return this.skeelzs;
+  chargeskeelzs(){
+    this.skeelzarray = this.adminUserListService.findAllSkeelz();
+    return this.skeelzarray;
   }
+
+  filtreskeelz(){
+ this.adminUserListService.findBySkeelz(this.idSkeelz).subscribe(resp=>{
+   this.personneSkeelz = resp;
+   console.log(this.personneSkeelz);
+   return this.personneSkeelz;
+ });
+  }
+
+
+
 
 }

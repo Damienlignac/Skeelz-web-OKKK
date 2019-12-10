@@ -9,11 +9,12 @@ import {Skeelz} from '../model/skeelz';
 })
 export class AdminUserListHttpService {
   private personnes: any;
-  private skeelzs: Array<Skeelz>;
+  private skeelzs: any;
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
     this.load();
+    this.load2();
   }
 
   load() {
@@ -31,10 +32,18 @@ export class AdminUserListHttpService {
     return this.http.get(this.appConfigService.backEnd + 'personne/' + id);
   }
 
-  findAllSkeelzs(): any {
-    return this.skeelzs;
-  }
+load2(){
+  this.http.get(this.appConfigService.backEnd + 'skeelz').subscribe(resp => {
+    this.skeelzs = resp;
+  });
+}
 
+findAllSkeelz(){
+    return this.skeelzs;
+}
+findBySkeelz(id: number): Observable <any> {
+  return this.http.get(this.appConfigService.backEnd + 'skeelz/' + id + '/personnes');
+}
 
 }
 
