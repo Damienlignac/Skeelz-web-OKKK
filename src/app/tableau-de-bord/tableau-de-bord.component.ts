@@ -112,34 +112,23 @@ export class TableauDeBordComponent implements OnInit {
 
 
   listSkeelz() {
-    console.log("listSkeelz")
+    console.log("listSkeelzdzadzeafdze")
     this.sectionTableauDeBordHttpService.loadPersonneSkeelz(this.currentPersonne.id).subscribe(resp => {
       this.skeelzs = resp
-      this.sectionTableauDeBordHttpService.loadPersonneCompetence(this.currentPersonne.id).subscribe(resp => {
-          this.comps = resp
-
-
           console.log("list3skeelz")
           console.log(this.skeelzs);
-          console.log(this.comps);
+
           for (let ske of this.skeelzs) { // je recupere mes skeelz
             console.log('je suis ske tour de boucle')
             console.log(ske)
-            for (let comp of this.comps) {
 
-              console.log(comp.competenceSkeelz);
-              console.log("je suis comp")
-              console.log(comp);
-              for (let compske of (comp.competenceSkeelz)) { // je recupere les skeelz lié a la comp
-                console.log("je suis comp.competenceSkeelzs")
-                console.log(comp.competenceSkeelz);
-                console.log('je suis ske')
-                console.log(ske)
-                console.log('je suis compske')
-                console.log(compske)
-                console.log('je suis compske')
-                console.log(compske.skeelz)
-                if (ske.id == compske.skeelz.id) {
+            for (let compske of (ske.competenceSkeelzs)) { // je recupere mes competenceSkeelz
+              console.log('je suis compske ')
+              console.log(compske)
+
+                for(let comp of compske.competences){ // je recupere mes competences
+
+
                   console.log('je suis comp ponde')
                   console.log(comp.ponderation) //mettre valeur ponderation en number
 
@@ -170,34 +159,36 @@ export class TableauDeBordComponent implements OnInit {
                   }
                 }
               }
-            }
+
             this.tmp = 0;
-          }
-        }
-      );
-    });
+            }
 
-    this.sectionTableauDeBordHttpService.loadPersonneCompetence(this.currentPersonne.id).subscribe(resp => {
-      this.comps = resp
-      for (let comp of this.comps) {
-        // @ts-ignore
-        if (comp.ponderation == "CINQ") {
-          this.npteGlobal = this.npteGlobal + this.numberponde5;
-        }
-        // @ts-ignore
-        else if (comp.ponderation == "DIX") {
-          this.npteGlobal = this.npteGlobal + this.numberponde10;
-          // @ts-ignore
-        } else if (comp.ponderation == "QUINZE") {
-          this.npteGlobal = this.npteGlobal + this.numberponde15;
-          // @ts-ignore
-        } else if (comp.ponderation == "VINGT") {
-          this.npteGlobal = this.npteGlobal + this.numberponde20;
-        }
 
-      }
+        });
+    }
 
-    });
-
-  }
+//     this.sectionTableauDeBordHttpService.loadPersonneCompetence(this.currentPersonne.id).subscribe(resp => {
+//       this.comps = resp
+//       for (let comp of this.comps) {
+//         // @ts-ignore
+//         if (comp.ponderation == "CINQ") {
+//           this.npteGlobal = this.npteGlobal + this.numberponde5;
+//         }
+//         // @ts-ignore
+//         else if (comp.ponderation == "DIX") {
+//           this.npteGlobal = this.npteGlobal + this.numberponde10;
+//           // @ts-ignore
+//         } else if (comp.ponderation == "QUINZE") {
+//           this.npteGlobal = this.npteGlobal + this.numberponde15;
+//           // @ts-ignore
+//         } else if (comp.ponderation == "VINGT") {
+//           this.npteGlobal = this.npteGlobal + this.numberponde20;
+//         }
+//
+//       }
+//
+//     });
+//
+//   }
+// }
 }

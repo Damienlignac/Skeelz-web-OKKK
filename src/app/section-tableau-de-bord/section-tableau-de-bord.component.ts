@@ -72,6 +72,8 @@ export class SectionTableauDeBordComponent implements OnInit {
                   console.log(comp.competenceSkeelz);
                   console.log("je suis comp")
                   console.log(comp);
+
+
                   for(let compske of  (comp.competenceSkeelz)){ // je recupere les skeelz lié a la comp
                     console.log("je suis comp.competenceSkeelzs")
                     console.log(comp.competenceSkeelz);
