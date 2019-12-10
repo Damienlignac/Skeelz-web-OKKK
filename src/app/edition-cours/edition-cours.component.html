@@ -35,6 +35,7 @@
       </select>
       <textarea rows="1" [(ngModel)]="currentModule.intitule" type="text" class="form-control textarea" placeholder="Intitulé du module courant" style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
       <div  style="margin:10px; size: A3"(click)="nouveauModule()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
+      <div *ngIf="currentModule.agencement!=0 && currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteModule()"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
       <div *ngIf="currentModule.id && currentModule.agencement!=0" >
         <button type="button" class="btn btn-info"[routerLink]="['/editionQcm/'+ cours.id + '/' + currentModule.id]">QCM</button>
       </div>
@@ -48,7 +49,10 @@
         <option *ngFor="let chapitre of currentModule.chapitres" [value]="chapitre.id" [selected]="chapitre.id == currentChapitre.id">{{chapitre.agencement}}</option>
       </select>
       <textarea rows="1" [(ngModel)]="currentChapitre.titre" type="text" class="form-control textarea" placeholder="Intitulé du chapitre courant" style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
-      <div style="margin:10px; size: A3" (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size:B5"></span></div>
+      <div *ngIf="currentModule.agencement!=0" style="margin:10px; size: A3"(click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
+      <div *ngIf="currentModule.agencement==0 && currentModule.chapitres.length<1" style="margin:10px; size: A3"(click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
+
+      <div  *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteChapitre()"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
     </div>
 
       <div *ngIf="currentChapitre.titre!=null" style="border-bottom:1px solid black"></div>
@@ -57,8 +61,13 @@
       <div *ngIf="currentChapitre.titre!=null">
     <div class="form-group" *ngFor="let element of elementDeCours ">
       <div *ngIf="element.type  === 'Paragraphe'">
+        <div class="form-inline" style="width: 100%; margin:10px">
+          <div class="form-group" style="margin: 0px; width:90%">
         <textarea [(ngModel)]="element.titre" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
-        <textarea [(ngModel)]="element.texte" class="form-control textarea" placeholder="Entrer votre texte" style="width: 100%"></textarea>
+          </div>
+          <div  *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteElement(element)"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+        </div>
+          <textarea [(ngModel)]="element.texte" class="form-control textarea" placeholder="Entrer votre texte" style="width: 100%"></textarea>
         <br>
       </div>
       <div *ngIf="element.type  === 'Image'">
