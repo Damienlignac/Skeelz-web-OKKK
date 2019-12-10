@@ -83,12 +83,16 @@ export class SectionTableauDeBordComponent implements OnInit {
                     if(ske.id == compske.skeelz.id){
                       console.log('je suis comp ponde')
                       console.log( comp.ponderation) //mettre valeur ponderation en number
+                      // @ts-ignore
                       if(comp.ponderation == "CINQ"){
                         this.tmp=this.tmp + this.numberponde5;
+                        // @ts-ignore
                       } else if(comp.ponderation == "DIX"){
                         this.tmp=this.tmp + this.numberponde10;
+                        // @ts-ignore
                       }else if(comp.ponderation == "QUINZE"){
                         this.tmp=this.tmp + this.numberponde15;
+                        // @ts-ignore
                       }else if(comp.ponderation == "VINGT"){
                         this.tmp=this.tmp + this.numberponde20;
                       }

@@ -1,1 +1,34 @@
 <p>edition-utilisateur works!</p>
+
+<h2> Profil de {{currentPersonne.prenom}} {{currentPersonne.nom}}</h2>
+
+<div> Voici votre mail : {{currentPersonne.utilisateur.mail}}</div>
+
+<div>Modifier votre mail :</div>
+
+<input type="text" [(ngModel)]="newMail" placeholder="Entrez votre nouvelle adresse mail">
+<button (click)="changeMail(newMail)">Valider</button>
+
+<div> Voici votre identifiant : {{currentPersonne.utilisateur.identifiant}}</div>
+
+<div>Modifier votre identifiant :</div>
+
+<input type="text" [(ngModel)]="newIdentifiant" placeholder="Entrez votre nouvel identifiant">
+<button (click)="changeIdentifiant(newIdentifiant)">Valider</button>
+
+<div> Voici votre numéro de téléphone : {{currentPersonne.telephone}}</div>
+
+<div>Modifier votre numéro de téléphone :</div>
+
+<input type="text" [(ngModel)]="newTelephone" placeholder="Entrez votre numéro de téléphone">
+<button (click)="changeTelephone(newTelephone)">Valider</button>
+
+<div>Modifier votre mot de passe :</div>
+
+<input type="password" [(ngModel)]="oldPassword" placeholder="Entrez votre ancien mot de passe"><br>
+<div *ngIf="wrongPassword">Vous avez saisi le mauvais mot de passe</div>
+<input type="password" [(ngModel)]="newPassword" placeholder="Entrez votre nouveau mot de passe"><br>
+<input type="password" [(ngModel)]="confirmedNewPassword" placeholder="Confirmez votre nouveau mot de passe"><br>
+<div *ngIf="unmatchPassword">les deux mots de passe saisis ne sont pas identiques</div>
+<button (click)="changePassword()">Valider</button>
+<div *ngIf="succeedNewPassword">Vous avez bien changé votre mot de passe</div>

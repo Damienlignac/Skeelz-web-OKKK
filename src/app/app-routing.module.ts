@@ -16,6 +16,7 @@ import {AdminCoursAValiderListComponent} from './admin-cours-avalider-list/admin
 import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 import {SectionTableauDeBordComponent} from './section-tableau-de-bord/section-tableau-de-bord.component';
+import {EditionUtilisateurComponent} from './edition-utilisateur/edition-utilisateur.component';
 
 
 
@@ -37,6 +38,7 @@ const routes: Routes = [
     ]},
   {path: 'dashboard', component: TableauDeBordComponent},
   {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent},
+  {path: 'edition-utilisateur', component: EditionUtilisateurComponent},
 ];
 
 @NgModule({
