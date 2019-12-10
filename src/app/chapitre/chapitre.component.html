@@ -23,3 +23,14 @@
 <button *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]">Chapitre précédent</button>
 <button *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" >Prochain chapitre</button>
 <button *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]">Accéder au QCM</button>
+
+
+<!--//Sommaire-->
+<div  class="positionFixeEtTaille" style="font-size: 20px;padding: 6px"><b> Sommaire</b>
+  <hr>
+  <div *ngFor="let module of moduleAndChap " style=" font-size: 14px;margin-bottom: 7px;margin-top: 7px"><b>{{module.intitule}} :</b>
+    <div class = "indentation" style="margin-top: 3px; margin-bottom: 3px " *ngFor="let chapitre of module.chapitres" [routerLink]="['/chapitre/', idCours, module.id, chapitre.agencement]"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+      {{chapitre.titre}}
+    </div>
+  </div>
+</div>

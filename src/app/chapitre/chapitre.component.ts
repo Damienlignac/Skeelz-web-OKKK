@@ -39,6 +39,8 @@ export class ChapitreComponent implements OnInit {
   secondModule: Module;
   agencementMaxDernierChapitre: number;
 
+  moduleAndChap: Array<Module>;
+
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService,
               private utilisateurHttpService: UtilisateurHttpService, private listcoursHttpService: ListcoursHttpService, private http: HttpClient,
@@ -101,6 +103,12 @@ export class ChapitreComponent implements OnInit {
       );
 
     });
+
+// Sommaire
+    this.route.params.subscribe(params => {this.idCours = params['idCours']; })
+    this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
+      this.moduleAndChap = resp.sort((a, b) => b.agencement ? 0 :(a.agencement > b.agencement) || -1)
+    });
   }
 
   ngOnInit() {
@@ -137,5 +145,23 @@ export class ChapitreComponent implements OnInit {
       });
     }
   }
+  // Sommaire
+
+
+  compare(a, b) {
+    const bandA = a.agencement;
+    const bandB = b.agencement;
+
+    let comparison = 0;
+    if (bandA > bandB) {
+      comparison = 1;
+    }
+    else if (bandA < bandB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+
 
 }
