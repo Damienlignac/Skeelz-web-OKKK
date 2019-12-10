@@ -21,7 +21,10 @@ export class LoginComponent implements OnInit {
 
   constructor(private route: ActivatedRoute, private loginHttpService: LoginHttpService, private formBuilder: FormBuilder, private router: Router, public authService: AuthService) {
 
-    this.loginHttpService.findAll().subscribe(resp => this.listUtilisateur = resp);
+    this.loginHttpService.findAll().subscribe(resp => {
+      this.listUtilisateur = resp;
+      console.log(this.listUtilisateur);
+    });
   }
 
   ngOnInit() {

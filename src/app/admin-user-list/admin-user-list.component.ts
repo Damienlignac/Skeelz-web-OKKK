@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {Personne} from '../model/personne';
 import {AdminUserListHttpService} from './admin-user-list-http.service';
-import {Competence} from '../model/competence';
+import {Skeelz} from '../model/skeelz';
 
 @Component({
   selector: 'app-personne',
@@ -12,7 +12,7 @@ export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
   personnes: Array<Personne>;
-  competences: any;
+  skeelzs: Array<Skeelz>;
   valeur: any;
 
   constructor(private adminUserListService: AdminUserListHttpService) {
@@ -30,27 +30,9 @@ export class AdminUserListComponent implements OnInit {
   }
 
 
-  chargeCompetences(): any {
-    this.competences = this.adminUserListService.findAllCompetences();
-    return this.competences;
-  }
-
-
-  add() {
-    this.personne = new Personne();
-  }
-
-  edit(id: number) {
-    this.adminUserListService.findById(id).subscribe(resp => this.personne = resp);
-
-  }
-
-  delete(id: number) {
-    this.adminUserListService.deleteBydId(id);
-  }
-
-  cancel() {
-    this.personne = null;
+  chargeskeelz(): any {
+    this.skeelzs = this.adminUserListService.findAllSkeelzs();
+    return this.skeelzs;
   }
 
 }
