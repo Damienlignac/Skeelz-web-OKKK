@@ -22,6 +22,12 @@ export class SectionTableauDeBordComponent implements OnInit {
   tmp:number=0;
   loop:boolean=true;
 
+  numberponde5:number=5;
+  numberponde10:number=10;
+  numberponde15:number=15;
+  numberponde20:number=20;
+
+
   skeelznumber1: Skeelz;
   skeelznumber2: Skeelz;
   skeelznumber3: Skeelz;
@@ -58,7 +64,8 @@ export class SectionTableauDeBordComponent implements OnInit {
               console.log(this.skeelzs);
               console.log(this.comps);
               for(let ske of this.skeelzs){ // je recupere mes skeelz
-
+                console.log('je suis ske tour de boucle')
+                console.log(ske)
                 for (let comp of this.comps) {
 
                   console.log(comp.competenceSkeelz);
@@ -74,16 +81,27 @@ export class SectionTableauDeBordComponent implements OnInit {
                     console.log('je suis compske')
                     console.log(compske.skeelz)
                     if(ske.id == compske.skeelz.id){
-                      this.tmp = this.tmp + comp.ponderation; // j'affecte ma variable temp au point de ma comptence je dois remetrre cette vraiable a 0 quand je chope un autre skeelz
+                      console.log('je suis comp ponde')
+                      console.log( comp.ponderation) //mettre valeur ponderation en number
+                      if(comp.ponderation == "CINQ"){
+                        this.tmp=this.tmp + this.numberponde5;
+                      } else if(comp.ponderation == "DIX"){
+                        this.tmp=this.tmp + this.numberponde10;
+                      }else if(comp.ponderation == "QUINZE"){
+                        this.tmp=this.tmp + this.numberponde15;
+                      }else if(comp.ponderation == "VINGT"){
+                        this.tmp=this.tmp + this.numberponde20;
+                      }
+
                       if(this.number1 < this.tmp) {
                         this.number1 = this.tmp;
                         this.skeelznumber1 = ske;
                       }
-                      else if (this.number2 < this.tmp) {
+                      else if (this.number2 <= this.tmp) {
                         this.number2 = this.tmp;
                         this.skeelznumber2 = ske;
                       }
-                      else if (this.number3 < this.tmp) {
+                      else if (this.number3 <= this.tmp) {
                         this.number3 = this.tmp;
                         this.skeelznumber3 = ske;
                       }
