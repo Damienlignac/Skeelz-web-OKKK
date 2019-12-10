@@ -54,6 +54,9 @@ private idUtilisateur:number;
       this.skeelzs = resp);
   }
 
+  findCompetenceSkeelzByIdPersonne(idPersonne: number){
+    return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
+  }
 
   // findAllCoursSuivie(): any {
   //   return this.coursSuivies;

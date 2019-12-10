@@ -33,7 +33,7 @@ export class EditionCoursComponent implements OnInit {
       this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
     });
   }
-  
+
 
   moduleCourant($event, moduleId) {
     this.currentModule = this.moduleAndChap.filter(module => module.id == moduleId)[0];
@@ -81,6 +81,7 @@ export class EditionCoursComponent implements OnInit {
       }
       this.http.delete(this.appConfigService.backEnd + 'chapitre/' + this.currentChapitre.id).subscribe((OK) => {
         this.http.get(this.appConfigService.backEnd + 'module/' + this.currentModule.id + '/chapitres').subscribe(resp => {
+          // @ts-ignore
           let chapitres: Array<Chapitre> = resp;
           for (let chap of chapitres) {
             if (chap.agencement < this.currentChapitre.agencement) {}
@@ -123,6 +124,7 @@ export class EditionCoursComponent implements OnInit {
     if (element.id) {
       this.http.delete(this.appConfigService.backEnd + 'elementDeCours/' + element.id).subscribe((OK) => {
         this.http.get(this.appConfigService.backEnd + 'chapitre/' + this.currentChapitre.id + '/elementDeCourss').subscribe(resp => {
+          // @ts-ignore
           let elements: Array<ElementDeCours> = resp;
           for (let elem of elements) {
             if (elem.agencement < element.agencement) {}
@@ -183,6 +185,7 @@ export class EditionCoursComponent implements OnInit {
 
         this.http.delete(this.appConfigService.backEnd + 'module/' + this.currentModule.id).subscribe((OK) => {
           this.http.get(this.appConfigService.backEnd + 'cours/' + this.cours.id + '/modules').subscribe(resp => {
+            // @ts-ignore
             let modules: Array<Module> = resp;
             for (let modu of modules) {
               if (modu.agencement < this.currentModule.agencement) {
