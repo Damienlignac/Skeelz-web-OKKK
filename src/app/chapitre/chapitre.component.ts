@@ -31,12 +31,15 @@ export class ChapitreComponent implements OnInit {
   dernierChapitre: boolean;
   premierChapitre: boolean;
   mesModules: Array<Module>;
+  currentCoursPersonne: Array<CoursPersonne>;
   currentModule: Module;
   previousModule: Module;
   dernierModule: boolean;
   premierModule: boolean;
   secondModule: Module;
   agencementMaxDernierChapitre: number;
+
+  moduleAndChap: Array<Module>;
 
 
   constructor(private route: ActivatedRoute, private chapitreHttpService: ChapitreHttpService, private sommaireHttpService: SommaireHttpService,
@@ -100,6 +103,12 @@ export class ChapitreComponent implements OnInit {
       );
 
     });
+
+// Sommaire
+    this.route.params.subscribe(params => {this.idCours = params['idCours']; })
+    this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
+      this.moduleAndChap = resp.sort((a, b) => b.agencement ? 0 :(a.agencement > b.agencement) || -1)
+    });
   }
 
   ngOnInit() {
@@ -108,6 +117,9 @@ export class ChapitreComponent implements OnInit {
     this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
       console.log(this.currentPersonne);
+      this.chapitreHttpService.findCoursPersonneByIdPersonne(this.currentPersonne.id).subscribe(resp => {
+        this.currentCoursPersonne = resp;
+      })
     });
   }
 
@@ -115,7 +127,7 @@ export class ChapitreComponent implements OnInit {
     console.log("Version de la personne avant de lui associer le cours" );
     console.log(this.currentPersonne);
     console.log(this.currentPersonne.coursPersonne.length);
-    if(this.currentPersonne.coursPersonne == undefined || !this.currentPersonne.coursPersonne.find(item => item.cours.id == this.idCours)){
+    if(this.currentPersonne.coursPersonne == undefined || !this.currentCoursPersonne.find(item => item.cours.id == this.idCours)){
       console.log("Le lien entre ce cours et cette personne n'existe pas")
       let coursPersonne = new CoursPersonne;
       coursPersonne.etatCours = EtatCours.SUIVI;
@@ -133,5 +145,23 @@ export class ChapitreComponent implements OnInit {
       });
     }
   }
+  // Sommaire
+
+
+  compare(a, b) {
+    const bandA = a.agencement;
+    const bandB = b.agencement;
+
+    let comparison = 0;
+    if (bandA > bandB) {
+      comparison = 1;
+    }
+    else if (bandA < bandB) {
+      comparison = -1;
+    }
+    return comparison;
+  }
+
+
 
 }

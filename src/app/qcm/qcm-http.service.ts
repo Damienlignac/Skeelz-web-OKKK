@@ -21,4 +21,8 @@ export class QcmHttpService {
   findByIdPersonne(idPersonne: number): Observable<any>{
     return this.http.get(this.appConfigService.backEnd + 'qcmPersonne/by-personne/' + idPersonne);
   }
+
+  findByIdPersonneAndIdCours(idPersonne: number, idCours: number): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'qcmPersonne/personne/cours/' + idPersonne +":" + idCours);
+  }
 }

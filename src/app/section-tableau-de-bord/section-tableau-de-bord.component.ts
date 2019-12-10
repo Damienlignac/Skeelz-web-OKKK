@@ -20,7 +20,8 @@ export class SectionTableauDeBordComponent implements OnInit {
   number2:number=0;
   number3:number=0;
   tmp:number=0;
-  loop:boolean=true;
+
+  npteGlobal:number=0;
 
   numberponde5:number=5;
   numberponde10:number=10;
@@ -83,12 +84,18 @@ export class SectionTableauDeBordComponent implements OnInit {
                     if(ske.id == compske.skeelz.id){
                       console.log('je suis comp ponde')
                       console.log( comp.ponderation) //mettre valeur ponderation en number
+
+                      // @ts-ignore
                       if(comp.ponderation == "CINQ"){
                         this.tmp=this.tmp + this.numberponde5;
-                      } else if(comp.ponderation == "DIX"){
+                      }
+                      // @ts-ignore
+                  else if(comp.ponderation == "DIX"){
                         this.tmp=this.tmp + this.numberponde10;
+                        // @ts-ignore
                       }else if(comp.ponderation == "QUINZE"){
                         this.tmp=this.tmp + this.numberponde15;
+                        // @ts-ignore
                       }else if(comp.ponderation == "VINGT"){
                         this.tmp=this.tmp + this.numberponde20;
                       }
@@ -113,7 +120,28 @@ export class SectionTableauDeBordComponent implements OnInit {
         }
       );
     });
-    console.log(this.skeelzs)
+
+    this.sectionTableauDeBordHttpService.loadPersonneCompetence(this.currentPersonne.id).subscribe(resp =>{
+      this.comps = resp
+      for (let comp of this.comps) {
+        // @ts-ignore
+        if(comp.ponderation == "CINQ"){
+          this.npteGlobal=this.npteGlobal + this.numberponde5;
+        }
+        // @ts-ignore
+        else if(comp.ponderation == "DIX"){
+          this.npteGlobal=this.npteGlobal + this.numberponde10;
+          // @ts-ignore
+        }else if(comp.ponderation == "QUINZE"){
+          this.npteGlobal=this.npteGlobal + this.numberponde15;
+          // @ts-ignore
+        }else if(comp.ponderation == "VINGT"){
+          this.npteGlobal=this.npteGlobal + this.numberponde20;
+        }
+
+      }
+
+    });
   }
 //   listComp() {
 //     console.log("listComp")
