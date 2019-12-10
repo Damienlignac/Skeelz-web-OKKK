@@ -32,6 +32,9 @@ export class EditionCoursHttpService {
   findByIdElement(id: number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
   }
+  findByIdElement(id: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
+  }
   //
   //
   // saveCours(cours: Cours, module: Module, chapitre : Chapitre, elements:Array<ElementDeCours>){
