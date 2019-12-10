@@ -1,4 +1,31 @@
-<div class="container p-3 my-3 bg-warning text-white">
-  <h1>My First Bootstrap Page</h1>
-  <p>This container has a dark background color and a white text, and some extra padding and margins.</p>
+<div class="container-fluid">
+<div style="font-size: x-large; font-family: 'Candara'; font-weight:bolder; color: darkcyan">Cours en attente de validation:
+</div>
+  <br>
+<table class="table table-bordered table-striped text-lg-left">
+  <thead>
+  <tr style="text-justify: auto">
+    <th>Intitulé</th>
+    <th>Description</th>
+    <th>Difficulté</th>
+    <th>Durée</th>
+    <th>Validation</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let cour  of this.list()">
+    <td>{{cour.intitule}}</td>
+    <td>{{cour.description}}</td>
+    <td>{{cour.difficulte}}</td>
+    <td>{{cour.duree}}h</td>
+    <td style="width: fit-content">
+    <div class="btn-group-vertical button-group-sm">
+      <button type="button" class="btn btn-success">Valider</button>
+      <button type="button" class="btn btn-danger">Décliner</button>
+    </div>
+    </td>
+  </tr>
+  </tbody>
+</table>
+
 </div>

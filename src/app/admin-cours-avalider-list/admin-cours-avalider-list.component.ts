@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import {AdminCoursAValiderListService} from './admin-cours-avalider-list.service';
+import {Cours} from '../model/cours';
+
 
 @Component({
   selector: 'app-admin-cours-avalider-list',
@@ -7,9 +10,19 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AdminCoursAValiderListComponent implements OnInit {
 
-  constructor() { }
+
+  constructor(private coursAValiderListService: AdminCoursAValiderListService) {
+
+  }
 
   ngOnInit() {
   }
+
+  list() {
+
+      return this.coursAValiderListService.findAll();
+
+  }
+
 
 }

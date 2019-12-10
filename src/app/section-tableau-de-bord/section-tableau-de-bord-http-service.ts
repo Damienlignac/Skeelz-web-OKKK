@@ -13,16 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 @Injectable({
   providedIn: 'root'
 })
-export class TableauDeBordHttpService {
-  private courss: any;
-
-  currentPersonne: Personne;
-
-  private skeelzs:any;
-
-
-
-
+export class SectionTableauDeBordHttpService {
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService,public authService: AuthService,private route: ActivatedRoute) {
@@ -41,30 +32,6 @@ export class TableauDeBordHttpService {
   // });
   }
 
-  findByUtilisateur(id:number): Observable<any>{
-
-      return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
-  }
-
-
-
-  loadCoursSuivie(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/SUIVIE").subscribe(resp =>
-      this.courss = resp);
-  }
-  loadCoursTermine(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/VALIDE").subscribe(resp =>
-      this.courss = resp);
-  }
-  loadCoursCree(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/ADMINISTRE").subscribe(resp =>
-      this.courss = resp);
-  }
-
-  loadPersonneSkeelz(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/skeelz").subscribe(resp =>
-      this.skeelzs = resp);
-  }
 
   //
   // findAllCoursSuivie(): any {

@@ -1,0 +1,103 @@
+<div>
+  <div class="form-inline" style="width: 120%">
+    <h3 style="margin-top: 10px" style="width: 30%"> Rédiger un cours -</h3>
+    <div style="margin: 10px">{{cours.intitule}}</div>
+    <div class="form-group" style="margin: 10px">{{cours.duree}}</div>
+    <div class="form-group" style="margin: 10px">{{cours.difficulte}}</div>
+  </div>
+
+
+  <div class="card-body">
+    <div class="form-group">
+      {{currentModule.intitule}}
+
+      <div class="form-group">
+        <label for="nbquestion">Choisissez le nombre de question à poser à l'utilisateur</label>
+        <input  [(ngModel)]="currentModule.nbQuestion" id="nbquestion" type="number" class="form-control" placeholder="Choisissez le nombre de question à poser à l'utilisateur">
+      </div>
+      <div class="form-group">
+        <label for="nbtentative">Choisissez le nombre de tentative autorisées</label>
+        <input  [(ngModel)]="currentModule.nbTentativeAutorise" id="nbtentative" type="number" class="form-control" placeholder="Choisissez le nombre de tentative autorisées">
+      </div>
+      <div class="form-group">
+        <label for="periodicite">Choisissez la periode avant de pouvoir refaire le QCM</label>
+        <input  [(ngModel)]="currentModule.periodicite" id="periodicite" type="number" class="form-control" placeholder="Choisissez la periode avant de pouvoir refaire le QCM">
+      </div>
+
+      <div class="form-group">
+        <select class="form-control"  #que (change)="questionCourant($event, que.value)"   >
+          <option value="">Question</option>
+          <option *ngFor="let quest of questions" [value] = "quest.id" [selected]="quest.id == currentQuestion.id">{{quest.question}} </option>
+        </select>
+      </div>
+
+    <div class="form-group">
+      <button type="button" (click)="nouvelleQuestion()">Nouvelle Question</button>
+    </div>
+
+    <div class="form-group">
+      <input  [(ngModel)]="currentQuestion.question" type="text" class="form-control" placeholder="Ecrivez votre question">
+    </div>
+    <div *ngIf="currentQuestion.question!=null">
+    <br>
+
+      <div class="form-group" *ngFor="let reponse of currentQuestion.reponses ">
+
+        <div >
+          <textarea [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+        </div>
+        <div class="form-group">
+          <input type="radio" id="{{reponse.enonce}}juste" name="{{reponse.enonce}}" [value]="true" [(ngModel)]="reponse.juste">
+          <label for="{{reponse.enonce}}juste">Reponse juste</label>
+          <input type="radio" id="{{reponse.enonce}}" name="{{reponse.enonce}}" [value]="false" [(ngModel)]="reponse.juste">
+          <label for="{{reponse.enonce}}">Reponse fausse</label>
+        </div>
+        <br>
+
+<!--    <textarea [(ngModel)]="currentElement.titre" class="form-control textareatitle" type="text"  placeholder="Entrer votre titre"></textarea>-->
+<!--    <textarea [(ngModel)]="currentElement.texte" type="text" class="form-control textarea" placeholder="Entrer votre texte"></textarea>-->
+<!--    <br>-->
+<!--    <div class="form-group">-->
+<!--      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div *ngIf="currentElement.type  === 'Image'">-->
+<!--    <input  type="file" class="form-control" placeholder="Choisissez votre image">-->
+<!--    <input  type="text" class="form-control" placeholder="Entrer votre texte">-->
+<!--    <br>-->
+<!--    <div class="form-group">-->
+<!--      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div *ngIf="currentElement.type  === 'ExtraitCode'">-->
+<!--    <input [(ngModel)]="currentElement.chemin" type="text" class="form-control" placeholder="Entrer votre titre">-->
+<!--    <input [(ngModel)]="currentElement.commentaire" type="text" class="form-control" placeholder="Entrer votre texte">-->
+<!--    <br>-->
+<!--    <div class="form-group">-->
+<!--      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>-->
+<!--    </div>-->
+  </div>
+      <textarea [(ngModel)]="currentReponse.enonce" class="form-control textareatitle" placeholder="Entrer une reponse" style="width: 100%"></textarea>
+      <div class="form-group">
+        <input type="radio" id="{{currentReponse.enonce}}" name="{{currentReponse.enonce}}" [value]="true" [(ngModel)]="currentReponse.juste">
+        <label for="{{currentReponse.enonce}}">Reponse juste</label>
+        <input type="radio" id="{{currentReponse.enonce}}" name="{{currentReponse.enonce}}" [value]="false" [(ngModel)]="currentReponse.juste">
+        <label for="{{currentReponse.enonce}}">Reponse fausse</label>
+      </div>
+      <div class="form-group">
+        <button type="button" (click)="enregistrerReponse()">Enregistrer la réponse</button>
+      </div>
+  </div>
+  </div>
+  </div>
+  <div>
+    <div class="btn-group btn-group-lg float-right">
+      <a class="btn btn-success" >
+        <i class="fa fa-check" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)"> Enregistrer</i>
+      </a>
+      <a class="btn btn-warning" >
+        <i class="fa fa-undo" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)" [routerLink]="['/editionCours/' + this.idCours]">Edition du cours</i>
+      </a>
+    </div>
+  </div>
+</div>
