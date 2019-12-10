@@ -22,5 +22,9 @@ export class ChapitreHttpService {
     return this.http.get(this.appConfigService.backEnd + 'chapitre/FindByIdModuleAndAgencement/' + id +":" + agencement);
   }
 
+  findCoursPersonneByIdPersonne(idPersonne: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + 'CoursPersonne/personne/' + idPersonne);
+  }
+
 
 }
