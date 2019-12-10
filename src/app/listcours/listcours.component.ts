@@ -48,6 +48,7 @@ export class ListcoursComponent implements OnInit {
   list() {
     if (this.loop === true) {
         return this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
+
     }
   }
   chargeskeelz(): any {
@@ -189,27 +190,5 @@ export class ListcoursComponent implements OnInit {
 
 
 
-
-
-
-  add() {
-    this.cours = new Cours();
-    // this.stagiaire.adresse = new Adresse();
-  }
-
-  edit(id: number) {
-    this.listcoursservice.findById(id).subscribe(resp => this.cours = resp);
-    // if(this.stagiaire.adresse == null){
-    //   this.stagiaire.adresse = new Adresse();
-    // }
-  }
-
-  delete(id: number) {
-    this.listcoursservice.deleteBydId(id);
-  }
-
-  cancel() {
-    this.cours = null;
-  }
 
 }

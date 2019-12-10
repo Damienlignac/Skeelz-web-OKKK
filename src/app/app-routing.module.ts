@@ -15,6 +15,7 @@ import {EcranAdminComponent} from './ecran-admin/ecran-admin.component';
 import {AdminCoursAValiderListComponent} from './admin-cours-avalider-list/admin-cours-avalider-list.component';
 import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.component';
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
+import {SectionTableauDeBordComponent} from './section-tableau-de-bord/section-tableau-de-bord.component';
 
 
 
@@ -34,7 +35,8 @@ const routes: Routes = [
       {path: '', component: AdminUserListComponent, outlet: 'outsup'},
       {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
     ]},
-  {path: 'dashboard/:idPersonne', component: TableauDeBordComponent},
+  {path: 'dashboard', component: TableauDeBordComponent},
+  {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent},
 ];
 
 @NgModule({

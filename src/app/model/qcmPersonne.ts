@@ -11,7 +11,7 @@ export class QCMPersonne {
   module: Module;
 
 
-  constructor(id: number, version: number, nbTentative: number, statutQCM: boolean, dateDerniereTentative: Date, personne: Personne, module: Module) {
+  constructor(id?: number, version?: number, nbTentative?: number, statutQCM?: boolean, dateDerniereTentative?: Date, personne?: Personne, module?: Module) {
     this.id = id;
     this.version = version;
     this.nbTentative = nbTentative;

@@ -7,7 +7,7 @@ export class CoursPersonne {
   version: number;
   etatCours:EtatCours;
   personne:Personne;
-  cours:Cours
+  cours:Cours;
 
 
   constructor(id?: number, version?: number, etatCours?: EtatCours, personne?: Personne, cours?: Cours) {
