@@ -36,7 +36,8 @@ const routes: Routes = [
       {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
     ]},
   {path: 'dashboard', component: TableauDeBordComponent},
-  {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent},
+
+  
 ];
 
 @NgModule({
