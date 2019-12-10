@@ -13,4 +13,12 @@ export class QcmHttpService {
   findQuestionsWithReponsesById(id: number): Observable<any>{
     return this.http.get(this.appConfigService.backEnd + 'module/'+id+'/questionsAndReponses');
   }
+
+  findByIdPersonneAndIdModule(idPersonne: number, idModule: number): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'qcmPersonne/by-personne-and-module/' + idPersonne + ":" + idModule);
+  }
+
+  findByIdPersonne(idPersonne: number): Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'qcmPersonne/by-personne/' + idPersonne);
+  }
 }
