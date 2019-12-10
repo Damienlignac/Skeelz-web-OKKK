@@ -1,9 +1,20 @@
 .vertical-menu {
   position: center;
   height: 150px;
+  background-color: red;
 }
 
 .indentation {
   margin-left: 20px;
   width: 200px;
+}
+
+.div1{
+  background-color: skyblue;
+}
+.div2{
+  background-color: gray;
+}
+.div1{
+  background-color: yellow;
 }
