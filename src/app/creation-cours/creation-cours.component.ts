@@ -8,6 +8,7 @@ import {Etat} from '../model/etat';
 import {Personne} from '../model/personne';
 import {CoursPersonne} from '../model/coursPersonne';
 import {EtatCours} from '../model/etatCours';
+import {Competence} from "../model/competence";
 
 @Component({
   selector: 'app-edition-cours',
@@ -22,9 +23,11 @@ export class CreationCoursComponent implements OnInit {
   idUtilisateur: number;
   currentPersonne: Personne;
   coursPersonne: CoursPersonne= new CoursPersonne();
+  competences:Array<Competence>;
 
 
   constructor(private http: HttpClient,private router: Router, private creationCoursHttpService: CreationCoursHttpService,private appConfigService: AppConfigService) {
+
   }
 
   save(cours:Cours) {
