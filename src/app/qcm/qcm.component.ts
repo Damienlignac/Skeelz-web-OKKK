@@ -154,8 +154,10 @@ export class QcmComponent implements OnInit {
           console.log(this.currentQcmPersonne);
           this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
             this.currentPersonne = resp;
-            this.qcmHttpService.findByIdPersonne(this.currentPersonne.id).subscribe(resp => {
+            this.qcmHttpService.findByIdPersonneAndIdCours(this.currentPersonne.id, this.idCours).subscribe(resp => {
               this.listQcmPersonne = resp;
+              console.log(this.listQcmPersonne);
+              console.log(this.currentPersonne);
               let nbQcmReussi: number = 0;
               for(let qcm of this.listQcmPersonne){
                 if(qcm.statutQCM){
@@ -190,7 +192,7 @@ export class QcmComponent implements OnInit {
             this.currentQcmPersonne = resp
             this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
               this.currentPersonne = resp;
-              this.qcmHttpService.findByIdPersonne(this.currentPersonne.id).subscribe(resp => {
+              this.qcmHttpService.findByIdPersonneAndIdCours(this.currentPersonne.id, this.idCours).subscribe(resp => {
                 this.listQcmPersonne = resp;
                 let nbQcmReussis: number = 0;
                 for(let qcm of this.listQcmPersonne){
@@ -225,7 +227,7 @@ export class QcmComponent implements OnInit {
       this.currentPersonne = resp;
       console.log(this.currentPersonne);
       if(this.currentPersonne.qcmPersonne.length > 0){
-        this.qcmHttpService.findByIdPersonne(this.currentPersonne.id).subscribe(resp => {
+        this.qcmHttpService.findByIdPersonneAndIdCours(this.currentPersonne.id, this.idCours).subscribe(resp => {
           this.listQcmPersonne = resp;
           let trouve = this.listQcmPersonne.find(item => item.module.id == this.currentModule.id && item.personne.id == this.currentPersonne.id);
           if(trouve) {
