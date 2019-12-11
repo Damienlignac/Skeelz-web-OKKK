@@ -235,7 +235,7 @@ export class TableauDeBordComponent implements OnInit {
 
   editionCours(edCours: Cours) {
  // @ts-ignore
-    if ( edCours.etat == "FERME"){
+    if ( edCours.etat == "ATTENTE"){
 
      }else {
     this.tableauDeBordHttpService.findIntroCours(edCours.id).subscribe(resp => {
