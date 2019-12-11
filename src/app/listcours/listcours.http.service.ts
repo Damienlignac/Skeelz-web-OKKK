@@ -83,7 +83,7 @@ export class ListcoursHttpService {
 
   findIntroCours(id:number, agencement0:number=0){
 
-    return this.http.get(this.appConfigService.backEnd +"module//FindByIdCoursAndAgencement/"+ id +":"+agencement0);
+    return this.http.get(this.appConfigService.backEnd +"module/FindByIdCoursAndAgencement/"+ id +":"+agencement0);
   }
 
   findCoursPersonneByPersonneAndCours(idPersonne: number, idCours: number): Observable<any>{

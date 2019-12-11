@@ -107,7 +107,7 @@ export class ChapitreComponent implements OnInit {
 // Sommaire
     this.route.params.subscribe(params => {this.idCours = params['idCours']; })
     this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
-      this.moduleAndChap = resp.sort((a, b) => b.agencement ? 0 :(a.agencement > b.agencement) || -1)
+      this.moduleAndChap = resp.sort((a,b) => a.agencement - b.agencement);
     });
   }
 
@@ -145,22 +145,7 @@ export class ChapitreComponent implements OnInit {
       });
     }
   }
-  // Sommaire
 
-
-  compare(a, b) {
-    const bandA = a.agencement;
-    const bandB = b.agencement;
-
-    let comparison = 0;
-    if (bandA > bandB) {
-      comparison = 1;
-    }
-    else if (bandA < bandB) {
-      comparison = -1;
-    }
-    return comparison;
-  }
 
 
 

@@ -18,7 +18,11 @@ export class SommaireComponent implements OnInit {
   constructor(private route: ActivatedRoute, private sommaireHttpService: SommaireHttpService) {
     this.route.params.subscribe(params => {this.idCours = params['id']; })
     this.sommaireHttpService.findById(this.idCours).subscribe(resp => {
-      this.moduleAndChap = resp.sort((a,b) => b.agencement ? 0 :(a.agencement > b.agencement) || -1)
+      console.log("ssdsdsdd");
+      this.moduleAndChap = resp.sort((a,b) => a.agencement - b.agencement);
+      // this.moduleAndChap = this.moduleAndChap.sort((a,b) => a.agencement - b.agencement);
+
+      console.log(this.moduleAndChap);
     });
   }
 
