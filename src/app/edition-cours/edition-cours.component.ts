@@ -74,7 +74,7 @@ export class EditionCoursComponent implements OnInit {
     let newCoursCompetence: CoursCompetence = new CoursCompetence();
     newCoursCompetence.competence=this.competences.filter(competence => competence.id == competenceId)[0];
     newCoursCompetence.cours=this.cours;
-    newCoursCompetence.relationCours="VALIDE";
+    newCoursCompetence.relationCours= RelationCours.VALIDE;
     this.coursCompetences.push(newCoursCompetence)
     console.log(this.coursCompetences)
     }
