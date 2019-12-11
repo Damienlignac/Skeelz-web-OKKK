@@ -66,6 +66,66 @@
     </tr>
     </tbody>
   </table>
+  <button id="userAdd" type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#myModal2" style="margin-bottom: 20px">+ Ajouter un Utilisateur</button>
 
+<!--   Modal Création new Personne-->
+  <div class="modal fade" id="myModal2">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Ajouter un nouvel utilisateur</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <a>Informations personnelles:</a>
+          <hr>
+          <input type="text" class="form-control-sm" placeholder="Nom" [(ngModel)]="newpersonne.nom"><br>
+          <input type="text" class="form-control-sm" placeholder="Prénom" [(ngModel)]="newpersonne.prenom"><br>
+          <input type="text" class="form-control-sm" placeholder="Téléphone" [(ngModel)]="newpersonne.telephone"><br>
+          <br>
+          <a>Informations relatives au compte</a>
+          <hr>
+          <input type="text" class="form-control-sm" placeholder="Email" [(ngModel)]="newutilisateur.mail"><br>
+          <input type="text" class="form-control-sm" placeholder="identifiant" [(ngModel)]="newutilisateur.identifiant"><br>
+          <input type="text" class="form-control-sm" placeholder="mot de passe initial" [(ngModel)]="newutilisateur.password"><br>
+          <hr>
+          <label class="form-check-label">Entreprise:
+          <select class="form-control-sm" id="entrprise">
+            <option [ngValue]="null">choisir</option>
+            <option *ngFor="let ent of listentreprise" [(ngModel)]="newutilisateur.entreprise">{{ent.nom}}</option>
+          </select></label>
+          <hr>
+            <br>
+          <a>Droits d'accès</a><br>
+          <hr>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="newutilisateur.administrateur">Administrateur
+            </label>
+          </div>
+          <div class="form-check-inline">
+            <label class="form-check-label">
+              <input type="checkbox" class="form-check-input" [(ngModel)]="newutilisateur.rh">Manager RH
+            </label>
+          </div>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="btn-group-sm">
+            <button type="button" class="btn btn-success" data-dismiss="modal" (click)="savepersonne()">Enregistrer
+            </button>
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
 </div>
+
 
