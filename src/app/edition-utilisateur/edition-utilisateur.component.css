@@ -1,0 +1,28 @@
+.divEntoureTout {
+  position: absolute;
+  top: 120px;
+  width: 80%;
+  left: 10%;
+}
+.photo{
+  position: absolute;
+  width: 130px;
+  height: 150px;
+  background-color: darkgray;
+  left: 70%
+}
+.divMail{
+  font-size: 18px;
+  margin: 15px;
+  left: 5%;
+
+}
+.divNum{
+  margin: 15px;
+  left: 5%;
+
+}
+.divId{
+  margin: 15px;
+  left: 5%;
+}

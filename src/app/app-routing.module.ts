@@ -25,22 +25,22 @@ const routes: Routes = [
   {path: '', redirectTo:'home', pathMatch:'full'},
   {path:'home', component:PageAccueilComponent},
   {path: 'cours', component: ListcoursComponent, canActivate: [AuthGuard]},
-  {path: 'sommaire/:id', component: SommaireComponent},
+  {path: 'sommaire/:id', component: SommaireComponent, canActivate: [AuthGuard]},
   {path: 'chapitre/:idCours/:idModule/:agencementCh', component: ChapitreComponent},
-  {path: 'editionCours/:id', component: EditionCoursComponent},
-  {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent},
-  {path: 'creationCours', component: CreationCoursComponent},
-  {path: 'utilisateur', component: UtilisateurComponent},
-  {path: 'qcm/:idCours/:idModule', component: QcmComponent},
+  {path: 'editionCours/:id', component: EditionCoursComponent, canActivate: [AuthGuard]},
+  {path: 'editionQcm/:idCours/:idModule', component: EditionQcmComponent, canActivate: [AuthGuard]},
+  {path: 'creationCours', component: CreationCoursComponent, canActivate: [AuthGuard]},
+  {path: 'utilisateur', component: UtilisateurComponent, canActivate: [AuthGuard]},
+  {path: 'qcm/:idCours/:idModule', component: QcmComponent, canActivate: [AuthGuard]},
   {path: 'login', component: LoginComponent},
-  {path: 'admin', component: EcranAdminComponent, outlet: 'primary', children: [
-      {path: '', component: AdminUserListComponent, outlet: 'outsup'},
-      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'},
-      {path: '', component: EditionSkeelzComponent, outlet:'outskeelzedit'}
+  {path: 'admin', component: EcranAdminComponent, outlet: 'primary', canActivate: [AuthGuard], children: [
+      {path: '', component: AdminUserListComponent, outlet: 'outsup', canActivate: [AuthGuard]},
+      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf', canActivate: [AuthGuard]},
+      {path: '', component: EditionSkeelzComponent, outlet:'outskeelzedit', canActivate: [AuthGuard]}
     ]},
-  {path: 'dashboard', component: TableauDeBordComponent},
-  {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent},
-  {path: 'edition-utilisateur', component: EditionUtilisateurComponent},
+  {path: 'dashboard', component: TableauDeBordComponent,canActivate: [AuthGuard]},
+  {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent, canActivate: [AuthGuard]},
+  {path: 'edition-utilisateur', component: EditionUtilisateurComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

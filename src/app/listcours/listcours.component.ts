@@ -33,6 +33,10 @@ export class ListcoursComponent implements OnInit {
 
   constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
 
+    this.list();
+    this.chargeskeelz();
+
+
   }
 
   ngOnInit() {
@@ -40,7 +44,6 @@ export class ListcoursComponent implements OnInit {
   }
 
   logout(): void {
-    console.log("Logout");
     this.authService.logout();
     this.router.navigate(['/login']);
   }
