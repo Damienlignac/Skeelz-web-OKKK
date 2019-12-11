@@ -67,7 +67,6 @@ export class EditionQcmComponent implements OnInit {
   deleteQuestion() {
     if (this.currentQuestion.id) {
       for (let reponse of this.currentQuestion.reponses) {
-        console.log(reponse)
         this.http.delete(this.appConfigService.backEnd + 'reponse/' + reponse.id).subscribe((OK) => {
           this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
           this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
@@ -88,7 +87,6 @@ export class EditionQcmComponent implements OnInit {
     }
   }
   nouvelleQuestion() {
-    console.log(this.questions)
     this.currentQuestion= new Question();
     this.currentQuestion.question=" ";
     this.questions.push(this.currentQuestion);
@@ -148,7 +146,6 @@ export class EditionQcmComponent implements OnInit {
               })
             }
             else{
-              console.log(reponse)
               reponse.question = <Question> resp;
               this.http.post(this.appConfigService.backEnd + 'reponse', reponse).subscribe(resp =>
               {
@@ -164,7 +161,6 @@ export class EditionQcmComponent implements OnInit {
             }}})
       }}
     )
-    console.log(this.currentQuestion);
     this.currentQuestion=new Question();
 
   }

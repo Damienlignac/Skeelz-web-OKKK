@@ -100,7 +100,9 @@
         <div *ngIf="currentModule.agencement==0 && currentModule.chapitres==null" style="margin:10px; size: A3"
              (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true"
                                                style="color: darkgreen; size: B5"></span></div>
-
+        <div *ngIf="currentModule.agencement==0 && currentModule.chapitres.length==0" style="margin:10px; size: A3"
+             (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true"
+                                               style="color: darkgreen; size: B5"></span></div>
         <div *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3" (click)="deleteChapitre()"><span
           class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
       </div>
@@ -160,7 +162,7 @@
                   placeholder="Entrer votre texte"></textarea>
         <br>
         <div class="form-group">
-          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élément</button>
         </div>
       </div>
       <div *ngIf="currentElement.type  === 'Image'">
@@ -168,7 +170,7 @@
         <input type="text" class="form-control" placeholder="Entrer votre texte">
         <br>
         <div class="form-group">
-          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élément</button>
         </div>
       </div>
       <div *ngIf="currentElement.type  === 'ExtraitCode'">
@@ -177,7 +179,7 @@
                placeholder="Entrer votre texte">
         <br>
         <div class="form-group">
-          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élément</button>
         </div>
       </div>
       <div>
