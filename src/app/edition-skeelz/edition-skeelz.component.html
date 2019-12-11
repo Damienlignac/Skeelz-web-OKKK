@@ -1,0 +1,66 @@
+<div class="container rounded">
+<p>Créer une nouvelle compétence</p>
+
+<input type="text" class="form-control-sm" placeholder="Intitulé" [(ngModel)]="newcomp.intitule"><br>
+  <div class="form-group">
+    <label for="ponderation">Pondération: </label>
+    <br>
+    <select class="form-control-sm" id="ponderation" [(ngModel)]="newcomp.ponderation">
+      <option [ngValue]="null">choisir</option>
+      <option value="CINQ">5 points</option>
+      <option value="DIX">10 points</option>
+      <option value="QUINZE">15 points</option>
+      <option value="VINGT">20 points</option>
+    </select>
+  </div>
+  <div class="form-group">
+    <label for="description">Description:</label>
+    <textarea class="form-control" rows="3" id="description" placeholder="Définissez votre nouvelle compétence en quelques lignes..." [(ngModel)]="newcomp.description"></textarea>
+  </div>
+  <label for="skeelz">Associer à un Skeelz: </label>
+  <br>
+  <label for="skeelz">Sélectonnez un Skeelz existant: </label>
+  <select class="form-control-sm" id="skeelz">
+    <option [ngValue]="null">choisir</option>
+    <option *ngFor="let ske of chargeskeelzs()" value="{{ske.id}}">{{ske.intitule}}</option>
+     </select>
+  <label for="creer"> ...ou créez un nouveau Skeelz: </label>
+  <button id="creer" type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">+ Créer</button>
+
+
+
+
+  <!-- Modal Création new skeelz-->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Créer un nouveau Skeelz</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+
+        <!-- Modal body -->
+        <div class="modal-body">
+          <input type="text" class="form-control-sm" placeholder="Intitulé" [(ngModel)]="newskeelz.intitule"><br>
+        </div>
+
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <div class="btn-group-sm">
+          <button type="button" class="btn btn-success" data-dismiss="modal" (click)="saveskeelz()">Enregistrer</button>
+          <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+
+  <br>
+<button type="button" class="btn btn-success" (click)="save()">Enregistrer</button>
+
+
+</div>

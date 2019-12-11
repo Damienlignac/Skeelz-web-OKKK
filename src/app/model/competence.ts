@@ -13,7 +13,7 @@ export class Competence {
   bilanCompetences: Array<BilanCompetence> = new Array<BilanCompetence>();
 
 
-  constructor(id: number, version: number, intitule: string, ponderation: Ponderation, description: string, competenceSkeelz: Array<CompetenceSkeelz>, bilanCompetences: Array<BilanCompetence>) {
+  constructor(id?: number, version?: number, intitule?: string, ponderation?: Ponderation, description?: string, competenceSkeelz?: Array<CompetenceSkeelz>, bilanCompetences?: Array<BilanCompetence>) {
     this.id = id;
     this.version = version;
     this.intitule = intitule;
