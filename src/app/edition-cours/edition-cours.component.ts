@@ -36,7 +36,7 @@ export class EditionCoursComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.idCours = params['id'];
       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.editionCoursHttpService.findCoursCompetence(this.idCours).subscribe(resp => {
         this.coursCompetences = resp
         console.log(this.coursCompetences)
@@ -51,7 +51,7 @@ export class EditionCoursComponent implements OnInit {
   cliqueSommaire(module: Module, chapitre: Chapitre){
     console.log("zefzefv")
     this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
     this.currentModule=module;
     this.currentChapitre=chapitre;
     this.currentElement = new ElementDeCours();
@@ -136,7 +136,7 @@ export class EditionCoursComponent implements OnInit {
       for (let element of this.elementDeCours) {
         this.http.delete(this.appConfigService.backEnd + 'elementDeCours/' + element.id).subscribe((OK) => {
           this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
         });
       }
       this.http.delete(this.appConfigService.backEnd + 'chapitre/' + this.currentChapitre.id).subscribe((OK) => {
@@ -150,7 +150,7 @@ export class EditionCoursComponent implements OnInit {
               chap.module = this.currentModule
               this.http.put(this.appConfigService.backEnd + 'chapitre/' + chap.id, chap).subscribe(resp => {
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                 this.currentModule = new Module();
                 this.currentChapitre = new Chapitre();
                 this.currentElement = new ElementDeCours();
@@ -160,14 +160,14 @@ export class EditionCoursComponent implements OnInit {
 
           }
           this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
           this.currentModule = new Module();
           this.currentChapitre = new Chapitre();
           this.currentElement = new ElementDeCours();
           this.elementDeCours = null;
         });
         this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-        this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+        this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
 
       });
 
@@ -194,7 +194,7 @@ export class EditionCoursComponent implements OnInit {
               plus=true;
               this.http.put(this.appConfigService.backEnd + 'elementDeCours/' + elem.id, elem).subscribe(resp => {
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                 this.currentModule = new Module();
                 this.currentChapitre = new Chapitre();
                 this.currentElement = new ElementDeCours();
@@ -205,7 +205,7 @@ export class EditionCoursComponent implements OnInit {
           }
 
             this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
             this.currentModule = new Module();
             this.currentChapitre = new Chapitre();
             this.currentElement = new ElementDeCours();
@@ -213,7 +213,7 @@ export class EditionCoursComponent implements OnInit {
 
         });
         this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-        this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+        this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
 
       });
 
@@ -233,11 +233,11 @@ export class EditionCoursComponent implements OnInit {
             for (let element of elements) {
               this.http.delete(this.appConfigService.backEnd + 'elementDeCours/' + element.id).subscribe(resp=>{
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
               })}})
           this.http.delete(this.appConfigService.backEnd + 'chapitre/' + chapitre.id).subscribe(resp=>{
             this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
               })
 
       }
@@ -254,7 +254,7 @@ export class EditionCoursComponent implements OnInit {
                 modu.cours = this.cours;
                 this.http.put(this.appConfigService.backEnd + 'module/' + modu.id, modu).subscribe(resp => {
                   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                   this.currentModule = new Module();
                   this.currentChapitre = new Chapitre();
                   this.currentElement = new ElementDeCours();
@@ -264,14 +264,14 @@ export class EditionCoursComponent implements OnInit {
 
             }
             this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+            this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
             this.currentModule = new Module();
             this.currentChapitre = new Chapitre();
             this.currentElement = new ElementDeCours();
             this.elementDeCours = null;
           });
           this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+          this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
 
         });
 
@@ -330,13 +330,13 @@ export class EditionCoursComponent implements OnInit {
                     element.chapitre = <Chapitre> resp;
                     this.http.put(this.appConfigService.backEnd + 'elementDeCours/' + element.id, element).subscribe(resp => {
                       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                     });
                   } else {
                     element.chapitre = <Chapitre> resp;
                     this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                     });
 
                   }
@@ -349,7 +349,7 @@ export class EditionCoursComponent implements OnInit {
                   element.chapitre = <Chapitre> resp;
                   this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                     this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                   });
 
                 }
@@ -365,7 +365,7 @@ export class EditionCoursComponent implements OnInit {
                 element.chapitre = <Chapitre> resp;
                 this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                 });
               }
             });
@@ -373,7 +373,7 @@ export class EditionCoursComponent implements OnInit {
         }
       });
       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
     } else {
       this.http.post(this.appConfigService.backEnd + 'cours', cours).subscribe(resp => {
         module.cours = <Cours> resp;
@@ -384,7 +384,7 @@ export class EditionCoursComponent implements OnInit {
               element.chapitre = <Chapitre> resp;
               this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
               });
             }
           });
@@ -422,13 +422,13 @@ export class EditionCoursComponent implements OnInit {
                     element.chapitre = <Chapitre> resp;
                     this.http.put(this.appConfigService.backEnd + 'elementDeCours/' + element.id, element).subscribe(resp => {
                       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                     });
                   } else {
                     element.chapitre = <Chapitre> resp;
                     this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                     });
 
                   }
@@ -441,7 +441,7 @@ export class EditionCoursComponent implements OnInit {
                   element.chapitre = <Chapitre> resp;
                   this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                     this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                    this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                   });
 
                 }
@@ -457,7 +457,7 @@ export class EditionCoursComponent implements OnInit {
                 element.chapitre = <Chapitre> resp;
                 this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                  this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                 });
               }
             });
@@ -474,7 +474,7 @@ export class EditionCoursComponent implements OnInit {
               element.chapitre = <Chapitre> resp;
               this.http.post(this.appConfigService.backEnd + 'elementDeCours', element).subscribe(resp => {
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
-                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+                this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
               });
             }
           });

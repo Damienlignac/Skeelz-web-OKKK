@@ -1,4 +1,4 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <div class="form-inline" style="width: 100%">
     <div style="margin-top: 10px" style="width: 20%; font-weight: bolder; font-size: x-large"> Rédiger un cours -</div>
     <div class="form-group" style="margin: 0px; width:40%">
@@ -27,31 +27,37 @@
 
   <div class="card-body">
     <div class="form-group">
-      <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea"
+      <label for="desc"><b>Description du cours: </b></label>
+      <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea" id="desc"
                 placeholder="Description du cours"></textarea>
     </div>
-    <div style="border-bottom:1px solid black"></div>
+    <br>
+    <br>
+    <div>
+      <div style="border-bottom:1px solid black; font-size: larger"> <b>Liste des compétences validées par le cours:</b></div>
     <div *ngFor="let coursCompetence of coursCompetences">
       <div class="form-inline" style="width: 100%">
-        <div style="width: 70%">Intitulé: {{coursCompetence.competence.intitule}}</div>
-        <div style="width: 20%">Pondération: {{coursCompetence.competence.ponderation}}</div>
+        <div style="width: 70%"><b>Intitulé: </b>{{coursCompetence.competence.intitule}}</div>
+        <div style="width: 20%"><b>Pondération: </b>{{coursCompetence.competence.ponderation}}</div>
         <div style="margin:10px; size: A3" (click)="deleteComp(coursCompetence.competence.id, coursCompetence)"><span
           class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
       </div>
-      <div>Description: {{coursCompetence.competence.description}}</div>
-      <br>
+      <div><b>Description: </b>{{coursCompetence.competence.description}}</div>
       <br>
     </div>
-    <div style="border-bottom:1px solid black"></div>
+    </div>
+
     <div class="form-inline" style="width: 100%">
       <select class="form-control textarea" #competence (change)="competenceSelect($event, competence.value)"
               style="width: 100%">
-        <option value="" disabled>Choisissez une compétence</option>
+        <option value="" disabled>Ajouter une compétence</option>
         <option *ngFor="let competence of competences" [value]="competence.id">{{competence.intitule}};
           Pondération: {{competence.ponderation}}</option>
       </select>
     </div>
     <br>
+    <div style="border-bottom:1px solid black"></div>
+
     <br>
     <br>
 
@@ -91,7 +97,7 @@
                   style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
         <div *ngIf="currentModule.agencement!=0" style="margin:10px; size: A3" (click)="nouveauChapitre()"><span
           class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
-        <div *ngIf="currentModule.agencement==0 && currentModule.chapitres.length<1" style="margin:10px; size: A3"
+        <div *ngIf="currentModule.agencement==0 && currentModule.chapitres==null" style="margin:10px; size: A3"
              (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true"
                                                style="color: darkgreen; size: B5"></span></div>
 
