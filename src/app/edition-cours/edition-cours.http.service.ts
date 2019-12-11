@@ -33,6 +33,11 @@ export class EditionCoursHttpService {
     return this.http.get(this.appConfigService.backEnd + 'competence');
   }
 
+  findCoursCompetence(id:number): Observable<any>{
+
+    return this.http.get(this.appConfigService.backEnd + 'cours/' + id + '/coursCompetences');
+  }
+
 
 
 }
