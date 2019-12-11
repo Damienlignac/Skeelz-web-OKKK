@@ -16,7 +16,7 @@
   padding-left: 30px;
   padding-right: 50px;
   min-height: 900px;
-  height: fit-content
+  max-height: available;
 }
 body {
   /*background: url('../assets/img/fondecran.jpg') no-repeat center center fixed;*/

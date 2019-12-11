@@ -33,7 +33,7 @@ export class AdminCoursAValiderListComponent implements OnInit {
   }
 
   valider(id: number) {
-    alert("Ce cours sera désormais accessible pour les autres utilisateurs.")
+    alert("Ce cours sera désormais accessible pour les autres utilisateurs.");
     return this.coursAValiderListService.findById(id).subscribe(resp => {
       this.courvalide = resp;
       this.courvalide.etat = Etat.OUVERT;
@@ -44,8 +44,15 @@ export class AdminCoursAValiderListComponent implements OnInit {
     });
   }
 
-  decliner(){
+  decliner(id: number){
     alert("Le rédacteur de ce cours sera informé de votre décision par une notification.");
-
+    return this.coursAValiderListService.findById(id).subscribe(resp => {
+      this.courvalide = resp;
+      this.courvalide.etat = Etat.FERME;
+      console.log(this.courvalide);
+      this.http.put(this.appConfigService.backEnd + "cours/" + this.courvalide.id, this.courvalide).subscribe( resp => {
+        this.coursAValiderListService.load();
+      });
+    });
   }
 }

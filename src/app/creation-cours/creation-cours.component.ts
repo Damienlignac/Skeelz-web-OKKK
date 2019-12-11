@@ -34,13 +34,10 @@ export class CreationCoursComponent implements OnInit {
     cours.etat =Etat.FERME
     this.http.post(this.appConfigService.backEnd + 'cours', cours).subscribe(resp => {
       this.cours= <Cours> resp;
-      console.log(this.cours)
+
       this.idUtilisateur = +localStorage.getItem('token');
       this.creationCoursHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
-        console.log(resp)
-        console.log(this.cours);
         this.currentPersonne = resp;
-        console.log(this.currentPersonne)
         this.coursPersonne.cours=this.cours;
         this.coursPersonne.personne=this.currentPersonne;
         this.coursPersonne.etatCours=EtatCours.ADMINISTRE;

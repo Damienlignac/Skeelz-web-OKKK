@@ -39,7 +39,6 @@ export class EditionCoursComponent implements OnInit {
       this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.editionCoursHttpService.findCoursCompetence(this.idCours).subscribe(resp => {
         this.coursCompetences = resp
-        console.log(this.coursCompetences)
       })
       });
 
@@ -49,7 +48,6 @@ export class EditionCoursComponent implements OnInit {
     };
 
   cliqueSommaire(module: Module, chapitre: Chapitre){
-    console.log("zefzefv")
     this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
     this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
     this.currentModule=module;
@@ -59,11 +57,7 @@ export class EditionCoursComponent implements OnInit {
 
   }
 
-  clique(){
-    console.log("cdvdvdv");
-  }
   competenceSelect($event, competenceId){
-    console.log(competenceId)
     let existe: boolean = false;
     for (let courscomp of this.coursCompetences){
       if (courscomp.competence.id == competenceId){
@@ -76,7 +70,7 @@ export class EditionCoursComponent implements OnInit {
     newCoursCompetence.cours=this.cours;
     newCoursCompetence.relationCours= RelationCours.VALIDE;
     this.coursCompetences.push(newCoursCompetence)
-    console.log(this.coursCompetences)
+
     }
 
 }
@@ -152,6 +146,7 @@ export class EditionCoursComponent implements OnInit {
                 this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
                 this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                 this.currentModule = new Module();
+                this.currentModule.chapitres=null
                 this.currentChapitre = new Chapitre();
                 this.currentElement = new ElementDeCours();
                 this.elementDeCours = null;
@@ -162,6 +157,7 @@ export class EditionCoursComponent implements OnInit {
           this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
           this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
           this.currentModule = new Module();
+          this.currentModule.chapitres=null
           this.currentChapitre = new Chapitre();
           this.currentElement = new ElementDeCours();
           this.elementDeCours = null;
@@ -172,7 +168,10 @@ export class EditionCoursComponent implements OnInit {
       });
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
+      this.currentModule.chapitres=null
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();
       this.elementDeCours = null;
@@ -218,6 +217,8 @@ export class EditionCoursComponent implements OnInit {
       });
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();
@@ -256,6 +257,7 @@ export class EditionCoursComponent implements OnInit {
                   this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
                   this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
                   this.currentModule = new Module();
+                  this.currentModule.chapitres=null
                   this.currentChapitre = new Chapitre();
                   this.currentElement = new ElementDeCours();
                   this.elementDeCours = null;
@@ -266,6 +268,7 @@ export class EditionCoursComponent implements OnInit {
             this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
             this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
             this.currentModule = new Module();
+            this.currentModule.chapitres=null
             this.currentChapitre = new Chapitre();
             this.currentElement = new ElementDeCours();
             this.elementDeCours = null;
@@ -277,6 +280,8 @@ export class EditionCoursComponent implements OnInit {
 
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();
@@ -395,8 +400,6 @@ export class EditionCoursComponent implements OnInit {
     this.currentModule = new Module();
     this.currentChapitre = new Chapitre();
     this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
-
   }
 
   saveValidate(cours: Cours, module: Module, chapitre: Chapitre, elements: Array<ElementDeCours>) {
@@ -485,7 +488,6 @@ export class EditionCoursComponent implements OnInit {
     this.currentModule = new Module();
     this.currentChapitre = new Chapitre();
     this.elementDeCours = new Array<ElementDeCours>();
-    console.log(this.currentModule);
   }
 
   nouveauModule() {
