@@ -1,16 +1,19 @@
 <br>
+<br>
+<br>
+<div style="margin-left: 30px">
 <div *ngFor="let question of currentQuestions">
-  <div><b>{{question.question}} ({{question.nbReponsesJustes}} réponse(s) à fournir)</b></div>
-  <div *ngFor="let reponse of question.reponses">
-    <input type="checkbox" [(ngModel)]="reponse.choisi">
-    <label>{{reponse.enonce}}</label>
+  <div style="font-size: larger"><b>{{question.question}} ({{question.nbReponsesJustes}} réponse(s) à fournir)</b></div>
+  <div *ngFor="let reponse of question.reponses" class="form-inline" style="width: 100%">
+    <input style="margin-left: 20px; margin-right: 10px" type="checkbox" [(ngModel)]="reponse.choisi">
+    <label style="font-size: larger">{{reponse.enonce}}</label>
   </div>
   <br>
 </div>
 
 <div *ngIf="tentative">Vous avez eu {{nbReponsesJustes}} réponse(s) juste(s) et {{nbReponsesFausses}} réponse(s) fausse(s) sur {{totalReponsesJustes}} bonnes réponses</div>
 <div *ngIf="reussi">Bravo vous avez réussi le QCM</div>
-<button type="button" [routerLink]="['/chapitre/', idCours, idModule, previousChapitre.agencement]" class="btn btn-outline-warning">Précédent</button>
-<button type ="button"*ngIf="!reussi" (click)="valider()" class="btn btn-outline-success">Valider</button>
-<button type="button"*ngIf="reussi && !dernierModule" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]" class="btn btn-outline-info">Passer au module suivant</button>
-
+<button type="button" [routerLink]="['/chapitre/', idCours, idModule, previousChapitre.agencement]" class="btn btn-outline-warning"style="margin: 10px">Précédent</button>
+<button type ="button"*ngIf="!reussi" (click)="valider()" class="btn btn-outline-success"style="margin: 10px">Valider</button>
+<button type="button"*ngIf="reussi && !dernierModule" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]" class="btn btn-outline-info"style="margin: 10px">Passer au module suivant</button>
+</div>

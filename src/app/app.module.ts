@@ -25,6 +25,8 @@ import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 import { SectionTableauDeBordComponent } from './section-tableau-de-bord/section-tableau-de-bord.component';
 import { EditionUtilisateurComponent } from './edition-utilisateur/edition-utilisateur.component';
 import { EditionSkeelzComponent } from './edition-skeelz/edition-skeelz.component';
+import {Router} from '@angular/router';
+import {AuthService} from './auth.service';
 
 @NgModule({
   declarations: [
@@ -59,4 +61,6 @@ import { EditionSkeelzComponent } from './edition-skeelz/edition-skeelz.componen
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
+
 }

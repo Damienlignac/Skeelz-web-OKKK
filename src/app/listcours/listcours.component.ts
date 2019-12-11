@@ -40,7 +40,6 @@ export class ListcoursComponent implements OnInit {
   }
 
   logout(): void {
-    console.log("Logout");
     this.authService.logout();
     this.router.navigate(['/login']);
   }

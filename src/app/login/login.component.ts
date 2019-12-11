@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
       identifiant: ['', Validators.required],
       password: ['', Validators.required]
     });
-    this.returnUrl = '/cours';
+    this.returnUrl = '/dashboard';
     this.authService.logout();
   }
 
