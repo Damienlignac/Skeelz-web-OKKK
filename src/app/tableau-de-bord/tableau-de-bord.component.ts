@@ -36,6 +36,9 @@ export class TableauDeBordComponent implements OnInit {
   number1: number = 0;
   number2: number = 0;
   number3: number = 0;
+  skeelznumber1: Skeelz;
+  skeelznumber2: Skeelz;
+  skeelznumber3: Skeelz;
   tmp: number = 0;
   npteGlobal: number = 0;
   numberponde5: number = 5;
@@ -44,9 +47,6 @@ export class TableauDeBordComponent implements OnInit {
   numberponde20: number = 20;
   competenceSkeelz: Array<CompetenceSkeelz>=new Array<CompetenceSkeelz>();
   skeelz:Skeelz;
-  skeelznumber1: Skeelz;
-  skeelznumber2: Skeelz;
-  skeelznumber3: Skeelz;
   mesSkeelzUniques: Array<Skeelz>;
   listeScoreSkeelz: Array<number>;
   skeelzs: Array<Skeelz> = new Array<Skeelz>();
@@ -129,6 +129,15 @@ export class TableauDeBordComponent implements OnInit {
   }
 
   listSkeelz() {
+    this.tmp = 0;
+    this.number1 = 0;
+    this.number2 =0;
+    this.number3= 0;
+    this.npteGlobal=0;
+    this.skeelznumber1=null
+    this.skeelznumber2=null
+    this.skeelznumber3=null
+
     console.log("listSkeelz")
     this.tableauDeBordHttpService.loadPersonneSkeelz(this.currentPersonne.id).subscribe(resp => {
       this.skeelzs = resp
@@ -159,10 +168,6 @@ export class TableauDeBordComponent implements OnInit {
 
               for(let skecompske of ske.competenceSkeelz){
                 for(let compskecomp of comp.competenceSkeelz){
-
-
-
-
                 if (skecompske.id == compskecomp.id) {
                   console.log('je suis comp ponde')
                   console.log(comp.ponderation) //mettre valeur ponderation en number
@@ -192,9 +197,11 @@ export class TableauDeBordComponent implements OnInit {
                   }
                 }
             }
+                this.tmp = 0;
+
               }
             }
-            this.tmp = 0;
+
           }
         }
       );
@@ -235,16 +242,19 @@ export class TableauDeBordComponent implements OnInit {
 
   editionCours(edCours: Cours) {
  // @ts-ignore
-    if ( edCours.etat == "ATTENTE"){
-
-     }else {
+    if ( edCours.etat == "ATTENTE" ){
+      alert("Ce cours est en attente de validation, renseignez-vous auprès de l'administrateur pour ajouter des modifications")
+// @ts-ignore
+     }else if (edCours.etat == "FERME"){
     this.tableauDeBordHttpService.findIntroCours(edCours.id).subscribe(resp => {
       this.cours = resp;
 
 
       this.router.navigate(['/editionCours/' + [edCours.id]]);
     });
-  }
+  }else {
+      this.introCours(edCours.id);
+    }
 }
   //Boutons pour le point de vue RH
 
