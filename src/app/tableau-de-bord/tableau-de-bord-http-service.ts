@@ -49,14 +49,21 @@ private idUtilisateur:number;
     return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/ADMINISTRE");
   }
 
-  loadPersonneSkeelz(id:number) {
-    return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/skeelz").subscribe(resp =>
-      this.skeelzs = resp);
+  loadPersonneSkeelz(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/skeelzs/"+id);
+  }
+  loadPersonneCompetence(id:number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + "personne/competences/"+id);
   }
 
-  findCompetenceSkeelzByIdPersonne(idPersonne: number){
-    return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
-  }
+
+
+
+
+
+  // findCompetenceSkeelzByIdPersonne(idPersonne: number):Observable<any>{
+  //   return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
+  // }
 
   // findAllCoursSuivie(): any {
   //   return this.coursSuivies;

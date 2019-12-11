@@ -73,4 +73,15 @@ tr:last-child td:last-child { border-bottom-right-radius: 10px; }
   width: 100%;
 }
 
+.PointEntour{
+  position: absolute;
+  height: 40%;
+  top:0%;
+  width: 100%;
+}
 
+.diventourimagesquitourne{
+
+  margin-top: 8%;
+
+}

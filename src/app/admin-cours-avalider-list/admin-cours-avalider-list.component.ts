@@ -43,4 +43,9 @@ export class AdminCoursAValiderListComponent implements OnInit {
       });
     });
   }
+
+  decliner(){
+    alert("Le rédacteur de ce cours sera informé de votre décision par une notification.");
+
+  }
 }

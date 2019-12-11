@@ -5,15 +5,15 @@ export class Skeelz {
   id: number;
   version: number;
   intitule: string;
-  competenceSkeelzs: Array<CompetenceSkeelz>;
+  competenceSkeelz: Array<CompetenceSkeelz> = new Array<CompetenceSkeelz>();
   entreprise: Entreprise;
 
 
-  constructor(id?: number, version?: number, intitule?: string, competenceSkeelzs?: Array<CompetenceSkeelz>, entreprise?: Entreprise) {
+  constructor(id?: number, version?: number, intitule?: string, competenceSkeelz?: Array<CompetenceSkeelz>, entreprise?: Entreprise) {
     this.id = id;
     this.version = version;
     this.intitule = intitule;
-    this.competenceSkeelzs = competenceSkeelzs;
+    this.competenceSkeelz = competenceSkeelz;
     this.entreprise = entreprise;
   }
 }

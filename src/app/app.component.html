@@ -1,5 +1,5 @@
 <body>
-<nav class="navbar navbar-expand-lg navbar-dark static-top fixed-top" style="background-color: black; box-shadow: 0px 5px 2px lightgray">
+<nav class="navbar navbar-expand-lg navbar-dark static-top fixed-top" style="background-color: black; box-shadow: 0px 5px 2px #505050">
   <div class="container">
 
       <ul class="navbar-nav ml-auto">
@@ -17,21 +17,20 @@
     </div>
 
 </nav>
-<!--<div class="container-fluid position-fixed " style="height: 7px; width: 100%; background-image: linear-gradient(#747474,rgba(0,0,0,0)); border-style: solid;">-->
-<!--</div>-->
+
 <!-- Page Content -->
 <div class="container-fluid" style="margin-top:60px; height: 900px border-style: solid;">
   <div class="my-3 p-3 rounded box-shadow">
-    <div class="row" style="">
-      <div class="col-sm-2 justify-content-center container-fluid margegauche">
+    <div class="row">
+      <div class="col-sm-2 container-fluid margegauche rounded-pill">
 
-          <img src="../assets/img/skeelz_logo.png" class="pointer mt-4" style="width:140px" [routerLink]="['/home']">
+          <img src="../assets/img/skeelz_logo.png" class="pointer mt-3" style="width:190px" [routerLink]="['/home']">
 
       </div>
       <div class="col-sm-8 justify-content-center align-content-center container-fluid" style="min-height: 900px; height: min-content">
         <a>OUTLET PRINCIPAL</a><router-outlet name="primary"></router-outlet><a>OUTLET PRINCIPAL</a>
       </div>
-      <div class="col-sm-2 justify-content-center align-content-center container-fluid " style="min-height: 900px; height: fit-content">
+      <div  class="col-sm-2 justify-content-center align-content-center container-fluid " style="min-height: 900px; height: fit-content; z-index: -10000">
         <p>section droite</p>
         <a>OUTLET SIDE</a><router-outlet name="side"></router-outlet><a>OUTLET SIDE</a>
       </div>

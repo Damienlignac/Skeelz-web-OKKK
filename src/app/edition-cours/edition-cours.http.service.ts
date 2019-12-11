@@ -28,6 +28,15 @@ export class EditionCoursHttpService {
   findByIdElement(id: number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd+'chapitre/' + id+ '/elementDeCourss');
   }
+  findCompetence(): Observable<any>{
+
+    return this.http.get(this.appConfigService.backEnd + 'competence');
+  }
+
+  findCoursCompetence(id:number): Observable<any>{
+
+    return this.http.get(this.appConfigService.backEnd + 'cours/' + id + '/coursCompetences');
+  }
 
 
 
