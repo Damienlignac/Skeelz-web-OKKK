@@ -20,11 +20,6 @@ export class EcranAdminComponent implements OnInit {
     this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + this.idUtilisateur).subscribe(resp=> this.currentPersonne=<Personne> resp);
   }
 
-  boutonMesCoursComp(
-
-
-  )
-
   ngOnInit() {
   }
 

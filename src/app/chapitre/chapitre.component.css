@@ -18,14 +18,29 @@
 .divTitre{
   position: absolute;
   top: 30px;
-  background-color: rgba(156, 154, 173, 0.5);
+  background-color: rgba(110, 181, 166, 0.7);
   width: 100%;
   border-radius: 10px;
 }
 .divEntoureTextetTitreel{
-  position: relative;
-top:5%
+  position: absolute;
+    top:120px;
+  width: 80%;
 
+}
+.titreel{
+
+  width: 70%;
+  right: 15%;
+  left: 15%;
+
+}
+.element{
+  width: 70%;
+ right: 15%;
+  left: -30%;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 /*.div1{*/
 /*  position: absolute;*/

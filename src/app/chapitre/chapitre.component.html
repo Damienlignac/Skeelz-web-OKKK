@@ -1,21 +1,31 @@
-<div class="position-relative">
-<div class="position-relative">
-<div class="divTitre text-center">
-<h2>{{currentModule.intitule}}</h2>
-</div>
-<br>
-</div>
-<div class="position-relative">
+<div class="position-relative " style="height: auto;width: 80%; left:10%">
+
+    <div class="divTitre text-center">
+    <h2>{{currentModule.intitule}}</h2>
+    </div>
+  <br>
+
+  <div class="divEntoureTextetTitreel">
 <div *ngFor="let elem of chapitre?.elementsDeCours">
   <div *ngIf="elem.type  === 'Paragraphe'">
-    <div class="divEntoureTextetTitreel">
-    <h2>{{elem.titre}}</h2>
-    <div>{{elem.texte}}</div>
+
+   <div class="titreel text" style="width: 100%"> <h3 >{{elem.titre}}</h3></div>
+    <div class="element text-body" style="font-size: 20px">{{elem.texte}}</div>
   </div>
     <br>
+
+
   </div>
+    <button type="button" class="btn btn-outline-info" *ngIf="!premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, 0]" style="margin: 10px">Module précédent</button>
+    <button type="button" class="btn btn-outline-success" *ngIf="premierModule" (click)="Commencer()" [routerLink]="['/chapitre/', idCours, secondModule.id, 0]"style="margin: 10px">Commencer le cours</button>
+    <button type="button" class="btn btn-outline-info" *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" style="margin: 10px">Chapitre précédent</button>
+    <button type="button" class="btn btn-outline-info" *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]"style="margin: 10px">Chapitre précédent</button>
+    <button type="button" class="btn btn-outline-success" *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" style="margin: 10px">Prochain chapitre</button>
+    <button type="button" class="btn btn-outline-success" *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]"style="margin: 10px">Accéder au QCM</button>
 </div>
-</div>
+
+
+
 
 <!--  <div *ngIf="elem.type  === 'ExtraitCode'">-->
 <!--    <div>{{elem.contenu}}</div>-->
@@ -26,14 +36,9 @@
 <!--    <div>{{elem.commentaire}}</div>-->
 <!--  </div>-->
 
+<div style="position: relative; bottom: 0px">
 
-<button type="button" class="btn btn-outline-info" *ngIf="!premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, 0]" style="margin: 10px">Module précédent</button>
-<button type="button" class="btn btn-outline-success" *ngIf="premierModule" (click)="Commencer()" [routerLink]="['/chapitre/', idCours, secondModule.id, 0]"style="margin: 10px">Commencer le cours</button>
-<button type="button" class="btn btn-outline-info" *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" style="margin: 10px">Chapitre précédent</button>
-<button type="button" class="btn btn-outline-info" *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]"style="margin: 10px">Chapitre précédent</button>
-<button type="button" class="btn btn-outline-success" *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" style="margin: 10px">Prochain chapitre</button>
-<button type="button" class="btn btn-outline-success" *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]"style="margin: 10px">Accéder au QCM</button>
-
+</div>
 </div>
 <!--//Sommaire-->
 <div  class="positionFixeEtTaille" style="font-size: 20px;padding: 6px"><b> Sommaire</b>
