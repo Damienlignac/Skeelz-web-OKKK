@@ -17,6 +17,7 @@ import {TableauDeBordComponent} from './tableau-de-bord/tableau-de-bord.componen
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 import {SectionTableauDeBordComponent} from './section-tableau-de-bord/section-tableau-de-bord.component';
 import {EditionUtilisateurComponent} from './edition-utilisateur/edition-utilisateur.component';
+import {EditionSkeelzComponent} from './edition-skeelz/edition-skeelz.component';
 
 
 
@@ -34,7 +35,8 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'admin', component: EcranAdminComponent, outlet: 'primary', children: [
       {path: '', component: AdminUserListComponent, outlet: 'outsup'},
-      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'}
+      {path: '', component: AdminCoursAValiderListComponent, outlet: 'outinf'},
+      {path: '', component: EditionSkeelzComponent, outlet:'outskeelzedit'}
     ]},
   {path: 'dashboard', component: TableauDeBordComponent},
   {path: 'dashboard/skeelz', component: SectionTableauDeBordComponent},

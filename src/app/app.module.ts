@@ -24,6 +24,7 @@ import { EcranAdminComponent } from './ecran-admin/ecran-admin.component';
 import {EditionQcmComponent} from './edition-qcm/edition-qcm.component';
 import { SectionTableauDeBordComponent } from './section-tableau-de-bord/section-tableau-de-bord.component';
 import { EditionUtilisateurComponent } from './edition-utilisateur/edition-utilisateur.component';
+import { EditionSkeelzComponent } from './edition-skeelz/edition-skeelz.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +46,7 @@ import { EditionUtilisateurComponent } from './edition-utilisateur/edition-utili
     EditionQcmComponent,
     SectionTableauDeBordComponent,
     EditionUtilisateurComponent,
+    EditionSkeelzComponent,
   ],
   imports: [
     BrowserModule,
