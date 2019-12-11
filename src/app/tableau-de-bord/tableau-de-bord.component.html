@@ -2,9 +2,9 @@
 <br>
 <br>
 <!--Bouton point de vue Rh {NGIF RH =TRUE} !!!!!-->
-<div class="btn-group">
+<div class="btn-group" *ngIf="currentPersonne.utilisateur.rh">
   <button type="button" class="btn btn-primary" (click)="boutonMesCoursComp()">Mes cours et compétences</button>
-  <button *ngIf="currentPersonne.utilisateur.rh" type="button" class="btn btn-primary" (click)="Boutonemployes()">Les compétences des employés</button>
+  <button type="button" class="btn btn-primary" (click)="Boutonemployes()">Les compétences des employés</button>
 </div>
 <!--Table liste utilisateur-->
 <table class="table table-bordered table-striped text-lg-left" *ngIf="boutonMesemployes==true">
