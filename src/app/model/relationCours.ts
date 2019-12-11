@@ -1,4 +1,4 @@
 export enum RelationCours{
-  OUVERT=("Ouvert"),
-  FERME=("Fermé")
+  REQUIERT=("REQUIERT"),
+  VALIDE=("VALIDE")
 }

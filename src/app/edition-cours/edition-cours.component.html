@@ -1,16 +1,19 @@
-<div>
+<div xmlns="http://www.w3.org/1999/html">
   <div class="form-inline" style="width: 100%">
     <div style="margin-top: 10px" style="width: 20%; font-weight: bolder; font-size: x-large"> Rédiger un cours -</div>
     <div class="form-group" style="margin: 0px; width:40%">
-      <textarea [(ngModel)]="cours.intitule" class="form-control textarea" rows="1" style="width: 100%; font-weight: bolder; font-size: larger; text-decoration: underline; resize: none" id="nom" placeholder="Intitulé du cours"></textarea>
+      <textarea [(ngModel)]="cours.intitule" class="form-control textarea" rows="1"
+                style="width: 100%; font-weight: bolder; font-size: larger; text-decoration: underline; resize: none"
+                id="nom" placeholder="Intitulé du cours"></textarea>
     </div>
     <div><i class="fa fa-clock-o" aria-hidden="true"></i></div>
     <div class="form-inline" style="margin: 0px; width:15%">
-      <input [(ngModel)]="cours.duree" style="margin: 10px; width:100%" class="form-control textarea" type="number"  id="prenom" placeholder="Durée du cours (en heures)">
+      <input [(ngModel)]="cours.duree" style="margin: 10px; width:100%" class="form-control textarea" type="number"
+             id="prenom" placeholder="Durée du cours (en heures)">
     </div>
     <div><i class="fa fa-line-chart" aria-hidden="true"></i></div>
     <div class="form-group" style="margin: 0px ; width:15%">
-      <select class="form-control textarea" id="niveauEtude"  [(ngModel)]="cours.difficulte" >
+      <select class="form-control textarea" id="niveauEtude" [(ngModel)]="cours.difficulte">
         <option value="" disabled>Difficulté</option>
         <option value="FACILE">Facile</option>
         <option value="MOYEN">Moyen</option>
@@ -24,120 +27,185 @@
 
   <div class="card-body">
     <div class="form-group">
-      <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea" placeholder="Description du cours"></textarea>
+      <label for="desc"><b>Description du cours: </b></label>
+      <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea" id="desc"
+                placeholder="Description du cours"></textarea>
+    </div>
+    <br>
+    <br>
+    <div>
+      <div style="border-bottom:1px solid black; font-size: larger"> <b>Liste des compétences validées par le cours:</b></div>
+    <div *ngFor="let coursCompetence of coursCompetences">
+      <div class="form-inline" style="width: 100%">
+        <div style="width: 70%"><b>Intitulé: </b>{{coursCompetence.competence.intitule}}</div>
+        <div style="width: 20%"><b>Pondération: </b>{{coursCompetence.competence.ponderation}}</div>
+        <div style="margin:10px; size: A3" (click)="deleteComp(coursCompetence.competence.id, coursCompetence)"><span
+          class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+      </div>
+      <div><b>Description: </b>{{coursCompetence.competence.description}}</div>
+      <br>
+    </div>
     </div>
 
-    <div *ngFor="let competence of cours.coursCompetences" class="form-inline"  style="width: 100%">
-      <input type="text" [(ngModel)]="competence">
-    </div>
-
-    <div class="form-inline"  style="width: 100%">
-      <select class="form-control textarea" #competence (change)="competenceSelect($event, competence.value)"style="width: 100%">
-        <option value="" disabled>Choisissez une compétence</option>
-        <option *ngFor="let competence of competences" [value]="competence">{{competence.intitule}}; Pondération: {{competence.ponderation}}</option>
+    <div class="form-inline" style="width: 100%">
+      <select class="form-control textarea" #competence (change)="competenceSelect($event, competence.value)"
+              style="width: 100%">
+        <option value="" disabled>Ajouter une compétence</option>
+        <option *ngFor="let competence of competences" [value]="competence.id">{{competence.intitule}};
+          Pondération: {{competence.ponderation}}</option>
       </select>
     </div>
+    <br>
+    <div style="border-bottom:1px solid black"></div>
 
+    <br>
+    <br>
 
     <div class="form-inline" style="width: 100%; margin:10px">
-      <select class="form-control"  #modu (change)="moduleCourant($event, modu.value)" style="width: 20%; margin:10px">
+      <select class="form-control" #modu (change)="moduleCourant($event, modu.value)" style="width: 20%; margin:10px">
         <option value="">Module</option>
-        <option *ngFor="let module of moduleAndChap" [value] = "module.id" [selected]="module.id == currentModule.id">{{module.agencement}} </option>
+        <option *ngFor="let module of moduleAndChap" [value]="module.id"
+                [selected]="module.id == currentModule.id">{{module.agencement}} </option>
       </select>
-      <textarea rows="1" [(ngModel)]="currentModule.intitule" type="text" class="form-control textarea" placeholder="Intitulé du module courant" style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
-      <div  style="margin:10px; size: A3"(click)="nouveauModule()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
-      <div *ngIf="currentModule.agencement!=0 && currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteModule()"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
-      <div *ngIf="currentModule.id && currentModule.agencement!=0" >
-        <button type="button" class="btn btn-info"[routerLink]="['/editionQcm/'+ cours.id + '/' + currentModule.id]">QCM</button>
+      <textarea rows="1" [(ngModel)]="currentModule.intitule" type="text" class="form-control textarea"
+                placeholder="Intitulé du module courant"
+                style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
+      <div style="margin:10px; size: A3" (click)="nouveauModule()"><span class="fa fa-plus" aria-hidden="true"
+                                                                         style="color: darkgreen; size: B5"></span>
+      </div>
+      <div *ngIf="currentModule.agencement!=0 && currentChapitre.titre!=null" style="margin:10px; size: A3"
+           (click)="deleteModule()"><span class="fa fa-trash" aria-hidden="true"
+                                          style="color: darkred; size: B5"></span></div>
+      <div *ngIf="currentModule.id && currentModule.agencement!=0">
+        <button type="button" class="btn btn-info" [routerLink]="['/editionQcm/'+ cours.id + '/' + currentModule.id]">
+          QCM
+        </button>
       </div>
     </div>
 
 
     <div *ngIf="currentModule.intitule!=null">
-    <div class="form-inline" style="width: 100%; margin:10px">
-      <select class="form-control"  #chap (change)="chapitreCourant($event, chap.value)" style="width: 20%; margin:10px" >
-        <option value="">Chapitre</option>
-        <option *ngFor="let chapitre of currentModule.chapitres" [value]="chapitre.id" [selected]="chapitre.id == currentChapitre.id">{{chapitre.agencement}}</option>
-      </select>
-      <textarea rows="1" [(ngModel)]="currentChapitre.titre" type="text" class="form-control textarea" placeholder="Intitulé du chapitre courant" style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
-      <div *ngIf="currentModule.agencement!=0" style="margin:10px; size: A3"(click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
-      <div *ngIf="currentModule.agencement==0 && currentModule.chapitres.length<1" style="margin:10px; size: A3"(click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
+      <div class="form-inline" style="width: 100%; margin:10px">
+        <select class="form-control" #chap (change)="chapitreCourant($event, chap.value)"
+                style="width: 20%; margin:10px">
+          <option value="">Chapitre</option>
+          <option *ngFor="let chapitre of currentModule.chapitres" [value]="chapitre.id"
+                  [selected]="chapitre.id == currentChapitre.id">{{chapitre.agencement}}</option>
+        </select>
+        <textarea rows="1" [(ngModel)]="currentChapitre.titre" type="text" class="form-control textarea"
+                  placeholder="Intitulé du chapitre courant"
+                  style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
+        <div *ngIf="currentModule.agencement!=0" style="margin:10px; size: A3" (click)="nouveauChapitre()"><span
+          class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
+        <div *ngIf="currentModule.agencement==0 && currentModule.chapitres==null" style="margin:10px; size: A3"
+             (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true"
+                                               style="color: darkgreen; size: B5"></span></div>
 
-      <div  *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteChapitre()"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
-    </div>
+        <div *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3" (click)="deleteChapitre()"><span
+          class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+      </div>
 
       <div *ngIf="currentChapitre.titre!=null" style="border-bottom:1px solid black"></div>
 
     </div>
-      <div *ngIf="currentChapitre.titre!=null">
-    <div class="form-group" *ngFor="let element of elementDeCours ">
-      <div *ngIf="element.type  === 'Paragraphe'">
-        <div class="form-inline" style="width: 100%; margin:10px">
-          <div class="form-group" style="margin: 0px; width:90%">
-        <textarea [(ngModel)]="element.titre" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+    <div *ngIf="currentChapitre.titre!=null">
+      <div class="form-group" *ngFor="let element of elementDeCours ">
+        <div *ngIf="element.type  === 'Paragraphe'">
+          <div class="form-inline" style="width: 100%; margin:10px">
+            <div class="form-group" style="margin: 0px; width:90%">
+              <textarea [(ngModel)]="element.titre" class="form-control textareatitle" placeholder="Entrer votre titre"
+                        style="width: 100%"></textarea>
+            </div>
+            <div *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3" (click)="deleteElement(element)">
+              <span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+
+            <div style="width: 90%; margin:0px">
+              <textarea [(ngModel)]="element.texte" class="form-control textarea" placeholder="Entrer votre texte"
+                        style="width: 100%"></textarea>
+            </div>
           </div>
-          <div  *ngIf="currentChapitre.titre!=null" style="margin:10px; size: A3"(click)="deleteElement(element)"><span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+          <br>
         </div>
-          <textarea [(ngModel)]="element.texte" class="form-control textarea" placeholder="Entrer votre texte" style="width: 100%"></textarea>
-        <br>
-      </div>
-      <div *ngIf="element.type  === 'Image'">
-        <input  type="file" class="form-control textarea" placeholder="Choisissez votre image">
-        <input  type="text" class="form-control textarea" placeholder="Entrer votre texte">
-        <br>
-      </div>
-      <div *ngIf="element.type  === 'ExtraitCode'">
-        <input [(ngModel)]="element.chemin" type="text" class="form-control textarea" placeholder="Entrer votre titre">
-        <input [(ngModel)]="element.commentaire" type="text" class="form-control textarea" placeholder="Entrer votre texte">
-        <br>
-      </div>
-    </div>
-        <div style="border-bottom:1px solid black"></div>
-    <div class="form-group">
-      <p>Sélectionner un type de contenu:</p>
-      <input type="radio" id="texte" name="contenu" value="texte" checked [(ngModel)]="aAjouter" (click)="nouveauElement()" style="margin: 10px">
-      <label for="texte">Texte</label>
-      <input type="radio" id="Image" name="contenu" value="image" [(ngModel)]="aAjouter" (click)="nouveauElement()" style="margin: 10px">
-      <label for="Image">Image</label>
-      <input type="radio" id="ExtraitCode" name="contenu" value="extraitCode" [(ngModel)]="aAjouter" (click)="nouveauElement()" style="margin: 10px">
-      <label for="ExtraitCode">Extrait de code</label>
-    </div>
-        <div style="border-bottom:1px solid black"></div>
-  <div *ngIf="currentElement.type  === 'Paragraphe'">
-    <textarea [(ngModel)]="currentElement.titre" class="form-control textareatitle" type="text"  placeholder="Entrer votre titre"></textarea>
-    <textarea [(ngModel)]="currentElement.texte" type="text" class="form-control textarea" placeholder="Entrer votre texte"></textarea>
-    <br>
-    <div class="form-group">
-      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
-    </div>
-  </div>
-  <div *ngIf="currentElement.type  === 'Image'">
-    <input  type="file" class="form-control" placeholder="Choisissez votre image">
-    <input  type="text" class="form-control" placeholder="Entrer votre texte">
-    <br>
-    <div class="form-group">
-      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
-    </div>
-  </div>
-  <div *ngIf="currentElement.type  === 'ExtraitCode'">
-    <input [(ngModel)]="currentElement.chemin" type="text" class="form-control" placeholder="Entrer votre titre">
-    <input [(ngModel)]="currentElement.commentaire" type="text" class="form-control" placeholder="Entrer votre texte">
-    <br>
-    <div class="form-group">
-      <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
-    </div>
-  </div>
-        <div>
-          <div class="btn-group btn-group-lg float-right">
-            <a class="btn btn-outline-success" >
-              <i class="fa fa-check green" (click)="save(cours, currentModule, currentChapitre, elementDeCours)" style="color: green"> Enregistrer</i>
-            </a>
-            <a class="btn btn-outline-info" >
-              <i class="fa fa-paper-plane cadetblue" aria-hidden="true" (click)="saveValidate(cours, currentModule, currentChapitre, elementDeCours)" style="color: cadetblue">Soumettre pour vérification</i>
-            </a>
-          </div>
+        <div *ngIf="element.type  === 'Image'">
+          <input type="file" class="form-control textarea" placeholder="Choisissez votre image">
+          <input type="text" class="form-control textarea" placeholder="Entrer votre texte">
+          <br>
         </div>
+        <div *ngIf="element.type  === 'ExtraitCode'">
+          <input [(ngModel)]="element.chemin" type="text" class="form-control textarea"
+                 placeholder="Entrer votre titre">
+          <input [(ngModel)]="element.commentaire" type="text" class="form-control textarea"
+                 placeholder="Entrer votre texte">
+          <br>
+        </div>
+      </div>
+      <div style="border-bottom:1px solid black"></div>
+      <div class="form-group">
+        <p>Sélectionner un type de contenu:</p>
+        <input type="radio" id="texte" name="contenu" value="texte" checked [(ngModel)]="aAjouter"
+               (click)="nouveauElement()" style="margin: 10px">
+        <label for="texte">Texte</label>
+        <input type="radio" id="Image" name="contenu" value="image" [(ngModel)]="aAjouter" (click)="nouveauElement()"
+               style="margin: 10px">
+        <label for="Image">Image</label>
+        <input type="radio" id="ExtraitCode" name="contenu" value="extraitCode" [(ngModel)]="aAjouter"
+               (click)="nouveauElement()" style="margin: 10px">
+        <label for="ExtraitCode">Extrait de code</label>
+      </div>
+      <div style="border-bottom:1px solid black"></div>
+      <div *ngIf="currentElement.type  === 'Paragraphe'">
+        <textarea [(ngModel)]="currentElement.titre" class="form-control textareatitle" type="text"
+                  placeholder="Entrer votre titre"></textarea>
+        <textarea [(ngModel)]="currentElement.texte" type="text" class="form-control textarea"
+                  placeholder="Entrer votre texte"></textarea>
+        <br>
+        <div class="form-group">
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+        </div>
+      </div>
+      <div *ngIf="currentElement.type  === 'Image'">
+        <input type="file" class="form-control" placeholder="Choisissez votre image">
+        <input type="text" class="form-control" placeholder="Entrer votre texte">
+        <br>
+        <div class="form-group">
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+        </div>
+      </div>
+      <div *ngIf="currentElement.type  === 'ExtraitCode'">
+        <input [(ngModel)]="currentElement.chemin" type="text" class="form-control" placeholder="Entrer votre titre">
+        <input [(ngModel)]="currentElement.commentaire" type="text" class="form-control"
+               placeholder="Entrer votre texte">
+        <br>
+        <div class="form-group">
+          <button type="button" (click)="enregistrerEvent()">Enregistrer l'élèment</button>
+        </div>
+      </div>
+      <div>
+        <div class="btn-group btn-group-lg float-right">
+          <a class="btn btn-outline-success">
+            <i class="fa fa-check green" (click)="save(cours, currentModule, currentChapitre, elementDeCours)"
+               style="color: green"> Enregistrer</i>
+          </a>
+          <a class="btn btn-outline-info">
+            <i class="fa fa-paper-plane cadetblue" aria-hidden="true"
+               (click)="saveValidate(cours, currentModule, currentChapitre, elementDeCours)" style="color: cadetblue"
+               [routerLink]="['/dashboard']">Soumettre pour vérification</i>
+          </a>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
+
+<!--//Sommaire-->
+<div style="z-index: 1000" class="positionFixeEtTaille" style="font-size: 20px;padding: 6px"><b> Sommaire</b>
+  <hr>
+  <div *ngFor="let module of moduleAndChap " style=" font-size: 14px;margin-bottom: 7px;margin-top: 7px">
+    <b>{{module.intitule}} :</b>
+    <div class="indentation" style="margin-top: 3px; margin-bottom: 3px " *ngFor="let chapitre of module.chapitres">
+      <div (click)="cliqueSommaire(module, chapitre)"><i class="fa fa-arrow-right" aria-hidden="true">{{chapitre.titre}}</i></div>
+    </div>
+    <div *ngIf="module.agencement!=0"class="indentation"[routerLink]="['/editionQcm/'+ cours.id + '/' + module.id]">Qcm : {{module.enonceQCM}}</div>
   </div>
-  </div>
+</div>
 

@@ -29,4 +29,29 @@
   font-weight: bold;
 }
 
+/*Sommaire*/
+.positionFixeEtTaille {
+  position: fixed;
+  right: 7px;
+  top:20%;
+  height: auto;
+  width: 250px;
+  border-radius: 10px;
+  border: solid;
+  background-color:lightblue;
+  padding-top: 10px;
+}
 
+.indentation {
+  margin-left: 20px;
+}
+
+.back1 {
+  background-color: rgb(230, 230, 230);
+  margin-top: 10px;
+  height: 180px;
+  position: relative;
+  top: 80px;
+  width: 100%;
+  border-radius: 10px;
+}

@@ -10,6 +10,7 @@ import {Personne} from '../model/personne';
 import {Competence} from '../model/competence';
 import {SectionTableauDeBordHttpService} from '../section-tableau-de-bord/section-tableau-de-bord-http-service';
 import {CompetenceSkeelz} from '../model/competenceSkeelz';
+import {AdminUserListHttpService} from '../admin-user-list/admin-user-list-http.service';
 
 @Component({
   selector: 'tableau-de-bord',
@@ -29,22 +30,20 @@ export class TableauDeBordComponent implements OnInit {
   private coursAdministre: Array<Cours> = new Array<Cours>();
 
   private module0: any;
-
+  utilisateurRH:boolean=false;
+  boutonMesCoursCompRH:boolean=true;
+  boutonMesemployes:boolean=false;
   number1: number = 0;
   number2: number = 0;
   number3: number = 0;
   tmp: number = 0;
-
   npteGlobal: number = 0;
-
   numberponde5: number = 5;
   numberponde10: number = 10;
   numberponde15: number = 15;
   numberponde20: number = 20;
   competenceSkeelz: Array<CompetenceSkeelz>=new Array<CompetenceSkeelz>();
-
   skeelz:Skeelz;
-
   skeelznumber1: Skeelz;
   skeelznumber2: Skeelz;
   skeelznumber3: Skeelz;
@@ -53,12 +52,23 @@ export class TableauDeBordComponent implements OnInit {
   skeelzs: Array<Skeelz> = new Array<Skeelz>();
   comps: Array<Competence> = new Array<Competence>();
   skeelz3s: Array<Skeelz> = new Array<Skeelz>();
+  edCours:Cours;
+
+  //Table Employé
+  personne: Personne = null;
+  personnes: Array<Personne>;
+  skeelzarray: Array<Skeelz>;
+  idSkeelz: number;
+  personneSkeelz: Array<Personne> = new Array<Personne>();
 
 
-  constructor(private tableauDeBordHttpService: TableauDeBordHttpService, private sectionTableauDeBordHttpService: SectionTableauDeBordHttpService, private router: Router, public authService: AuthService, private route: ActivatedRoute) {
+  constructor(private tableauDeBordHttpService: TableauDeBordHttpService, private sectionTableauDeBordHttpService: SectionTableauDeBordHttpService, private router: Router, public authService: AuthService, private route: ActivatedRoute,private adminUserListService: AdminUserListHttpService) {
     this.idUtilisateur = +localStorage.getItem('token');
     this.tableauDeBordHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
+      if(this.currentPersonne.utilisateur.rh == true){
+        this.utilisateurRH= true;
+      }
 
       this.listCoursSuivie()
       this.listCoursTermine()
@@ -71,7 +81,32 @@ export class TableauDeBordComponent implements OnInit {
 
   ngOnInit() {
   }
+  //Table Employé
+  list(): any {
+    this.personnes = this.adminUserListService.findAll();
 
+    console.log(this.personnes)
+    return this.personnes;
+  }
+
+  chargeskeelzs(){
+    this.skeelzarray = this.adminUserListService.findAllSkeelz();
+    return this.skeelzarray;
+  }
+
+  filtreskeelz(){
+    this.adminUserListService.findBySkeelz(this.idSkeelz).subscribe(resp=>{
+      this.personneSkeelz = resp;
+      console.log(this.personneSkeelz);
+      return this.personneSkeelz;
+    });
+  }
+
+
+
+
+
+//Table Cours
   listCoursSuivie() {
 
     return this.tableauDeBordHttpService.loadCoursSuivie(this.currentPersonne.id).subscribe(resp => this.coursSuivie = resp);
@@ -87,8 +122,8 @@ export class TableauDeBordComponent implements OnInit {
   }
 
   listCoursCree() {
-
-    return this.tableauDeBordHttpService.loadCoursCree(this.currentPersonne.id).subscribe(resp => this.coursAdministre = resp);
+    this.tableauDeBordHttpService.loadCoursCree(this.currentPersonne.id).subscribe(resp => {this.coursAdministre = resp; console.log(this.coursAdministre)});
+    return
     ;
 
   }
@@ -198,12 +233,93 @@ export class TableauDeBordComponent implements OnInit {
     });
   }
 
-  editionCours(idCours: number) {
-    this.tableauDeBordHttpService.findIntroCours(idCours).subscribe(resp => {
+  editionCours(edCours: Cours) {
+ // @ts-ignore
+    if ( edCours.etat == "ATTENTE"){
+
+     }else {
+    this.tableauDeBordHttpService.findIntroCours(edCours.id).subscribe(resp => {
       this.cours = resp;
-      this.router.navigate(['/editionCours/' + [idCours]]);
+
+
+      this.router.navigate(['/editionCours/' + [edCours.id]]);
     });
   }
+}
+  //Boutons pour le point de vue RH
+
+
+  boutonMesCoursComp(){
+    this.boutonMesCoursCompRH = true;
+    this.boutonMesemployes = false;
+
+    this.npteGlobal=0;
+    this.skeelznumber1=null;
+    this.skeelznumber2=null;
+    this.skeelznumber3=null;
+    this.number1=0;
+    this.number2=0;
+    this.number3=0;
+
+    this.listCoursSuivie()
+    this.listCoursTermine()
+    this.listCoursCree()
+    this.listSkeelz();
+
+  }
+  Boutonemployes(){
+    this.boutonMesCoursCompRH = false;
+    this.boutonMesemployes = true;
+
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
   // listSkeelz() { // List de tous les Skeelz (tableau de skeelz dont l'index est similaire a un tableau de nombre (somme des pondération des compétences associé au skeelz)
