@@ -39,6 +39,7 @@
         <div style="margin:10px; size: A3" (click)="nouvelleQuestion()"><span class="fa fa-plus" aria-hidden="true"
                                                                            style="color: darkgreen; size: B5"></span>
         </div>
+
       </div>
 
       <br>
@@ -53,9 +54,11 @@
       <div style="border-bottom:1px solid black"></div>
       <div class="form-group" *ngFor="let reponse of currentQuestion.reponses ">
 
-        <div >
-          <textarea [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+        <div class="form-inline" style="width: 100%">
+          <textarea  [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
         </div>
+        <div  style="margin:10px; size: A3" (click)="deleteReponse(reponse)">
+          <span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
         <div class="form-group">
           <input type="radio" id="{{reponse.enonce}}juste" name="{{reponse.enonce}}" [value]="true" [(ngModel)]="reponse.juste">
           <label for="{{reponse.enonce}}juste">Reponse juste</label>
