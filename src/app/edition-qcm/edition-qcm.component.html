@@ -39,6 +39,8 @@
         <div style="margin:10px; size: A3" (click)="nouvelleQuestion()"><span class="fa fa-plus" aria-hidden="true"
                                                                            style="color: darkgreen; size: B5"></span>
         </div>
+        <div  style="margin:10px; size: A3" (click)="deleteQuestion()">
+          <span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
 
       </div>
 
@@ -55,10 +57,11 @@
       <div class="form-group" *ngFor="let reponse of currentQuestion.reponses ">
 
         <div class="form-inline" style="width: 100%">
-          <textarea  [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 100%"></textarea>
+          <textarea rows="1" [(ngModel)]="reponse.enonce" class="form-control textareatitle" placeholder="Entrer votre titre" style="width: 80%"></textarea>
+          <div  style="margin:10px; size: A3" (click)="deleteReponse(reponse)">
+            <span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
         </div>
-        <div  style="margin:10px; size: A3" (click)="deleteReponse(reponse)">
-          <span class="fa fa-trash" aria-hidden="true" style="color: darkred; size: B5"></span></div>
+
         <div class="form-group">
           <input type="radio" id="{{reponse.enonce}}juste" name="{{reponse.enonce}}" [value]="true" [(ngModel)]="reponse.juste">
           <label for="{{reponse.enonce}}juste">Reponse juste</label>
@@ -84,11 +87,11 @@
   </div>
   <div>
     <div class="btn-group btn-group-lg float-right">
-      <a class="btn btn-success" >
-        <i class="fa fa-check" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)"> Enregistrer</i>
+      <a class="btn btn-outline-success" >
+        <i class="fa fa-check" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)" style="color: green"> Enregistrer</i>
       </a>
-      <a class="btn btn-warning" >
-        <i class="fa fa-undo" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)" [routerLink]="['/editionCours/' + this.idCours]">Edition du cours</i>
+      <a class="btn btn-outline-info" >
+        <i class="fa fa-undo" (click)="saveQcm(currentModule, currentQuestion, currentQuestion.reponses)" [routerLink]="['/editionCours/' + this.idCours]" style="color: cadetblue">Edition du cours</i>
       </a>
     </div>
   </div>

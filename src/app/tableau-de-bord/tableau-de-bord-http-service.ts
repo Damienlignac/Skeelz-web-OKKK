@@ -61,9 +61,9 @@ private idUtilisateur:number;
 
 
 
-  // findCompetenceSkeelzByIdPersonne(idPersonne: number):Observable<any>{
-  //   return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
-  // }
+  findCompetenceSkeelzByIdPersonne(idPersonne: number):Observable<any>{
+    return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
+  }
 
   // findAllCoursSuivie(): any {
   //   return this.coursSuivies;

@@ -124,9 +124,7 @@ export class ChapitreComponent implements OnInit {
   }
 
   Commencer() {
-    console.log("Version de la personne avant de lui associer le cours" );
-    console.log(this.currentPersonne);
-    console.log(this.currentPersonne.coursPersonne.length);
+
     if(this.currentPersonne.coursPersonne == undefined || !this.currentCoursPersonne.find(item => item.cours.id == this.idCours)){
       console.log("Le lien entre ce cours et cette personne n'existe pas")
       let coursPersonne = new CoursPersonne;
@@ -134,13 +132,10 @@ export class ChapitreComponent implements OnInit {
       coursPersonne.personne = this.currentPersonne;
       coursPersonne.cours = this.currentCours;
 
-      console.log(coursPersonne);
       this.http.post(this.appConfigService.backEnd + 'CoursPersonne', coursPersonne).subscribe(resp => {
         console.log(resp);
         this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
           this.currentPersonne = resp;
-          console.log("Version Update de la Personne avec le cours associé : ");
-          console.log(this.currentPersonne);
         });
       });
     }
