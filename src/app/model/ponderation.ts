@@ -1,6 +1,6 @@
 export enum Ponderation {
-  CINQ=(5),
-  DIX=(10),
-  QUINZE=(15),
-  VINGT=(20)
+  CINQ=("CINQ"),
+  DIX=("DIX"),
+  QUINZE=("QUINZE"),
+  VINGT=("VINGT")
 }
