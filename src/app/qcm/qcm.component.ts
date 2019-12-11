@@ -103,7 +103,22 @@ export class QcmComponent implements OnInit {
   }
 
   valider() {
-    console.log("J'entre dans valider()")
+
+    if(this.currentCoursPersonne == null){
+      console.log("Le lien entre ce cours et cette personne n'existe pas")
+      let coursPersonne = new CoursPersonne;
+      coursPersonne.etatCours = EtatCours.SUIVI;
+      coursPersonne.personne = this.currentPersonne;
+      coursPersonne.cours = this.currentCours;
+
+      this.http.post(this.appConfigService.backEnd + 'CoursPersonne', coursPersonne).subscribe(resp => {
+        console.log(resp);
+        this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
+          this.currentPersonne = resp;
+        });
+      });
+    }
+
     this.nbReponsesJustes = 0;
     this.nbReponsesFausses = 0;
 
@@ -222,7 +237,10 @@ export class QcmComponent implements OnInit {
     this.idUtilisateur = +localStorage.getItem('token');
     this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
-      this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => this.currentCoursPersonne = resp);
+      this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => {
+        this.currentCoursPersonne = resp;
+        console.log(this.currentCoursPersonne);
+      });
       console.log(this.currentPersonne);
       if(this.currentPersonne.qcmPersonne.length > 0){
         this.qcmHttpService.findByIdPersonneAndIdCours(this.currentPersonne.id, this.idCours).subscribe(resp => {
