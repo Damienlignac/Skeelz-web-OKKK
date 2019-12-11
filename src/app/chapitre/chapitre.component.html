@@ -27,12 +27,12 @@
 <!--  </div>-->
 
 
-<button *ngIf="!premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, 0]">Module précédent</button>
-<button *ngIf="premierModule" (click)="Commencer()" [routerLink]="['/chapitre/', idCours, secondModule.id, 0]">Commencer le cours</button>
-<button *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" >Chapitre précédent</button>
-<button *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]">Chapitre précédent</button>
-<button *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" >Prochain chapitre</button>
-<button *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]">Accéder au QCM</button>
+<button type="button" class="btn btn-outline-info" *ngIf="!premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, 0]" style="margin: 10px">Module précédent</button>
+<button type="button" class="btn btn-outline-success" *ngIf="premierModule" (click)="Commencer()" [routerLink]="['/chapitre/', idCours, secondModule.id, 0]"style="margin: 10px">Commencer le cours</button>
+<button type="button" class="btn btn-outline-info" *ngIf="!premierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement - 1)]" style="margin: 10px">Chapitre précédent</button>
+<button type="button" class="btn btn-outline-info" *ngIf="premierChapitre && !premierModule" [routerLink]="['/chapitre/', idCours, previousModule.id, agencementMaxDernierChapitre]"style="margin: 10px">Chapitre précédent</button>
+<button type="button" class="btn btn-outline-success" *ngIf="!dernierChapitre" [routerLink]="['/chapitre/', idCours, idModule, (chapitre.agencement + 1)]" style="margin: 10px">Prochain chapitre</button>
+<button type="button" class="btn btn-outline-success" *ngIf="!premierModule && dernierChapitre" [routerLink]="['/qcm/', idCours, idModule]"style="margin: 10px">Accéder au QCM</button>
 
 </div>
 <!--//Sommaire-->
