@@ -33,6 +33,10 @@ export class ListcoursComponent implements OnInit {
 
   constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
 
+    this.list();
+    this.chargeskeelz();
+
+
   }
 
   ngOnInit() {
