@@ -32,3 +32,7 @@
 <div *ngIf="unmatchPassword">les deux mots de passe saisis ne sont pas identiques</div>
 <button (click)="changePassword()">Valider</button>
 <div *ngIf="succeedNewPassword">Vous avez bien changé votre mot de passe</div>
+
+
+<div *ngFor="let item of mesSkeelzUniques; index as i">{{mesSkeelzUniques[i].intitule}} {{listeScoreSkeelz[i]}}</div>
+
