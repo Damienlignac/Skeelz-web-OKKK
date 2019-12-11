@@ -63,6 +63,30 @@ export class EditionQcmComponent implements OnInit {
     }
   }
 
+
+  deleteQuestion() {
+    if (this.currentQuestion.id) {
+      for (let reponse of this.currentQuestion.reponses) {
+        console.log(reponse)
+        this.http.delete(this.appConfigService.backEnd + 'reponse/' + reponse.id).subscribe((OK) => {
+          this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+          this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+          this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+        });
+      }
+      this.http.delete(this.appConfigService.backEnd + 'question/' + this.currentQuestion.id).subscribe((OK) => {
+        this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+        this.editionCoursHttpService.findByIdModule(this.idModule).subscribe(resp => this.currentModule = resp);
+        this.editionCoursHttpService.findQuestionReponses(this.idModule).subscribe(resp => this.questions = resp);
+        this.currentReponse = new Reponse();
+        this.currentQuestion= new Question()
+              });
+            }
+    else {
+      this.currentReponse = new Reponse();
+      this.currentQuestion= new Question()
+    }
+  }
   nouvelleQuestion() {
     console.log(this.questions)
     this.currentQuestion= new Question();

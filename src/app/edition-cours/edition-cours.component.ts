@@ -172,6 +172,8 @@ export class EditionCoursComponent implements OnInit {
       });
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();
@@ -218,6 +220,8 @@ export class EditionCoursComponent implements OnInit {
       });
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();
@@ -277,6 +281,8 @@ export class EditionCoursComponent implements OnInit {
 
 
     } else {
+      this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
+      this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp.sort((a,b)=>a.agencement-b.agencement));
       this.currentModule = new Module();
       this.currentChapitre = new Chapitre();
       this.currentElement = new ElementDeCours();

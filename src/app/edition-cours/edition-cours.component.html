@@ -67,7 +67,7 @@
         <option *ngFor="let module of moduleAndChap" [value]="module.id"
                 [selected]="module.id == currentModule.id">{{module.agencement}} </option>
       </select>
-      <textarea rows="1" [(ngModel)]="currentModule.intitule" type="text" class="form-control textarea"
+      <textarea *ngIf="currentModule.agencement!=null" rows="1" [(ngModel)]="currentModule.intitule" type="text" class="form-control textarea"
                 placeholder="Intitulé du module courant"
                 style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
       <div style="margin:10px; size: A3" (click)="nouveauModule()"><span class="fa fa-plus" aria-hidden="true"
@@ -92,10 +92,10 @@
           <option *ngFor="let chapitre of currentModule.chapitres" [value]="chapitre.id"
                   [selected]="chapitre.id == currentChapitre.id">{{chapitre.agencement}}</option>
         </select>
-        <textarea rows="1" [(ngModel)]="currentChapitre.titre" type="text" class="form-control textarea"
+        <textarea *ngIf="currentChapitre.agencement!=null" rows="1" [(ngModel)]="currentChapitre.titre" type="text" class="form-control textarea"
                   placeholder="Intitulé du chapitre courant"
                   style="width: 60%; font-weight: bolder; text-decoration: underline"></textarea>
-        <div *ngIf="currentModule.agencement!=0" style="margin:10px; size: A3" (click)="nouveauChapitre()"><span
+        <div *ngIf="currentModule.agencement!=0 " style="margin:10px; size: A3" (click)="nouveauChapitre()"><span
           class="fa fa-plus" aria-hidden="true" style="color: darkgreen; size: B5"></span></div>
         <div *ngIf="currentModule.agencement==0 && currentModule.chapitres==null" style="margin:10px; size: A3"
              (click)="nouveauChapitre()"><span class="fa fa-plus" aria-hidden="true"
