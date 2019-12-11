@@ -170,9 +170,7 @@ export class QcmComponent implements OnInit {
                 console.log("Vous avez réussi tous les qcm");
                 this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => {
                   this.currentCoursPersonne = resp;
-                  this.currentCoursPersonne.etatCours = EtatCours.VALIDE;
-                  console.log(this.currentCoursPersonne);
-                  this.http.put(this.appConfigService.backEnd + 'CoursPersonne/' + this.currentCoursPersonne.id, this.currentCoursPersonne).subscribe();
+                  this.validationBilanCompetence();
                 })
               }
             });
@@ -205,8 +203,7 @@ export class QcmComponent implements OnInit {
                   console.log("Vous avez réussi tous les qcm");
                   this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => {
                     this.currentCoursPersonne = resp;
-                    this.currentCoursPersonne.etatCours = EtatCours.VALIDE;
-                    this.http.put(this.appConfigService.backEnd + 'CoursPersonne/' + this.currentCoursPersonne.id, this.currentCoursPersonne).subscribe();
+                    this.validationBilanCompetence();
                   })
                 }
               });
@@ -225,6 +222,7 @@ export class QcmComponent implements OnInit {
     this.idUtilisateur = +localStorage.getItem('token');
     this.utilisateurHttpService.findByUtilisateur(this.idUtilisateur).subscribe(resp => {
       this.currentPersonne = resp;
+      this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => this.currentCoursPersonne = resp);
       console.log(this.currentPersonne);
       if(this.currentPersonne.qcmPersonne.length > 0){
         this.qcmHttpService.findByIdPersonneAndIdCours(this.currentPersonne.id, this.idCours).subscribe(resp => {
@@ -243,6 +241,12 @@ export class QcmComponent implements OnInit {
         this.listQcmPersonne = new Array<QCMPersonne>();
       }
     });
+  }
+
+  validationBilanCompetence() {
+
+  this.qcmHttpService.updateBilanCompetencePersonne(this.currentCoursPersonne.id).subscribe();
+
   }
 
 }

@@ -13,3 +13,4 @@
 <button [routerLink]="['/chapitre/', idCours, idModule, previousChapitre.agencement]">Précédent</button>
 <button *ngIf="!reussi" (click)="valider()">Valider</button>
 <button *ngIf="reussi && !dernierModule" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]">Passer au module suivant</button>
+

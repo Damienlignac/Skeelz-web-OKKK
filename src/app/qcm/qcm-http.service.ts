@@ -25,4 +25,8 @@ export class QcmHttpService {
   findByIdPersonneAndIdCours(idPersonne: number, idCours: number): Observable<any>{
     return this.http.get(this.appConfigService.backEnd + 'qcmPersonne/personne/cours/' + idPersonne +":" + idCours);
   }
+
+  updateBilanCompetencePersonne(idCoursPersonne: number): Observable<any> {
+    return this.http.get(this.appConfigService.backEnd + 'bilanCompetence/reussi-cours/' + idCoursPersonne);
+  }
 }

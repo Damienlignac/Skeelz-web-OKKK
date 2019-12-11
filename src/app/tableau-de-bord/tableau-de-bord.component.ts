@@ -126,7 +126,7 @@ export class TableauDeBordComponent implements OnInit {
               console.log('je suis compske ')
               console.log(compske)
 
-                for(let comp of compske.competences){ // je recupere mes competences
+                for(let comp of compske.competence){ // je recupere mes competences
 
 
                   console.log('je suis comp ponde')
