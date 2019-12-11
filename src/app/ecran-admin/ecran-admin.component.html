@@ -1,3 +1,12 @@
+<br>
+<br>
+<br>
+
+<div class="btn-group" *ngIf="currentPersonne.utilisateur.rh||currentPersonne.utilisateur.administrateur">
+  <button type="button" class="btn btn-light" [routerLink]="['/dashboard']" style="margin: 10px">Mon espace personnel</button>
+  <button  *ngIf="currentPersonne.utilisateur.administrateur"type="button" class="btn btn-light" [routerLink]="['/admin']"  style="margin: 10px">Mon espace administrateur</button>
+</div>
+
 <div class="container-fluid card rounded ombre">
 <router-outlet name="outsup"></router-outlet>
 </div>

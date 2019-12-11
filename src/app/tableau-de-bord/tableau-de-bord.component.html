@@ -2,9 +2,10 @@
 <br>
 <br>
 <!--Bouton point de vue Rh {NGIF RH =TRUE} !!!!!-->
-<div class="btn-group">
-  <button type="button" class="btn btn-primary" (click)="boutonMesCoursComp()">Mes cours et compétences</button>
-  <button *ngIf="currentPersonne.utilisateur.rh" type="button" class="btn btn-primary" (click)="Boutonemployes()">Les compétences des employés</button>
+<div class="btn-group" *ngIf="currentPersonne.utilisateur.rh||currentPersonne.utilisateur.administrateur">
+  <button type="button" class="btn btn-light" (click)="boutonMesCoursComp()" style="margin: 10px">Mes cours et compétences</button>
+  <button *ngIf="currentPersonne.utilisateur.rh" type="button" class="btn btn-light" (click)="Boutonemployes()" style="margin: 10px">Les compétences des employés</button>
+  <button  *ngIf="currentPersonne.utilisateur.administrateur"type="button" class="btn btn-light" [routerLink]="['/admin']"  style="margin: 10px">Mon espace administrateur</button>
 </div>
 <!--Table liste utilisateur-->
 <table class="table table-bordered table-striped text-lg-left" *ngIf="boutonMesemployes==true">
@@ -111,6 +112,8 @@
   <thead>
   <tr>
     <th>Cours Terminé</th>
+    <th> </th>
+    <th> </th>
   </tr>
   </thead>
   <tbody>
@@ -130,7 +133,7 @@
     <th>Cours Crée</th>
     <th> </th>
     <th> </th>
-    <th> </th>
+
   </tr>
   </thead>
   <tbody>
@@ -142,7 +145,7 @@
   </tr>
   </tbody>
 </table>
-<button type="button" class="btn btn-success"  [routerLink]="['/creationCours']" *ngIf="boutonMesCoursCompRH==true">Création d'un nouveau cours</button>
+<button type="button" class="btn btn-outline-success"  [routerLink]="['/creationCours']" *ngIf="boutonMesCoursCompRH==true">Création d'un nouveau cours</button>
 
 
 
@@ -198,3 +201,4 @@
     </div>
   </div>
 </div>
+<button type="button" class="btn btn-outline-info" style="margin: 10px"[routerLink]="['/edition-utilisateur']" >Modifier mes informations</button>
