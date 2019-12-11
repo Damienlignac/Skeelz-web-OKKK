@@ -8,6 +8,7 @@ import {EditionCoursHttpService} from './edition-cours.http.service';
 import {HttpClient} from '@angular/common/http';
 import {AppConfigService} from '../app-config.service';
 import {Etat} from '../model/etat';
+import {Competence} from "../model/competence";
 
 @Component({
   selector: 'app-edition-cours',
@@ -24,6 +25,7 @@ export class EditionCoursComponent implements OnInit {
   elementDeCours: Array<ElementDeCours>;
   aAjouter: string;
   currentElement: ElementDeCours = new ElementDeCours();
+  competences:Array<Competence>
 
 
   constructor(private route: ActivatedRoute, private editionCoursHttpService: EditionCoursHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
@@ -31,6 +33,9 @@ export class EditionCoursComponent implements OnInit {
       this.idCours = params['id'];
       this.editionCoursHttpService.findById2(this.idCours).subscribe(resp => this.cours = resp);
       this.editionCoursHttpService.findById(this.idCours).subscribe(resp => this.moduleAndChap = resp);
+      this.editionCoursHttpService.findCompetence().subscribe(resp=>{
+        this.competences=resp;
+      })
     });
   }
 

@@ -27,6 +27,17 @@
       <textarea [(ngModel)]="cours.description" type="text" class="form-control textarea" placeholder="Description du cours"></textarea>
     </div>
 
+    <div *ngFor="let competence of cours.coursCompetences" class="form-inline"  style="width: 100%">
+      <input type="text" [(ngModel)]="competence">
+    </div>
+
+    <div class="form-inline"  style="width: 100%">
+      <select class="form-control textarea" #competence (change)="competenceSelect($event, competence.value)"style="width: 100%">
+        <option value="" disabled>Choisissez une compétence</option>
+        <option *ngFor="let competence of competences" [value]="competence">{{competence.intitule}}; Pondération: {{competence.ponderation}}</option>
+      </select>
+    </div>
+
 
     <div class="form-inline" style="width: 100%; margin:10px">
       <select class="form-control"  #modu (change)="moduleCourant($event, modu.value)" style="width: 20%; margin:10px">
