@@ -12,8 +12,8 @@
       <th>Téléphone</th>
       <th>Compétences</th>
       <th>
-        <select (change)="filtreskeelz()" class="form-control select3" [(ngModel)]="idSkeelz">
-          <option [ngValue]="null" selected="selected">Skeelz</option>
+        <select (change)="filtreskeelz()" class="form-control-sm font-weight-bold" [(ngModel)]="idSkeelz">
+          <option *ngIf="idSkeelz==null" [ngValue]="idSkeelz" selected="selected" >Skeelz</option>
           <option *ngFor="let ske of chargeskeelzs()" value="{{ske.id}}">{{ske.intitule}}</option>
         </select>
       </th>
