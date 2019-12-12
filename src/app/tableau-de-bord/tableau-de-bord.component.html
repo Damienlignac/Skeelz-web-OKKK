@@ -18,8 +18,8 @@
 <!--    <th>Mail</th>-->
     <th>Compétences</th>
     <th>
-      <select (change)="filtreskeelz()" class="form-control select3" [(ngModel)]="idSkeelz" style="width: auto">
-        <option [ngValue]="null" selected>Skeelz</option>
+      <select (change)="filtreskeelz()" class="form-control select3 font-weight-bold" [(ngModel)]="idSkeelz" style="width: auto">
+        <option *ngIf="idSkeelz==null" [ngValue]="idSkeelz" selected="selected" >Skeelz</option>
         <option *ngFor="let ske of chargeskeelzs()" value="{{ske.id}}">{{ske.intitule}}</option>
       </select>
     </th>
@@ -92,7 +92,7 @@
 <table class="table table-striped" *ngIf="boutonMesCoursCompRH==true">
   <thead>
   <tr>
-    <th>Cours suivi</th>
+    <th>Cours Suivi(s)</th>
     <th> </th>
     <th> </th>
   </tr>
@@ -111,7 +111,7 @@
 <table class="table " *ngIf="boutonMesCoursCompRH==true">
   <thead>
   <tr>
-    <th>Cours Terminé</th>
+    <th>Cours Terminé(s)</th>
     <th> </th>
     <th> </th>
   </tr>
@@ -130,7 +130,7 @@
 <table class="table table-striped " *ngIf="boutonMesCoursCompRH==true">
   <thead>
   <tr>
-    <th>Cours Crée</th>
+    <th>Cours Créé(s)</th>
     <th> </th>
     <th> </th>
 
@@ -155,12 +155,12 @@
   <div class="colorPosDivprincipal .bg-info">
 
     <div class="PointEntour">
-      <div class="PointText text-center"><b>Note global :</b></div>
+      <div class="PointText text-center"><b>Note Globale :</b></div>
       <br>
       <div class="Point text-center"><b>{{this.npteGlobal}}</b></div>
       <br>
 
-      <div class="Point text-center" *ngIf="this.npteGlobal<=25"><b>Continuez à vous entrainer !</b> </div>
+      <div class="Point text-center" *ngIf="this.npteGlobal<=25"><b>Continuez à vous entraîner !</b> </div>
       <div class="Point text-center" *ngIf="this.npteGlobal<=50 && this.npteGlobal>25"><b>C'est bien, continuez</b></div>
       <div class="Point text-center"*ngIf="this.npteGlobal<=100 && this.npteGlobal>50"><b>Vous faites partie des meilleurs !!!</b></div>
       <div class="diventourimagesquitourne  text-center">

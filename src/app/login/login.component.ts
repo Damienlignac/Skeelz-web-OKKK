@@ -49,7 +49,7 @@ export class LoginComponent implements OnInit {
       return;
     } else {
       if (this.listUtilisateur.find(user => user.identifiant == this.f.identifiant.value && user.password == this.f.password.value)) {
-        console.log('Login successful');
+        console.log('Identification Réussie');
         this.currentUtilisateur = this.listUtilisateur.find(user => user.identifiant == this.f.identifiant.value && user.password == this.f.password.value);
         console.log(this.currentUtilisateur);
         //this.authService.authLogin(this.model);
@@ -60,7 +60,7 @@ export class LoginComponent implements OnInit {
         localStorage.setItem('superUser', this.currentUtilisateur.superUser.toString());
         this.router.navigate([this.returnUrl]);
       } else {
-        this.message = 'Please check your userid and password';
+        this.message = 'Le mot de passe ou l\'identifiant que vous avez entré est incorrect';
       }
     }
   }
