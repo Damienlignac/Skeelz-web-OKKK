@@ -29,7 +29,7 @@ export class QcmComponent implements OnInit {
   listQcmPersonne: Array<QCMPersonne>;
 
   currentCoursPersonne: CoursPersonne;
-
+  coursReussi:boolean=false;
   idCours: number;
   currentCours: Cours;
   idModule: number;
@@ -186,6 +186,9 @@ export class QcmComponent implements OnInit {
                 this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => {
                   this.currentCoursPersonne = resp;
                   this.validationBilanCompetence();
+                  this.coursReussi=true;
+                  console.log(this.coursReussi)
+                  // this.router.navigate(['/dashboard']);
                 })
               }
             });
@@ -219,6 +222,10 @@ export class QcmComponent implements OnInit {
                   this.listcoursHttpService.findCoursPersonneByPersonneAndCours(this.currentPersonne.id, this.currentCours.id).subscribe(resp => {
                     this.currentCoursPersonne = resp;
                     this.validationBilanCompetence();
+                    this.coursReussi=true;
+                    console.log(this.coursReussi)
+
+                    // this.router.navigate(['/dashboard']);
                   })
                 }
               });

@@ -16,4 +16,11 @@
 <button type="button" [routerLink]="['/chapitre/', idCours, idModule, previousChapitre.agencement]" class="btn btn-outline-warning"style="margin: 10px">Précédent</button>
 <button type ="button"*ngIf="!reussi" (click)="valider()" class="btn btn-outline-success"style="margin: 10px">Valider</button>
 <button type="button"*ngIf="reussi && !dernierModule" [routerLink]="['/chapitre/', idCours, nextModule.id, 0]" class="btn btn-outline-info"style="margin: 10px">Passer au module suivant</button>
+  <br>
+  <div *ngIf="coursReussi==true">
+    <div style="font-weight: bolder">Vous avez terminé le cours</div>
+    <button type="button" class="btn btn-outline-primary" [routerLink]="['/dashboard']">Retour au tableau de bord</button>
+  </div>
 </div>
+
+

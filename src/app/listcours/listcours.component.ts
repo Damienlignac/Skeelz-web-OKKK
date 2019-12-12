@@ -3,7 +3,7 @@ import {ListcoursHttpService} from './listcours.http.service';
 import {Cours} from '../model/cours';
 import {Difficulte} from '../model/difficulte';
 import {Skeelz} from '../model/skeelz';
-import {Router} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../auth.service';
 import {Module} from '../model/module';
 
@@ -31,16 +31,17 @@ export class ListcoursComponent implements OnInit {
 
 
 
-  constructor(private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
+  constructor(private route: ActivatedRoute, private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
+    this.route.params.subscribe(params => { this.list();
+      this.chargeskeelz();; })
 
-    this.list();
-    this.chargeskeelz();
 
 
   }
 
   ngOnInit() {
     this.id = localStorage.getItem('token');
+    this.list();
   }
 
   logout(): void {
