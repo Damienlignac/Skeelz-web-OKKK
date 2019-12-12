@@ -10,9 +10,11 @@ import {Skeelz} from '../model/skeelz';
 export class AdminUserListHttpService {
   private personnes: any;
   private skeelzs: any;
+  private utilisateurs: any;
 
 
   constructor(private http: HttpClient, private appConfigService: AppConfigService) {
+    this.load3();
     this.load();
     this.load2();
   }
@@ -20,6 +22,11 @@ export class AdminUserListHttpService {
   load() {
     this.http.get(this.appConfigService.backEnd + 'personne').subscribe(resp => {
       this.personnes = resp;
+    });
+  }
+  load3() {
+    this.http.get(this.appConfigService.backEnd + 'utilisateur').subscribe(resp => {
+      this.utilisateurs = resp;
     });
   }
 
@@ -44,6 +51,8 @@ findAllSkeelz(){
 findBySkeelz(id: number): Observable <any> {
   return this.http.get(this.appConfigService.backEnd + 'skeelz/' + id + '/personnes');
 }
-
+findAllUtilisateur(){
+    return this.utilisateurs;
+}
 }
 

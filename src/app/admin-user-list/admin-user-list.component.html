@@ -10,15 +10,13 @@
       <th>Nom</th>
       <th>Prénom</th>
       <th>Téléphone</th>
-      <th>Note Globale</th>
       <th>Compétences</th>
       <th>
-        <select (change)="filtreskeelz()" class="form-control select3" [(ngModel)]="idSkeelz">
-          <option [ngValue]="null" selected="selected">Skeelz</option>
+        <select (change)="filtreskeelz()" class="form-control-sm font-weight-bold" [(ngModel)]="idSkeelz">
+          <option *ngIf="idSkeelz==null" [ngValue]="idSkeelz" selected="selected" >Skeelz</option>
           <option *ngFor="let ske of chargeskeelzs()" value="{{ske.id}}">{{ske.intitule}}</option>
         </select>
       </th>
-      <th>Détail</th>
       <th>Droits d'accès</th>
     </tr>
     </thead>
@@ -27,16 +25,14 @@
       <td>{{pers.nom | uppercase}}</td>
       <td>{{pers.prenom}}</td>
       <td>{{pers.telephone}}</td>
-      <td>{{pers.noteGlobal}}</td>
       <td *ngIf="pers.competences" style="font-size: x-small">
-        <a *ngFor="let comp of pers.competences">{{comp.intitule}}</a>
+        <a *ngFor="let comp of pers.competences">{{comp.intitule}}, </a>
       </td>
       <td *ngIf="!pers.competences"></td>
       <td *ngIf="pers.skeelzs" style="font-size: x-small">
-        <a *ngFor="let skee of pers.skeelzs">{{skee.intitule}}</a>
+        <a *ngFor="let skee of pers.skeelzs">{{skee.intitule}}, </a>
       </td>
       <td *ngIf="!pers.competences"></td>
-      <td style="font-size: xx-small">Fiche profil</td>
       <td style="font-size: x-small"><a *ngIf="pers.utilisateur.rh==true">manager RH,</a>
         <a *ngIf="pers.utilisateur.administrateur==true"> administrateur,</a>
         <!--        <a *ngIf="pers.utilisateur.superUser==true"> Super Admin</a> -->
@@ -49,7 +45,6 @@
       <td>{{pers.nom | uppercase}}</td>
       <td>{{pers.prenom}}</td>
       <td>{{pers.telephone}}</td>
-      <td>{{pers.noteGlobal}}</td>
       <td *ngIf="pers.competences" style="font-size: x-small">
         <a *ngFor="let comp of pers.competences">{{comp.intitule}}</a>
       </td>
@@ -58,7 +53,6 @@
         <a *ngFor="let skee of pers.skeelzs">{{skee.intitule}}</a>
       </td>
       <td *ngIf="!pers.competences"></td>
-      <td style="font-size: xx-small" class="nav-link">Fiche profil</td>
       <td style="font-size: x-small"><a *ngIf="pers.utilisateur.rh==true">manager RH,</a>
         <a *ngIf="pers.utilisateur.administrateur==true"> administrateur,</a>
         <!--        <a *ngIf="pers.utilisateur.superUser==true"> Super Admin</a> -->
@@ -96,7 +90,7 @@
           <label class="form-check-label">Entreprise:
           <select class="form-control-sm" id="entrprise">
             <option [ngValue]="null">choisir</option>
-            <option *ngFor="let ent of listentreprise" [(ngModel)]="newutilisateur.entreprise">{{ent.nom}}</option>
+            <option *ngFor="let ent of listentreprise" [ngValue]="newutilisateur.entreprise">{{ent.nom}}</option>
           </select></label>
           <hr>
             <br>

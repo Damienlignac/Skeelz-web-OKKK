@@ -17,6 +17,7 @@ export class AdminUserListComponent implements OnInit {
 
   personne: Personne = null;
   personnes: Array<Personne>;
+  utilisateurs: Array<Utilisateur>;
   skeelzarray: Array<Skeelz>;
   idSkeelz: number;
   personneSkeelz: Array<Personne> = new Array<Personne>();
@@ -25,6 +26,7 @@ export class AdminUserListComponent implements OnInit {
   listentreprise: Array<Entreprise>;
 
   constructor(private adminUserListService: AdminUserListHttpService, private http: HttpClient, private appConfigService: AppConfigService) {
+    this.listuser()
     this.list();
     this.chargeentreprise();
   }
@@ -36,7 +38,11 @@ export class AdminUserListComponent implements OnInit {
 
   list(): any {
     this.personnes = this.adminUserListService.findAll();
-    return this.personnes;
+       return this.personnes;
+  }
+  listuser(){
+    this.utilisateurs = this.adminUserListService.findAllUtilisateur();
+    return this.utilisateurs;
   }
 
   chargeskeelzs() {
@@ -59,14 +65,20 @@ export class AdminUserListComponent implements OnInit {
   }
 
   savepersonne() {
-    this.newpersonne.utilisateur = this.newutilisateur;
     console.log(this.newpersonne);
+    console.log(this.newutilisateur);
     this.http.post(this.appConfigService.backEnd + 'utilisateur', this.newutilisateur).subscribe(resp => {
-      this.newutilisateur = <Utilisateur> resp;
+      this.newpersonne.utilisateur = <Utilisateur> resp;
       console.log(resp);
       this.http.post(this.appConfigService.backEnd + 'personne', this.newpersonne).subscribe(resp => {
         this.newpersonne = <Personne> resp;
-        return this.list();
+        console.log(resp);
+        this.adminUserListService.load();
+        console.log(this.list());
+        this.reset();
+        this.newutilisateur=new Utilisateur();
+        this.newpersonne = new Personne();
+        return
 
       });
 
@@ -75,5 +87,16 @@ export class AdminUserListComponent implements OnInit {
 
   }
 
+  reset() {
 
+    this.newpersonne.nom = '';
+    this.newpersonne.prenom = '';
+    this.newpersonne.telephone = '';
+    this.newutilisateur.mail = '';
+    this.newutilisateur.identifiant = '';
+    this.newutilisateur.password = '';
+    this.newutilisateur.entreprise = new Entreprise();
+    this.newutilisateur.rh = false;
+    this.newutilisateur.administrateur = false;
+  }
 }
