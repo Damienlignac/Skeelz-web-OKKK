@@ -34,7 +34,26 @@
     <button class="btn btn-outline-success" style="width: 20%; margin: 10px" (click)="changePassword()">Valider</button>
     <div *ngIf="succeedNewPassword">Vous avez bien changé votre mot de passe</div>
   </div>
+  <br>
+  <br>
 
-
-<div *ngFor="let item of mesSkeelzUniques; index as i">{{mesSkeelzUniques[i].intitule}} {{listeScoreSkeelz[i]}}</div>
+  <br>
+  <button type="button" class="btn btn-outline-warning" style="width: 20%; margin: 10px" [routerLink]="['/dashboard']" style="width: 30%">Retour au tableau de bord</button>
+  <br>
+  <br>
+  <br>
+</div>
+<div class="divskeelz">
+<table class="table table-hover" style="width: 100%; font-weight: lighter">
+  <thead>
+  <tr style="text-justify: auto">
+    <th>Mes skeelzs</th>
+    <th>Mon score</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let item of mesSkeelzUniques; index as i" style="font-weight: lighter">
+    <th>{{mesSkeelzUniques[i].intitule}}</th>
+    <th>{{listeScoreSkeelz[i]}}</th>
+  </tr>
+</table>
 </div>
