@@ -19,6 +19,7 @@ export class AdminCoursAValiderListComponent implements OnInit {
 
 
   constructor(private coursAValiderListService: AdminCoursAValiderListService, private http: HttpClient, private appConfigService: AppConfigService) {
+    this.coursAValiderListService.load()
   }
 
   ngOnInit() {

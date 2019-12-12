@@ -32,8 +32,14 @@ export class ListcoursComponent implements OnInit {
 
 
   constructor(private route: ActivatedRoute, private listcoursservice: ListcoursHttpService, private router: Router,public authService: AuthService) {
-    this.route.params.subscribe(params => { this.list();
-      this.chargeskeelz();; })
+    this.route.params.subscribe(params => { console.log("cdkcnkcn");
+    this.list();
+
+      this.id = localStorage.getItem('token');
+      this.listcoursservice.load();
+      this.listcoursservice.load3();
+      this.chargeskeelz();
+      this.list();})
 
 
 
@@ -50,6 +56,7 @@ export class ListcoursComponent implements OnInit {
   }
 
   list() {
+
     if (this.loop === true) {
         return this.listcoursservice.findAll().filter(cour => cour.intitule.indexOf(this.valeur) !== -1);
 

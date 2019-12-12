@@ -14,7 +14,7 @@
   </thead>
   <tbody>
   <tr *ngFor="let cour  of this.list()">
-    <td>{{cour.intitule}}</td>
+    <td [routerLink]="['/editionCours/' + cour.id]">{{cour.intitule}}</td>
     <td>{{cour.description}}</td>
     <td>{{cour.difficulte}}</td>
     <td>{{cour.duree}}h</td>
