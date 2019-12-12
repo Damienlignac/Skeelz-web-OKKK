@@ -1,54 +1,59 @@
 <div class="divEntoureTout position-relative">
 
 <h2 style="margin-bottom: 30px"> Profil de {{currentPersonne.prenom}} {{currentPersonne.nom}}</h2>
-
   <div class="photo"></div>
+  <div class=""> Votre mail : {{currentPersonne.utilisateur.mail}}</div>
+  <div> Votre numéro de téléphone : {{currentPersonne.telephone}}</div>
+  <div class=""> Votre identifiant : {{currentPersonne.utilisateur.identifiant}}</div>
+  <br>
+  <label for="mail">Modifier votre mail: </label>
+  <div class="form-inline " style="width: 50%;">
+    <input id="mail" class="form-control" type="mail" style="width: 70%" [(ngModel)]="newMail" placeholder="Entrez votre nouvelle adresse mail">
+    <button type="button" class="btn btn-outline-success" style="width: 20%; margin: 10px" (click)="changeMail(newMail)">Valider</button>
+  </div>
+  <br>
+  <label for="identifiant">Modifier votre identifiant :</label>
+  <div class="form-inline " style="width: 50%;">
+    <input id="identifiant"class="form-control" type="text" style="width: 70%" [(ngModel)]="newIdentifiant" placeholder="Entrez votre nouvel identifiant">
+    <button type="button" class="btn btn-outline-success" style="width: 20%; margin: 10px" (click)="changeIdentifiant(newIdentifiant)">Valider</button>
+  </div>
+  <br>
+  <label for="telephone">Modifier votre numéro de téléphone:</label>
+  <div class="form-inline " style="width: 50%;">
+    <input id="telephone" class="form-control" type="text" style="width: 70%" [(ngModel)]="newTelephone" placeholder="Entrez votre numéro de téléphone">
+    <button type="button" class="btn btn-outline-success" style="width: 20%; margin: 10px" (click)="changeTelephone(newTelephone)">Valider</button>
+  </div>
+  <br>
+  <label for="password">Modifier votre mot de passe:</label>
+  <div class="form-inline " style="width: 50%;">
+    <input id="password" class="form-control"  style="width: 70%"type="password" [(ngModel)]="oldPassword" placeholder="Entrez votre ancien mot de passe"><br>
+    <div *ngIf="wrongPassword" style="width: 70%">Vous avez saisi le mauvais mot de passe</div>
+    <input type="password" class="form-control"  style="width: 70%; margin-top: 10px"[(ngModel)]="newPassword" placeholder="Entrez votre nouveau mot de passe"><br>
+    <input type="password" class="form-control"  style="width: 70%"[(ngModel)]="confirmedNewPassword" placeholder="Confirmez votre nouveau mot de passe"><br>
+    <div *ngIf="unmatchPassword">les deux mots de passe saisis ne sont pas identiques</div>
+    <button class="btn btn-outline-success" style="width: 20%; margin: 10px" (click)="changePassword()">Valider</button>
+    <div *ngIf="succeedNewPassword">Vous avez bien changé votre mot de passe</div>
+  </div>
+  <br>
+  <br>
 
-<div class="divMail"> Mail : {{currentPersonne.utilisateur.mail}}</div>
-
-  <div class="divMail">
-  <input  type="text" style="width: 280px" [(ngModel)]="newMail" placeholder="Entrez votre nouvelle adresse mail">
-  <button (click)="changeMail(newMail)">Valider</button>
+  <br>
+  <button type="button" class="btn btn-outline-warning" style="width: 20%; margin: 10px" [routerLink]="['/dashboard']" style="width: 30%">Retour au tableau de bord</button>
+  <br>
+  <br>
+  <br>
 </div>
-<br>
-
-
-
-<div class="divNum">Numéro de téléphone : {{currentPersonne.telephone}}</div>
-
-  <div class="divId"> Voici votre identifiant : {{currentPersonne.utilisateur.identifiant}}</div>
-<div>Modifier votre mail :</div>
-
-
-
-
-
-
-
-
-
-
-<div>Modifier votre identifiant :</div>
-<input type="text" [(ngModel)]="newIdentifiant" placeholder="Entrez votre nouvel identifiant">
-<button (click)="changeIdentifiant(newIdentifiant)">Valider</button>
-
-<div> Voici votre numéro de téléphone : {{currentPersonne.telephone}}</div>
-
-<div>Modifier votre numéro de téléphone :</div>
-
-<input type="text" [(ngModel)]="newTelephone" placeholder="Entrez votre numéro de téléphone">
-<button (click)="changeTelephone(newTelephone)">Valider</button>
-
-<div>Modifier votre mot de passe :</div>
-
-<input type="password" [(ngModel)]="oldPassword" placeholder="Entrez votre ancien mot de passe"><br>
-<div *ngIf="wrongPassword">Vous avez saisi le mauvais mot de passe</div>
-<input type="password" [(ngModel)]="newPassword" placeholder="Entrez votre nouveau mot de passe"><br>
-<input type="password" [(ngModel)]="confirmedNewPassword" placeholder="Confirmez votre nouveau mot de passe"><br>
-<div *ngIf="unmatchPassword">les deux mots de passe saisis ne sont pas identiques</div>
-<button (click)="changePassword()">Valider</button>
-<div *ngIf="succeedNewPassword">Vous avez bien changé votre mot de passe</div>
-
-
-<div *ngFor="let item of mesSkeelzUniques; index as i">{{mesSkeelzUniques[i].intitule}} {{listeScoreSkeelz[i]}}</div>
+<div class="divskeelz">
+<table class="table table-hover" style="width: 100%; font-weight: lighter">
+  <thead>
+  <tr style="text-justify: auto">
+    <th>Mes skeelzs</th>
+    <th>Mon score</th>
+  </tr>
+  </thead>
+  <tr *ngFor="let item of mesSkeelzUniques; index as i" style="font-weight: lighter">
+    <th>{{mesSkeelzUniques[i].intitule}}</th>
+    <th>{{listeScoreSkeelz[i]}}</th>
+  </tr>
+</table>
 </div>
