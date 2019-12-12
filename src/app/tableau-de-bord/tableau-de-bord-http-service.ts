@@ -18,27 +18,16 @@ export class TableauDeBordHttpService {
   private coursSuivies: any;
   private coursTermines: any;
   private coursAdministres: any;
-private idUtilisateur:number;
+  private idUtilisateur:number;
   private currentPersonne: Personne;
-
   private skeelzs:any;
 
-
-
-
-
-
   constructor(private http: HttpClient, private appConfigService: AppConfigService,public authService: AuthService,private route: ActivatedRoute) {
-
   }
 
   findByUtilisateur(id:number): Observable<any>{
-
       return this.http.get(this.appConfigService.backEnd + 'personne/utilisateur/' + id);
   }
-
-
-
   loadCoursSuivie(id:number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/SUIVI");
   }
@@ -48,41 +37,16 @@ private idUtilisateur:number;
   loadCoursCree(id:number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + "personne/"+id+"/courss/ADMINISTRE");
   }
-
   loadPersonneSkeelz(id:number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + "personne/skeelzs/"+id);
   }
   loadPersonneCompetence(id:number): Observable<any> {
     return this.http.get(this.appConfigService.backEnd + "personne/competences/"+id);
   }
-
-
-
-
-
-
   findCompetenceSkeelzByIdPersonne(idPersonne: number):Observable<any>{
     return this.http.get(this.appConfigService.backEnd + 'competenceSkeelz/personne/' + idPersonne);
   }
-
-  // findAllCoursSuivie(): any {
-  //   return this.coursSuivies;
-  // }
-  // findAllCoursTermine(): any {
-  //   return this.coursTermines;
-  // }
-  // findAllCoursCreer(): any {
-  //   return this.coursAdministres;
-  // }
-  // findAllPersonneSkeelz(): any {
-  //   return this.skeelzs;
-  // }
-
-
   findIntroCours(id:number, agencement0:number=0){
-
     return this.http.get(this.appConfigService.backEnd +"module/FindByIdCoursAndAgencement/"+ id +":"+agencement0);
   }
-
-
 }

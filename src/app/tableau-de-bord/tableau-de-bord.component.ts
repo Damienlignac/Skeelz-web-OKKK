@@ -1,8 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {ListcoursHttpService} from '../listcours/listcours.http.service';
 import {TableauDeBordHttpService} from './tableau-de-bord-http-service';
 import {Cours} from '../model/cours';
-import {Difficulte} from '../model/difficulte';
 import {Skeelz} from '../model/skeelz';
 import {ActivatedRoute, Router} from '@angular/router';
 import {AuthService} from '../auth.service';
@@ -11,6 +9,7 @@ import {Competence} from '../model/competence';
 import {SectionTableauDeBordHttpService} from '../section-tableau-de-bord/section-tableau-de-bord-http-service';
 import {CompetenceSkeelz} from '../model/competenceSkeelz';
 import {AdminUserListHttpService} from '../admin-user-list/admin-user-list-http.service';
+import {Ponderation} from '../model/ponderation';
 
 @Component({
   selector: 'tableau-de-bord',
@@ -91,8 +90,6 @@ export class TableauDeBordComponent implements OnInit {
   //Table Employé
   list(): any {
     this.personnes = this.adminUserListService.findAll();
-
-    console.log(this.personnes);
     return this.personnes;
   }
 
@@ -104,7 +101,6 @@ export class TableauDeBordComponent implements OnInit {
   filtreskeelz() {
     this.adminUserListService.findBySkeelz(this.idSkeelz).subscribe(resp => {
       this.personneSkeelz = resp;
-      console.log(this.personneSkeelz);
       return this.personneSkeelz;
     });
   }
@@ -112,14 +108,12 @@ export class TableauDeBordComponent implements OnInit {
 
 //Table Cours
   listCoursSuivie() {
-
     return this.tableauDeBordHttpService.loadCoursSuivie(this.currentPersonne.id).subscribe(resp => this.coursSuivie = resp);
 
   }
 
 
   listCoursTermine() {
-
     return this.tableauDeBordHttpService.loadCoursTermine(this.currentPersonne.id).subscribe(resp => this.coursTermine = resp);
     ;
 
@@ -128,7 +122,6 @@ export class TableauDeBordComponent implements OnInit {
   listCoursCree() {
     this.tableauDeBordHttpService.loadCoursCree(this.currentPersonne.id).subscribe(resp => {
       this.coursAdministre = resp;
-      console.log(this.coursAdministre);
     });
     return
       ;
@@ -150,25 +143,19 @@ export class TableauDeBordComponent implements OnInit {
     } else if (edCours.etat == 'FERME') {
       this.tableauDeBordHttpService.findIntroCours(edCours.id).subscribe(resp => {
         this.cours = resp;
-
-
         this.router.navigate(['/editionCours/' + [edCours.id]]);
       });
     } else {
       this.introCours(edCours.id);
     }
   }
-
   //Boutons pour le point de vue RH
 
 
   boutonMesCoursComp() {
     this.boutonMesCoursCompRH = true;
     this.boutonMesemployes = false;
-
     this.npteGlobal=0;
-
-
     this.listCoursSuivie();
     this.listCoursTermine();
     this.listCoursCree();
@@ -183,50 +170,38 @@ export class TableauDeBordComponent implements OnInit {
   }
 
   listSkeelz() {
-    console.log("listSkeelz")
     this.tableauDeBordHttpService.findCompetenceSkeelzByIdPersonne(this.currentPersonne.id).subscribe(resp => {
       this.competenceSkeelz = resp;
-      console.log(this.competenceSkeelz);
-
       this.mesSkeelzUniques = new Array<Skeelz>();
-
       for (let compske of this.competenceSkeelz) { // je recupere mes compskeelz
         if ( this.mesSkeelzUniques == undefined || !this.mesSkeelzUniques.find(item => item.id == compske.skeelz.id)) {
           this.mesSkeelzUniques.push(compske.skeelz);
         }
       }
-
       this.listeScoreSkeelz = new Array<number>();
       for(let i: number=0; i < this.mesSkeelzUniques.length; i++) {
         this.listeScoreSkeelz.push(0);
-
       }
-      console.log((this.listeScoreSkeelz));
-      console.log(this.competenceSkeelz);
       for (let compske of this.competenceSkeelz) {
         let index: number;
         let points: number = 0;
         index = this.mesSkeelzUniques.findIndex(item => item.id == compske.skeelz.id);
-        console.log(index);
         // @ts-ignore
-        if (compske.competence.ponderation == "CINQ") {
+        if (compske.competence.ponderation == Ponderation.CINQ) {
           points =  5;
         }
         // @ts-ignore
-        else if (compske.competence.ponderation == "DIX") {
+        else if (compske.competence.ponderation == Ponderation.DIX) {
           points = 10;
           // @ts-ignore
-        } else if (compske.competence.ponderation == "QUINZE") {
+        } else if (compske.competence.ponderation == Ponderation.QUINZE) {
           points = 15;
           // @ts-ignore
-        } else if (compske.competence.ponderation == "VINGT") {
+        } else if (compske.competence.ponderation == Ponderation.VINGT) {
           points = 20;
         }
-        console.log(this.mesSkeelzUniques)
-        console.log( this.listeScoreSkeelz)
         this.listeScoreSkeelz[index] += points;
       }
-
       for(let score of this.listeScoreSkeelz) {
         this.npteGlobal += score;
       }
@@ -238,7 +213,6 @@ export class TableauDeBordComponent implements OnInit {
       } else {
         maxTours = 3;
       }
-
       if(maxTours > 0) {
         for(let j: number = 0; j < maxTours; j ++){
           let indexMax: number;
@@ -256,7 +230,6 @@ export class TableauDeBordComponent implements OnInit {
     if (arr.length === 0) {
       return -1;
     }
-
     var max = arr[0];
     var maxIndex = 0;
 
@@ -266,11 +239,6 @@ export class TableauDeBordComponent implements OnInit {
         max = arr[i];
       }
     }
-
     return maxIndex;
   }
-
-
-
-
 }

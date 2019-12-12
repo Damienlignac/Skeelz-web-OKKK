@@ -153,13 +153,11 @@
 
 <div class="positionFixeEtTaille" *ngIf="boutonMesCoursCompRH==true">
   <div class="colorPosDivprincipal .bg-info">
-
     <div class="PointEntour">
       <div class="PointText text-center"><b>Note Globale :</b></div>
       <br>
       <div class="Point text-center"><b>{{this.npteGlobal}}</b></div>
       <br>
-
       <div class="Point text-center" *ngIf="this.npteGlobal<=25"><b>Continuez à vous entraîner !</b> </div>
       <div class="Point text-center" *ngIf="this.npteGlobal<=50 && this.npteGlobal>25"><b>C'est bien, continuez</b></div>
       <div class="Point text-center"*ngIf="this.npteGlobal<=100 && this.npteGlobal>50"><b>Vous faites partie des meilleurs !!!</b></div>
@@ -168,13 +166,9 @@
     </div >
       <hr style="height: 2px ">
     </div>
-
-
-
     <br>
     <br>
     <br>
-
     <div class="diventourtext">
       <div class="text-center divtext font-weight-normal"><b>Vos 3 meilleurs Skeelzs :</b></div>
     </div>
@@ -182,7 +176,6 @@
       <div *ngIf="this.topTroisScores[0]!=0" class="div1">
         <div class="text-center">
           <i class="fa fa-trophy fa-2x " aria-hidden="true" style="color: gold" ></i>
-
         </div>
         <div class="text-center">Skeelz n°1 : <b>{{this.topTroisSkeelz[0].intitule}}</b> </div>
         <div class="text-center">Nombre des points : <b>{{this.topTroisScores[0]}}</b> </div>
@@ -192,7 +185,6 @@
         <div class="text-center">Skeelz n°2 : <b>{{this.topTroisSkeelz[1].intitule}}</b> </div>
         <div class="text-center">Nombre des points : <b>{{this.topTroisScores[1]}}</b> </div>
       </div>
-
       <div *ngIf="this.topTroisScores[2]!=0"  class="div3">
         <div class="text-center"><i class="fa fa-bolt  fa-2x" aria-hidden="true"  style="color: gold"></i></div>
         <div class="text-center">Skeelz n°3 : <b>{{this.topTroisSkeelz[2].intitule}}</b> </div>
